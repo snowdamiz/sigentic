@@ -406,6 +406,7 @@ h2 em,
   font-size: clamp(1.04rem, 1.25vw, 1.18rem);
   color: var(--text-2);
   line-height: 1.6;
+  text-wrap: balance;
 }
 
 .hero__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 38px; }
