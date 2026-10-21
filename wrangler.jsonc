@@ -1,0 +1,28 @@
+// The site is plain static files, served by a Worker. .github/workflows/deploy.yml
+// deploys it on every push to the `release` branch.
+{
+  "name": "sigenticlabs",
+  "main": "worker.js",
+  "compatibility_date": "2026-10-01",
+  // Custom domains: `wrangler deploy` creates their DNS records and certificates.
+  // worker.js redirects www to the bare domain. No workers.dev URL, so the site has one address.
+  "routes": [
+    { "pattern": "sigenticlabs.com", "custom_domain": true },
+    { "pattern": "www.sigenticlabs.com", "custom_domain": true }
+  ],
+  "workers_dev": false,
+  "preview_urls": false,
+  "assets": {
+    // The repo root is the site; .assetsignore keeps tooling and docs out of it.
+    "directory": ".",
+    "binding": "ASSETS",
+    // Pages are linked, canonical and in the sitemap as /privacy.html and so on,
+    // so serve them at exactly those paths instead of redirecting to /privacy.
+    "html_handling": "none",
+    "not_found_handling": "404-page",
+    // Every request goes through worker.js so it can redirect www.
+    "run_worker_first": true
+  },
+  // The site has no analytics, so request logs stay off too.
+  "observability": { "enabled": false }
+}

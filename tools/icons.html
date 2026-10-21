@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- Renders PNG icons from the logo mark. Run: see README → "Regenerating brand images". -->
+<html><head><meta charset="utf-8"></head><body style="background:#000">
+<pre id="out"></pre>
+<script type="module">
+const logo = new Image();
+logo.src = '../assets/img/logo.svg';
+await logo.decode();
+function icon(size, { rounded = false, scale = 0.72 } = {}) {
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  const g = c.getContext('2d');
+  g.fillStyle = '#101214';
+  if (rounded) {
+    const r = size * 0.24;
+    g.beginPath(); g.roundRect(0, 0, size, size, r); g.fill();
+  } else {
+    g.fillRect(0, 0, size, size);
+  }
+  const inset = size * (1 - scale) / 2;
+  g.drawImage(logo, inset, inset, size * scale, size * scale);
+  return c.toDataURL('image/png');
+}
+const out = {
+  'favicon-32.png': icon(32, { rounded: true, scale: 0.76 }),
+  'apple-touch-icon.png': icon(180),
+  // Keep the mark inside the central 80% diameter maskable safe zone.
+  'icon-192.png': icon(192, { scale: 0.66 }),
+  'icon-512.png': icon(512, { scale: 0.66 }),
+};
+document.getElementById('out').textContent = JSON.stringify(out);
+</script>
+</body></html>

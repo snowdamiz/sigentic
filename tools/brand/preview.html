@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Seed — Sigentic Labs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #060708; color: #f4f5f7; font-family: Geist, sans-serif; }
+    main { max-width: 1280px; margin: auto; }
+    header { padding: 42px 56px; display: flex; justify-content: space-between; color: #a5aab3; font: 12px 'Geist Mono', monospace; letter-spacing: .1em; }
+    a { color: inherit; text-underline-offset: 4px; }
+    .hero { min-height: 410px; padding: 30px 72px 70px; display: flex; align-items: center; justify-content: space-between; gap: 60px; }
+    .hero > img { width: 290px; height: 290px; }
+    .lockup { display: flex; align-items: center; gap: 20px; font-size: 52px; font-weight: 600; letter-spacing: -.04em; white-space: nowrap; }
+    .lockup img { width: 76px; height: 76px; }
+    .lockup span span { font-weight: 500; }
+    .samples { padding: 48px 56px; background: #f4f5f7; color: #101214; display: grid; grid-template-columns: 1.1fr .8fr 1.4fr; gap: 40px; align-items: center; }
+    .label { margin: 0 0 24px; font: 11px 'Geist Mono', monospace; color: #626870; letter-spacing: .08em; text-transform: uppercase; }
+    .mono img { filter: brightness(0); }
+    .mono .lockup { font-size: 26px; gap: 12px; }
+    .mono .lockup img { width: 42px; height: 42px; }
+    .sizes { display: flex; align-items: center; gap: 20px; height: 64px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 22px 18px; background: #060708; color: #f4f5f7; border-radius: 14px; }
+    .nav .lockup { font-size: 17px; gap: 10px; }
+    .nav .lockup img { width: 28px; height: 28px; }
+    .nav > span { color: #a5aab3; font-size: 11px; }
+    footer { display: flex; justify-content: space-between; gap: 20px; padding: 30px 56px; font-size: 12px; color: #a5aab3; }
+    .swatch { display: inline-block; background: #bdf75f; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+    @media (max-width: 900px) {
+      header, footer { padding: 28px 24px; }
+      .hero { padding: 28px 24px 64px; flex-direction: column; gap: 30px; }
+      .hero > img { width: 220px; height: 220px; }
+      .lockup { font-size: 34px; gap: 12px; }
+      .lockup img { width: 48px; height: 48px; }
+      .samples { padding: 40px 24px; grid-template-columns: 1fr; gap: 36px; }
+      .nav { max-width: 400px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header><span>03 / SEED · REFINED</span><a href="../../index.html">View website ↗</a></header>
+    <section class="hero" aria-label="Seed logo and wordmark">
+      <img src="../../assets/img/logo.svg" alt="Three soft lime seed shapes around an open center">
+      <div class="lockup"><img src="../../assets/img/logo.svg" alt=""><span>Sigentic<span> Labs</span></span></div>
+    </section>
+    <section class="samples" aria-label="Logo applications">
+      <div class="mono"><p class="label">One color</p><div class="lockup"><img src="../../assets/img/logo.svg" alt=""><span>Sigentic<span> Labs</span></span></div></div>
+      <div><p class="label">Icons · 64 / 32 / 16 px</p><div class="sizes"><img src="../../assets/img/favicon.svg" alt="64 pixel icon" width="64" height="64"><img src="../../assets/img/favicon-32.png" alt="32 pixel icon" width="32" height="32"><img src="../../assets/img/favicon.svg" alt="16 pixel icon" width="16" height="16"></div></div>
+      <div><p class="label">Website navigation</p><div class="nav"><div class="lockup"><img src="../../assets/img/logo.svg" alt=""><span>Sigentic<span> Labs</span></span></div><span>The Lab ↗</span></div></div>
+    </section>
+    <footer><span>Three organic forms. One shared center.</span><span><i class="swatch"></i>Signal lime · #BDF75F</span></footer>
+  </main>
+</body>
+</html>

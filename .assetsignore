@@ -1,0 +1,14 @@
+# Everything in this folder is deployed as the site except these.
+.git
+.github
+.claude
+.wrangler
+node_modules
+tools
+README.md
+wrangler.jsonc
+worker.js
+.gitignore
+.assetsignore
+.DS_Store
+._*
