@@ -437,9 +437,9 @@ h2 em,
   background-repeat: no-repeat;
 }
 
-/* the four products along the bottom; the one the particles are drawing is lit */
+/* the products along the bottom; the one the particles are drawing is lit */
 .hero__index { position: relative; z-index: 1; }
-.hero__index-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.hero__index-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .hero__index a {
   position: relative;
   display: grid;
@@ -472,7 +472,8 @@ h2 em,
 .hero[data-scene='1'] [data-scene-link='1'],
 .hero[data-scene='2'] [data-scene-link='2'],
 .hero[data-scene='3'] [data-scene-link='3'],
-.hero[data-scene='4'] [data-scene-link='4'] { color: var(--text-2); }
+.hero[data-scene='4'] [data-scene-link='4'],
+.hero[data-scene='5'] [data-scene-link='5'] { color: var(--text-2); }
 .hero[data-scene='1'] [data-scene-link='1'] strong,
 .hero[data-scene='2'] [data-scene-link='2'] strong,
 .hero[data-scene='3'] [data-scene-link='3'] strong,
@@ -480,11 +481,14 @@ h2 em,
 .hero[data-scene='1'] [data-scene-link='1'] img,
 .hero[data-scene='2'] [data-scene-link='2'] img,
 .hero[data-scene='3'] [data-scene-link='3'] img,
-.hero[data-scene='4'] [data-scene-link='4'] img { color: var(--text); opacity: 1; }
+.hero[data-scene='4'] [data-scene-link='4'] img,
+.hero[data-scene='5'] [data-scene-link='5'] strong,
+.hero[data-scene='5'] [data-scene-link='5'] img { color: var(--text); opacity: 1; }
 .hero[data-scene='1'] [data-scene-link='1']::before,
 .hero[data-scene='2'] [data-scene-link='2']::before,
 .hero[data-scene='3'] [data-scene-link='3']::before,
-.hero[data-scene='4'] [data-scene-link='4']::before { transform: none; }
+.hero[data-scene='4'] [data-scene-link='4']::before,
+.hero[data-scene='5'] [data-scene-link='5']::before { transform: none; }
 
 /* intro */
 .js [data-intro] {
@@ -576,6 +580,7 @@ h2 em,
 .product--morse   { --stage-1: oklch(0.37 0.1 264);   --stage-2: oklch(0.18 0.05 264); }
 .product--mesh    { --stage-1: oklch(0.37 0.065 168); --stage-2: oklch(0.18 0.03 168); }
 .product--incant  { --stage-1: oklch(0.36 0.11 290);  --stage-2: oklch(0.18 0.06 290); }
+.product--mixer   { --stage-1: oklch(0.37 0.11 30);   --stage-2: oklch(0.18 0.05 28); }
 
 .product {
   display: grid;
@@ -695,7 +700,7 @@ h2 em,
 .js .product__stage[data-reveal] > :nth-child(2) { transition-delay: 0.3s; }
 .js .product__stage[data-reveal].is-in > * { transform: none; }
 
-/* Savorly: a phone */
+/* Savorly and Mixer: a phone */
 .phone {
   position: absolute;
   left: 50%;
@@ -730,6 +735,19 @@ h2 em,
 .phone__sys i:nth-child(1) { height: 5px; }
 .phone__sys i:nth-child(2) { height: 7px; }
 .phone__sys i:nth-child(3) { height: 9px; }
+/* Mixer's capture is from a Pixel: it has its own status bar, under a punch-hole camera */
+.phone--android .phone__screen { position: relative; }
+.phone--android .phone__screen::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 11px;
+  width: 11px;
+  height: 11px;
+  margin-left: -5.5px;
+  border-radius: 50%;
+  background: #000;
+}
 
 /* Morse: a capture of the desktop app in a plain window */
 .app-window {
@@ -1099,7 +1117,7 @@ h2 em,
     margin-bottom: 40px;
   }
   .hero__index-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero__index a:nth-child(3) { padding-left: 0; }
+  .hero__index a:nth-child(odd) { padding-left: 0; }
 
   .section-head,
   .manifesto__inner,
@@ -1130,7 +1148,7 @@ h2 em,
   .nav__cta { display: none; }
   .hero__index a { padding: 16px 12px 18px 0; column-gap: 10px; }
   .hero__index a + a { padding-left: 12px; }
-  .hero__index a:nth-child(3) { padding-left: 0; }
+  .hero__index a:nth-child(odd) { padding-left: 0; }
   .hero__index a > span:last-child { font-size: 12px; }
 
   .process { grid-template-columns: minmax(0, 1fr); row-gap: 44px; }

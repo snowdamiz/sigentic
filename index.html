@@ -20,14 +20,14 @@
   <meta property="og:description" content="An independent software lab building focused, carefully made software for everyday life.">
   <meta property="og:url" content="https://sigenticlabs.com/">
   <meta property="og:image" content="https://sigenticlabs.com/assets/img/og.png">
-  <meta property="og:image:alt" content="Sigentic Labs: We invent apps for everyday life. Savorly, Morse, Mesh and Incant.">
+  <meta property="og:image:alt" content="Sigentic Labs: We invent apps for everyday life. Savorly, Morse, Mesh, Incant and Mixer.">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sigentic Labs — We invent apps for everyday life">
   <meta name="twitter:description" content="An independent software lab building focused, carefully made software for everyday life.">
   <meta name="twitter:image" content="https://sigenticlabs.com/assets/img/og.png">
-  <meta name="twitter:image:alt" content="Sigentic Labs: We invent apps for everyday life. Savorly, Morse, Mesh and Incant.">
+  <meta name="twitter:image:alt" content="Sigentic Labs: We invent apps for everyday life. Savorly, Morse, Mesh, Incant and Mixer.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,6 +143,7 @@
           <a href="#morse" data-scene-link="2"><img src="assets/img/work/morse-icon.svg" alt="" width="22" height="22"><strong>Morse</strong><span>Private messaging</span></a>
           <a href="#mesh" data-scene-link="3"><img src="assets/img/work/mesh-icon.svg" alt="" width="22" height="22"><strong>Mesh</strong><span>Programming language</span></a>
           <a href="#incant" data-scene-link="4"><img src="assets/img/work/incant-icon.svg" alt="" width="22" height="22"><strong>Incant</strong><span>Game engine</span></a>
+          <a href="#mixer" data-scene-link="5"><img src="assets/img/work/mixer-icon.png" alt="" width="22" height="22"><strong>Mixer</strong><span>Mobile platform</span></a>
         </div>
       </nav>
     </section>
@@ -170,7 +171,7 @@
         <header class="section-head">
           <p class="section-label mono" data-reveal><span>01</span>Products</p>
           <h2 class="section-head__title" id="products-title" data-reveal>Made in the lab, built for real&nbsp;life.</h2>
-          <p class="section-head__lede" data-reveal>Our first four projects: two apps for everyday life, and two tools for the people who build software and games. More are on the way.</p>
+          <p class="section-head__lede" data-reveal>Our first five projects: two apps for everyday life, and three tools for the people who build software and games. More are on the way.</p>
         </header>
 
         <div class="catalog">
@@ -370,6 +371,44 @@
               <p class="product__platforms">No public release yet</p>
             </div>
           </article>
+
+          <!-- Mixer -->
+          <article class="product product--mixer" id="mixer" aria-labelledby="mixer-name">
+            <p class="product__rule mono" data-reveal>
+              <span class="product__field">Mobile platform</span>
+              <span class="state state--dev">In development</span>
+            </p>
+            <div class="product__intro" data-reveal>
+              <img class="product__icon" src="assets/img/work/mixer-icon.png" alt="" width="52" height="52">
+              <h3 class="product__name" id="mixer-name">Mixer</h3>
+              <p class="product__tagline">Write Swift. <em>Ship both.</em></p>
+            </div>
+            <figure class="product__stage stage--phone" data-reveal>
+              <div class="phone phone--android">
+                <div class="phone__screen">
+                  <img src="assets/img/work/mixer-android.jpg" width="834" height="1857" loading="lazy"
+                       alt="A Mixer app running on a Pixel 8 Pro: a release checklist written in Swift, drawn with Android's own text fields, buttons and switches, one of three tasks done.">
+                </div>
+              </div>
+            </figure>
+            <div class="product__details" data-reveal>
+              <p class="product__desc">Build iPhone and Android apps from one Swift codebase. You write the screens and state once, and Mixer draws them with each platform&rsquo;s own native controls. It&rsquo;s designed to send compatible fixes as signed updates, without waiting on a new store build.</p>
+              <ul class="product__features">
+                <li>Native controls on iPhone and Android</li>
+                <li>One CLI to create, test and build both</li>
+                <li>Signed updates that fall back safely</li>
+                <li>Compatibility report for existing Swift apps</li>
+              </ul>
+              <div class="product__actions">
+                <a class="btn btn--light" href="https://github.com/snowdamiz/mixer/blob/main/mixer-product-plan.md">
+                  Read the plan
+                  <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
+                </a>
+                <a class="text-link" href="https://github.com/snowdamiz/mixer">Source</a>
+              </div>
+              <p class="product__platforms">No public release yet</p>
+            </div>
+          </article>
         </div>
 
         <p class="catalog__note" data-reveal>Every project is developed in public. <a class="text-link" href="https://github.com/snowdamiz">Browse the code on GitHub</a></p>
@@ -438,6 +477,19 @@
               <div class="ledger__note">
                 <h3>Incant&rsquo;s core engine</h3>
                 <p>Rendering, physics, scripting, input and game saves are coming together in the first engine phase. No public release yet.</p>
+              </div>
+              <p class="stages mono" aria-label="Stage: prototype, 2 of 4">
+                <span class="is-done">Spark</span><span class="is-now">Prototype</span><span>Beta</span><span>Shipped</span>
+              </p>
+            </li>
+            <li class="ledger__row" data-reveal>
+              <p class="ledger__project">
+                <img src="assets/img/work/mixer-icon.png" alt="" width="32" height="32">
+                <span><strong>Mixer</strong><span class="mono">Platform</span></span>
+              </p>
+              <div class="ledger__note">
+                <h3>Swift apps on iPhone and Android</h3>
+                <p>A Swift app already runs with native controls on a physical Pixel, and the CLI builds iOS Simulator apps and unsigned Android APKs. Signed updates, app-store builds and the hosted release service are still in progress.</p>
               </div>
               <p class="stages mono" aria-label="Stage: prototype, 2 of 4">
                 <span class="is-done">Spark</span><span class="is-now">Prototype</span><span>Beta</span><span>Shipped</span>
@@ -588,6 +640,7 @@
             <a href="#morse">Morse</a>
             <a href="#mesh">Mesh</a>
             <a href="#incant">Incant</a>
+            <a href="#mixer">Mixer</a>
           </div>
           <div>
             <p class="mono">Company</p>

@@ -28,10 +28,10 @@ Then open http://localhost:4321.
 
 1. **Domain.** Find and replace `sigenticlabs.com` across the project with your real domain. It appears in canonical URLs, Open Graph tags, the sitemap and the email addresses.
 2. **Email.** Every contact link is `mailto:hello@…` with a pre-filled subject, so you need only one inbox. Change the address in the same find and replace.
-3. **Products.** The products section is a catalog of four chapters, one `<article class="product">` per project in `index.html` (`<!-- Savorly -->`, `<!-- Morse -->` and so on). Each has a rule with its number, field and status, the name and copy, and a stage with the real product: Savorly's phone screenshot, the Morse desktop capture, a Mesh program and Incant's game window with its agent panel. Stage colours are `--stage-1` and `--stage-2` on `.product--savorly` and the others in `styles.css`. Links like `#mesh` scroll to that chapter. Copy, statuses and links come from each repo's README and live site as of October 2026. Update them when something ships. The status is `state` (green, live or released) or `state state--dev` (amber, in development).
+3. **Products.** The products section is a catalog of five chapters, one `<article class="product">` per project in `index.html` (`<!-- Savorly -->`, `<!-- Morse -->` and so on). Each has a rule with its number, field and status, the name and copy, and a stage with the real product: Savorly's phone screenshot, the Morse desktop capture, a Mesh program, Incant's game window with its agent panel, and Mixer running on an Android phone. Stage colours are `--stage-1` and `--stage-2` on `.product--savorly` and the others in `styles.css`. Links like `#mesh` scroll to that chapter. Copy, statuses and links come from each repo's README and live site as of October 2026. Update them when something ships. The status is `state` (green, live or released) or `state state--dev` (amber, in development).
 4. **The Lab.** The rows under `id="lab"` show where each piece of work stands. Each row's stage track lists Spark, Prototype, Beta and Shipped: give the reached steps `is-done` and the current one `is-now`, and update the row's `aria-label`. Move a row along as it progresses.
 5. **Legal and operations pages.** These are templates, **not legal advice**. Fill in `[State]`, `[County, State]` and `[Mailing address]`, and have an attorney review them.
-   - `privacy.html` covers this site, morseapp.io (including the Morse waitlist), meshlang.dev, the Incant site, and email. It points to Savorly's own policy. Publish a full Morse privacy policy before Morse's public release.
+   - `privacy.html` covers this site, morseapp.io (including the Morse waitlist), meshlang.dev, the Incant site, and email. It points to Savorly's own policy. Publish a full Morse privacy policy before Morse's public release. Publish one for Mixer's hosted release service before it launches.
    - `terms.html` covers the same sites, plus product licenses, pre-release software and copyright (DMCA) notices.
    - `support.html` is the **Support URL** for App Store Connect and Google Play listings. It links each product's help, privacy and account-deletion pages. Savorly's own `/privacy` and `/account-deletion` are the URLs to give the stores for Savorly.
    - `security.html` and `/.well-known/security.txt` set out the vulnerability disclosure policy. `security.txt` has an `Expires` date (2027-10-20), so update it before then.
@@ -63,7 +63,7 @@ git push origin main:release
 
 ## Customizing the hero
 
-The hero headline cycles through the fields Sigentic builds for, and the particle glyph morphs to match. Each step is one entry in `SCENES` at the top of `assets/js/sigil.js`:
+The hero headline cycles through the fields Sigentic builds for, and the particle glyph morphs to match. Each step is one entry in `SCENES` at the top of `assets/js/sigil.js`, and the product it shows is lit in the row along the bottom of the hero (`data-scene-link`, numbered in the same order):
 
 ```js
 {
@@ -77,7 +77,7 @@ The hero headline cycles through the fields Sigentic builds for, and the particl
 }
 ```
 
-To add a field, draw an icon on a 100×100 grid, paste its path data into a new scene, and (optionally) add a matching `<symbol>` to the sprite at the top of `index.html` so it can appear in the marquee and on cards.
+To add a field, draw an icon on a 100×100 grid and paste its path data into a new scene. A scene can also take `image: 'path/to/art.webp'` instead of paths, for a product whose mark only exists as raster art (Mixer's fox): the particles fill the image's opaque pixels and leave its dark features (eyes, nose) empty. Use art on a transparent background.
 
 ## Design system
 
@@ -125,3 +125,4 @@ Everything in `assets/img/work/` is a real capture of the product:
 - `incant-native-game.jpg`: a macOS capture of Incant's native game window running the core sample. It's `handoffs/0060-core-sample-presentation/screenshots/window-en-start.png` in the Incant repo.
 - `incant-agent.png`: the agent panel cropped from the real editor UI, running the repo's own `approval` test scenario (`handoffs/0045-native-agent-chat`).
 - The Mesh code sample is typeset in HTML from the counter example in the Mesh README.
+- `mixer-android.jpg`: a Mixer app on a physical Pixel 8 Pro, from `native/android/verification/device-toggled.png` in the Mixer repo. `mixer-icon.png` is Mixer's app icon (`website/public/assets/icon-512.png`), and `mixer-flick.webp` is its fox, Flick, on a transparent background, which the hero samples for its particle glyph.

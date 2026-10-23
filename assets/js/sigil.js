@@ -90,6 +90,16 @@
         ['cut', 'M246 291.6C231.4 291.7 225.1 308.3 223.6 320.3C220.6 343.1 228 370.1 245.2 385.9C249.9 390.3 255.8 393.8 262.4 393.8C277.1 393.9 283.5 377.9 285.3 365.7C288.2 345.2 282.2 323.1 269.7 306.6C264.2 299.3 255.9 291.4 246 291.6ZM140.7 269.3C132.2 271.3 128.3 281.7 126.9 289.3C123.4 307.3 125.7 326.2 133.8 342.7C137.3 349.9 145.4 360.8 154.8 358.8C163.2 357 167.8 346.7 169.3 339.2C172.9 321.2 170.6 301.3 162 285C158 277.5 150.6 266.9 140.7 269.3Z'],
       ],
     },
+    {
+      word: 'every phone.',
+      field: 'Mobile platform',
+      product: 'Mixer',
+      a: [255, 172, 124],
+      b: [255, 120, 73],
+      // Flick, Mixer's fox. Its brand ships the fox only as raster art, so the
+      // outline comes from the image's alpha and its eyes and nose are cut out.
+      image: 'assets/img/work/mixer-flick.webp',
+    },
   ];
 
   const HOLD = 4200;          // ms each glyph is shown
@@ -131,12 +141,20 @@
       g.fill(new Path2D(d), 'evenodd');
     });
     g.globalCompositeOperation = 'source-over';
+    if (scene.picture) {
+      g.setTransform(1, 0, 0, 1, 0, 0);
+      g.drawImage(scene.picture, 0, 0, S, S);
+    }
 
     const data = g.getImageData(0, 0, S, S).data;
     const pool = [];
     for (let y = 0; y < S; y++) {
       for (let x = 0; x < S; x++) {
-        if (data[(y * S + x) * 4 + 3] > 140) pool.push(x, y);
+        const o = (y * S + x) * 4;
+        if (data[o + 3] <= 140) continue;
+        // in a picture, dark features (eyes, nose) stay empty, like the cut-outs above
+        if (scene.picture && data[o] + data[o + 1] + data[o + 2] < 180) continue;
+        pool.push(x, y);
       }
     }
     const count = pool.length / 2;
@@ -189,7 +207,7 @@
     targets = [];
     bands = [];
     SCENES.forEach((s) => {
-      const { out, band } = sample(s, N);
+      const { out, band } = sample(s.image && !s.picture ? SCENES[0] : s, N);
       targets.push(out);
       bands.push(band);
     });
@@ -488,6 +506,17 @@
   /* ---------- boot ---------- */
   buildTicks();
   init();
+  SCENES.forEach((s, i) => {
+    if (!s.image) return;
+    const picture = new Image();
+    picture.onload = () => {
+      s.picture = picture;
+      const { out, band } = sample(s, N);
+      targets[i] = out;
+      bands[i] = band;
+    };
+    picture.src = s.image;
+  });
   setWord(SCENES[0], false);
   setLabels(0, false);
   palFrom = palTo = SCENES[0];
