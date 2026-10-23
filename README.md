@@ -28,7 +28,7 @@ Then open http://localhost:4321.
 
 1. **Domain.** Find and replace `sigenticlabs.com` across the project with your real domain. It appears in canonical URLs, Open Graph tags, the sitemap and the email addresses.
 2. **Email.** Every contact link is `mailto:hello@…` with a pre-filled subject, so you need only one inbox. Change the address in the same find and replace.
-3. **Products.** The products section is a catalog of five chapters, one `<article class="product">` per project in `index.html` (`<!-- Savorly -->`, `<!-- Morse -->` and so on). Each has a rule with its number, field and status, the name and copy, and a stage with the real product: Savorly's phone screenshot, the Morse desktop capture, a Mesh program, Incant's game window with its agent panel, and Mixer running on an Android phone. Stage colours are `--stage-1` and `--stage-2` on `.product--savorly` and the others in `styles.css`. Links like `#mesh` scroll to that chapter. Copy, statuses and links come from each repo's README and live site as of October 2026. Update them when something ships. The status is `state` (green, live or released) or `state state--dev` (amber, in development).
+3. **Products.** The products section is a catalog of five chapters, one `<article class="product">` per project in `index.html` (`<!-- Savorly -->`, `<!-- Morse -->` and so on). Each has a rule with its number, field and status, the name and copy, and a stage with the real product: Savorly's phone screenshot, the Morse desktop capture, a Mesh program, Incant's game window with its agent panel, and an example Mixer app on an Android phone. Stage colours are `--stage-1` and `--stage-2` on `.product--savorly` and the others in `styles.css`. Links like `#mesh` scroll to that chapter. Copy, statuses and links come from each repo's README and live site as of October 2026. Update them when something ships. The status is `state` (green, live or released) or `state state--dev` (amber, in development).
 4. **The Lab.** The rows under `id="lab"` show where each piece of work stands. Each row's stage track lists Spark, Prototype, Beta and Shipped: give the reached steps `is-done` and the current one `is-now`, and update the row's `aria-label`. Move a row along as it progresses.
 5. **Legal and operations pages.** These are templates, **not legal advice**. Fill in `[State]`, `[County, State]` and `[Mailing address]`, and have an attorney review them.
    - `privacy.html` covers this site, morseapp.io (including the Morse waitlist), meshlang.dev, the Incant site, and email. It points to Savorly's own policy. Publish a full Morse privacy policy before Morse's public release. Publish one for Mixer's hosted release service before it launches.
@@ -118,11 +118,19 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 
 ## Product images
 
-Everything in `assets/img/work/` is a real capture of the product:
+Everything in `assets/img/work/` is a real capture of the product, except Mixer's screen:
 
 - `savorly-discover.jpg`: Savorly's Discover screen, captured from staging.savorly.cooking at iPhone size (375×812 at 3×).
 - `morse-desktop.jpg`: the Morse desktop app UI, built from `mesh-private-messenger/apps/mobile` as a development web build (`EXPO_PUBLIC_DESKTOP_DEVELOPMENT=true`). It shows the app's own sample content (Settings, then Development, then "Sample content"). The bottom edge is cropped off: it held the composer's "Sample preview · read-only" label and the stand-in profile used to get past sign-up.
 - `incant-native-game.jpg`: a macOS capture of Incant's native game window running the core sample. It's `handoffs/0060-core-sample-presentation/screenshots/window-en-start.png` in the Incant repo.
 - `incant-agent.png`: the agent panel cropped from the real editor UI, running the repo's own `approval` test scenario (`handoffs/0045-native-agent-chat`).
 - The Mesh code sample is typeset in HTML from the counter example in the Mesh README.
-- `mixer-android.jpg`: a Mixer app on a physical Pixel 8 Pro, from `native/android/verification/device-toggled.png` in the Mixer repo. `mixer-icon.png` is Mixer's app icon (`website/public/assets/icon-512.png`), and `mixer-flick.webp` is its fox, Flick, on a transparent background, which the hero samples for its particle glyph.
+- `mixer-app.jpg`: an illustration, not a capture. Mixer has no public app yet, so this is an example of the kind of app it builds (a habit tracker), designed for this site in `tools/mixer-app.html`. Replace it with a real capture once there's a Mixer app worth showing. To re-render it with the local server running on port 4321:
+
+  ```bash
+  "$CHROME" --headless=new --hide-scrollbars --force-device-scale-factor=2.4 --window-size=360,800 \
+    --virtual-time-budget=6000 --screenshot=mixer-app.png http://127.0.0.1:4321/tools/mixer-app.html
+  sips -s format jpeg -s formatOptions 84 mixer-app.png --out assets/img/work/mixer-app.jpg
+  ```
+
+  `mixer-icon.png` is Mixer's app icon (`website/public/assets/icon-512.png`), and `mixer-flick.webp` is its fox, Flick, on a transparent background, which the hero samples for its particle glyph.

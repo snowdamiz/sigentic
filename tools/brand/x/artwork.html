@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Sigentic Labs — X artwork</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400&family=Instrument+Serif:ital@1&display=block">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; background: #060708; }
+    body { font-family: 'Geist', sans-serif; -webkit-font-smoothing: antialiased; color: #f4f5f7; }
+    .banner { position: relative; width: 1500px; height: 500px; overflow: hidden; background: #060708; }
+    .glow { position: absolute; width: 810px; height: 810px; top: -160px; left: -180px; background: radial-gradient(closest-side, rgba(189,247,95,.12), rgba(189,247,95,.025) 65%, transparent); }
+    .grid { position: absolute; inset: 0; background-image: radial-gradient(#bdf75f40 .7px, transparent .7px); background-size: 24px 24px; mask-image: radial-gradient(ellipse 400px 340px at 225px 220px, #000, transparent 80%); }
+    canvas { position: absolute; inset: 0; }
+    .copy { position: absolute; left: 540px; top: 82px; }
+    .name { font-size: 25px; font-weight: 600; letter-spacing: -.035em; }
+    .name span { font-weight: 500; }
+    h1 { margin: 28px 0 0; font-size: 83px; line-height: .98; letter-spacing: -.055em; font-weight: 500; }
+    h1 em { display: block; font-family: 'Instrument Serif', serif; color: #bdf75f; font-size: 98px; line-height: 1; letter-spacing: -.018em; font-weight: 400; }
+    .bottom { position: absolute; top: 382px; left: 544px; right: 124px; display: flex; justify-content: space-between; align-items: center; color: #a5aab3; font-size: 17px; }
+    .eyebrow { display: flex; align-items: center; gap: 11px; font-family: 'Geist Mono', monospace; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: #bdf75f; }
+    .avatar { display: none; width: 400px; height: 400px; background: #060708; position: relative; }
+    .avatar img { position: absolute; left: 52px; top: 52px; width: 296px; height: 296px; }
+    body[data-view="avatar"] .avatar { display: block; }
+    body[data-view="avatar"] .banner { display: none; }
+  </style>
+</head>
+<body>
+  <div class="avatar"><img src="../../../assets/img/logo.svg" alt="Sigentic Labs Seed logo"></div>
+  <div class="banner">
+    <div class="glow"></div><div class="grid"></div>
+    <canvas id="seed" width="1500" height="500"></canvas>
+    <div class="copy">
+      <div class="name">Sigentic<span> Labs</span></div>
+      <h1>We invent apps<em>for everyday life.</em></h1>
+    </div>
+    <div class="bottom"><span class="eyebrow"><i class="dot"></i>Independent software lab</span><span>sigenticlabs.com</span></div>
+  </div>
+  <script type="module">
+    document.body.dataset.view = new URLSearchParams(location.search).get('view') || 'banner';
+    const image = new Image();
+    image.src = '../../../assets/img/logo.svg';
+    await image.decode();
+    await document.fonts.ready;
+    const sample = document.createElement('canvas');
+    sample.width = sample.height = 400;
+    const raster = sample.getContext('2d', { willReadFrequently: true });
+    raster.drawImage(image, 0, 0, 400, 400);
+    const pixels = raster.getImageData(0, 0, 400, 400).data;
+    const ctx = document.querySelector('#seed').getContext('2d');
+    let seed = 1729;
+    const random = () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 4294967296; };
+    // The website's particle motif, using the exact approved Seed silhouette.
+    for (let y = 0; y < 400; y += 3) {
+      for (let x = 0; x < 400; x += 3) {
+        if (pixels[(y * 400 + x) * 4 + 3] < 160 || random() < .2) continue;
+        const r = .55 + random() * .65;
+        const fade = .46 + random() * .5;
+        ctx.fillStyle = `rgba(189,247,95,${fade})`;
+        ctx.beginPath();
+        ctx.arc(42 + x + random(), 18 + y + random(), r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    document.documentElement.dataset.ready = 'true';
+  </script>
+</body>
+</html>
