@@ -16,6 +16,7 @@
   const nav = $('[data-nav]');
   const menu = $('[data-menu]');
   const toggle = $('[data-menu-toggle]');
+  const behindMenu = $$('.skip, main, body > footer');
   let menuOpen = false;
 
   function setMenu(open) {
@@ -24,6 +25,7 @@
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     document.documentElement.style.overflow = open ? 'hidden' : '';
+    behindMenu.forEach((el) => { el.inert = open; });
     if (open) {
       menu.hidden = false;
       nav.classList.remove('is-hidden');
@@ -94,7 +96,6 @@
   window.addEventListener('resize', requestScroll);
   onScroll();
 
-  /* ---------- copy email ---------- */
   const toastEl = $('[data-toast]');
   let toastTimer = 0;
   function showToast(msg) {
@@ -105,33 +106,39 @@
     toastTimer = setTimeout(() => toastEl.classList.remove('is-shown'), 2400);
   }
 
+  async function copyText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch (_) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      let ok = false;
+      try { ok = document.execCommand('copy'); } catch (__) { ok = false; }
+      ta.remove();
+      return ok;
+    }
+  }
+
   $$('[data-copy]').forEach((btn) => {
     const label = $('[data-copy-label]', btn);
+    const idle = label && label.textContent;
+    let timer = 0;
     btn.addEventListener('click', async () => {
-      const text = btn.dataset.copy;
-      let ok = false;
-      try {
-        await navigator.clipboard.writeText(text);
-        ok = true;
-      } catch (_) {
-        const ta = document.createElement('textarea');
-        ta.value = text;
-        ta.setAttribute('readonly', '');
-        ta.style.position = 'fixed';
-        ta.style.opacity = '0';
-        document.body.appendChild(ta);
-        ta.select();
-        try { ok = document.execCommand('copy'); } catch (__) { ok = false; }
-        ta.remove();
+      if (!(await copyText(btn.dataset.copy))) {
+        showToast('Couldn’t reach the clipboard. Select the text to copy it.');
+        return;
       }
-      if (ok) {
-        btn.classList.add('is-copied');
-        if (label) label.textContent = 'Copied';
-        showToast('Email copied — talk soon.');
-        setTimeout(() => { btn.classList.remove('is-copied'); if (label) label.textContent = 'Copy'; }, 2200);
-      } else {
-        window.location.href = `mailto:${text}`;
-      }
+      showToast(btn.dataset.copyToast || 'Copied.');
+      btn.classList.add('is-copied');
+      if (label) label.textContent = 'Copied';
+      clearTimeout(timer);
+      timer = setTimeout(() => { btn.classList.remove('is-copied'); if (label) label.textContent = idle; }, 2200);
     });
   });
 })();

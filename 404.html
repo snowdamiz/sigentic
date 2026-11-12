@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Page not found — Sigentic Labs</title>
   <meta name="robots" content="noindex">
-  <meta name="theme-color" content="#060708">
-  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#F4F1E9">
+  <meta name="color-scheme" content="light">
   <!-- Absolute paths: this page is served for any missing URL. -->
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="/assets/img/favicon-32.png" sizes="32x32" type="image/png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0,0;1,9..144,300..500,0,1&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
   <link rel="stylesheet" href="/assets/css/styles.css">
 </head>
 <body>
@@ -36,21 +36,20 @@
     </div>
   </header>
 
-  <main class="lost">
-    <div class="page-glow" aria-hidden="true"></div>
-    <div>
+  <main class="lost container">
+    <div class="lost__tag">
       <svg class="lost__mark" aria-hidden="true"><use href="#i-logo"/></svg>
       <p class="eyebrow">Error 404</p>
-      <h1 class="lost__code" aria-label="404">404</h1>
-      <p class="lost__title">This page wandered <em>off the bench.</em></p>
-      <p>It may have moved, been renamed, or never made it out of the lab. Let&rsquo;s get you somewhere useful.</p>
-      <div class="hero__actions">
-        <a class="btn btn--light" href="/">
-          Back to home
-          <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-        </a>
-        <a class="btn btn--ghost" href="/#contact">Contact us</a>
-      </div>
+    </div>
+    <h1 class="lost__code" aria-label="404">404</h1>
+    <p class="lost__title">This page wandered <span class="hl">off the bench.</span></p>
+    <p>It may have moved, been renamed, or never made it out of the lab. Let&rsquo;s get you somewhere useful.</p>
+    <div class="hero__actions">
+      <a class="btn btn--ink" href="/">
+        Back to home
+        <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
+      </a>
+      <a class="btn btn--ghost" href="/#contact">Contact us</a>
     </div>
   </main>
 </body>
