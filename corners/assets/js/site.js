@@ -117,7 +117,7 @@ function wireCopyButtons() {
         await navigator.clipboard.writeText(btn.dataset.copy);
         label.textContent = 'Copied';
       } catch {
-        label.textContent = 'Press ⌘C';
+        label.textContent = 'Copy failed';
       }
       btn.toggleAttribute('data-done', true);
       clearTimeout(timer);

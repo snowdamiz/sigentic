@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Source for corners/assets/img/og.png (1200x630) and touch-icon.png (180x180).
+     node tools/shoot.mjs http://localhost:4321/tools/corners-og.html corners/assets/img/og.png --width 1200 --height 630
+     node tools/shoot.mjs "http://localhost:4321/tools/corners-og.html#icon" corners/assets/img/touch-icon.png --width 180 --height 180 -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../corners/assets/css/site.css">
+<style>
+  html, body { margin: 0; overflow: hidden; }
+  .og {
+    width: 1200px; height: 630px; padding: 56px 64px; display: grid; grid-template-rows: auto 1fr auto;
+    background-color: var(--chalk);
+    background-image: radial-gradient(circle at 1px 1px, rgba(20, 19, 16, .13) 1px, transparent 0);
+    background-size: 26px 26px;
+  }
+  .og-top { display: flex; justify-content: space-between; align-items: center; }
+  .og-top .eyebrow { font-size: 15px; }
+  .og .brand-name { font-size: 30px; }
+  .og .mark { width: 40px; height: 40px; }
+  .og h1 { align-self: center; font-size: 132px; font-weight: 780; line-height: .9; letter-spacing: -.05em; }
+  .og h1 > span { display: block; white-space: nowrap; }
+  .og .hero-word { margin-top: 10px; }
+  .og-rooms { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; padding: 2px; background: var(--ink); }
+  .og-rooms span { position: relative; padding: 14px 16px; background: var(--chalk); font-size: 26px; font-weight: 780; font-stretch: 112%; letter-spacing: -.03em; }
+  .og-rooms span::after { content: ""; position: absolute; top: 0; right: 0; width: 22px; height: 22px; background: var(--c); }
+  .icon { display: none; width: 180px; height: 180px; place-items: center; background: var(--ink); }
+  .icon svg { width: 112px; height: 112px; }
+  :target.icon { display: grid; }
+  :target.icon ~ .og, body:has(:target.icon) .og { display: none; }
+</style>
+</head>
+<body>
+<div class="icon" id="icon">
+  <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" fill="none" stroke="#f3f0e8" stroke-width="2"/><rect x="12" y="3" width="9" height="9" fill="#f2552c"/></svg>
+</div>
+<div class="og">
+  <div class="og-top">
+    <span class="brand">
+      <svg class="mark" viewBox="0 0 24 24" data-corner="tr"><rect class="mark-frame" x="2" y="2" width="20" height="20"/><rect class="mark-fill" x="3" y="3" width="9" height="9"/></svg>
+      <span class="brand-name">Sigentic<span> Labs</span></span>
+    </span>
+    <span class="eyebrow">Independent software lab <span class="dot"></span> New York</span>
+  </div>
+  <h1><span>Software for</span><span><span class="hero-word">the stovetop.</span></span></h1>
+  <div class="og-rooms">
+    <span style="--c: var(--tomato)">Savorly</span>
+    <span style="--c: var(--cobalt)">Morse</span>
+    <span style="--c: var(--lime)">Mesh</span>
+    <span style="--c: var(--violet)">Incant</span>
+    <span style="--c: var(--pink)">Mixer</span>
+  </div>
+</div>
+</body>
+</html>

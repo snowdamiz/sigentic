@@ -21,6 +21,23 @@ wrangler.jsonc      Cloudflare Worker config · worker.js: www redirect · .asse
 
 All six pages share one nav, menu and footer, written out in each file. The homepage links to its own sections (`#savorly`, `#about`). The other five pages link back to them (`/#savorly`, `/#about`). When you change one copy, change all six.
 
+## Corners, a candidate redesign
+
+`corners/` holds a second, complete design of the site, built from scratch so the two can be compared. Serve the repo as below and open http://localhost:4321/corners/ beside the current home page. It shares nothing with the root pages. It has its own fonts (Archivo and Martian Mono, self-hosted, see `corners/assets/fonts/LICENSE.txt`), its own stylesheets and its own copies of every page.
+
+```
+corners/index.html                 Hero with a floor plan of the five products, one full-color room per product, lab log, about, contact
+corners/{support,security,privacy,terms,404}.html   The root pages' text in the new design
+corners/assets/css/                site.css: tokens, home page and the demos · doc.css: the text pages
+corners/assets/js/                 site.js: header color, hero headline, copy buttons, demo mounting
+corners/assets/js/instruments/     One module per product demo, started only while it is on screen
+tools/corners-og.html              Source of corners/assets/img/og.png and touch-icon.png
+```
+
+The demos are sketches that run in the browser. Each one says so in its caption. Morse's demo does real ECDH and AES-GCM with Web Crypto, which needs `localhost` or https.
+
+The pages carry `noindex` while they are a candidate. To adopt the design, move `corners/` to the root in place of the old pages and `assets/`, remove the `noindex` lines, point `og:image` at the root path, and give `404.html` absolute `/assets` paths, because the Worker serves it for every missing URL.
+
 ## Preview locally
 
 ```bash
