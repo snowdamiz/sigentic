@@ -165,11 +165,6 @@ h1, h2, h3 { margin: 0; font-weight: inherit; }
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.label__num {
-  display: inline-block;
-  min-width: 3.2em;
-  color: var(--ink);
-}
 
 h1, h2, h3 {
   font-family: var(--serif);
@@ -592,16 +587,6 @@ html:not(.js) .fig__caption { display: none; }
   text-wrap: pretty;
 }
 
-.head {
-  display: grid;
-  grid-template-columns: var(--cols);
-  column-gap: var(--gap);
-  row-gap: var(--s-5);
-  align-items: end;
-}
-.head > .label { grid-column: 1 / -1; }
-.head__title { grid-column: 1 / 9; }
-.head__title,
 .section-title {
   max-width: 11em;
   font-size: var(--t-title);
@@ -610,14 +595,6 @@ html:not(.js) .fig__caption { display: none; }
   letter-spacing: -0.03em;
   text-wrap: balance;
 }
-.head__lede {
-  grid-column: 9 / 13;
-  max-width: 36ch;
-  font-size: var(--t-small);
-  line-height: 1.6;
-  color: var(--ink-2);
-}
-
 .specs { counter-reset: spec; border-bottom: 1px solid var(--rule); }
 .specs li {
   counter-increment: spec;
@@ -913,8 +890,6 @@ html:not(.js) .fig__caption { display: none; }
   background: var(--lime);
   color: var(--ink);
 }
-.contact .label,
-.contact .head__lede { color: var(--ink-2); }
 
 .mailbox {
   display: flex;
@@ -944,30 +919,13 @@ html:not(.js) .fig__caption { display: none; }
 .mailbox__link:hover { text-decoration: underline; text-decoration-thickness: 3px; text-underline-offset: 0.12em; }
 .mailbox__copy.is-copied { background: var(--paper); color: var(--ink); }
 
-.routes {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: var(--gap);
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3) var(--s-6);
+  margin-top: var(--s-5);
+  font-size: var(--t-lead);
 }
-.routes a {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 4px var(--s-3);
-  padding: var(--s-5) 0;
-  border-bottom: 1px solid rgba(20, 22, 15, 0.3);
-  text-decoration: none;
-}
-.routes .label { grid-column: 1; }
-.routes strong {
-  grid-column: 1;
-  font-family: var(--serif);
-  font-size: 1.5rem;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.015em;
-}
-.routes svg { grid-column: 2; grid-row: 1 / 3; align-self: center; width: 22px; height: 22px; transition: transform 0.3s var(--ease); }
-.routes a:hover svg { transform: translate(3px, -3px); }
 
 /* ---------- Footer ---------- */
 .footer {
@@ -987,9 +945,9 @@ html:not(.js) .fig__caption { display: none; }
 .footer__brand { grid-column: 1 / 5; }
 .footer__brand p { margin-top: var(--s-4); max-width: 30ch; font-size: var(--t-small); color: var(--on-ink-2); }
 .footer__cols {
-  grid-column: 6 / 13;
+  grid-column: 9 / 13;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--s-6) var(--gap);
 }
 .footer__cols div { display: grid; align-content: start; gap: 8px; }
@@ -1160,7 +1118,6 @@ html:not(.js) .fig__caption { display: none; }
 
   .tenets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
-  .head__title, .head__lede { grid-column: 1 / -1; }
 
   .chapter { display: block; }
   .chapter .plate { margin-block: var(--s-6); }
@@ -1194,10 +1151,9 @@ html:not(.js) .fig__caption { display: none; }
   .window { width: 90%; }
   .specimen { width: 66%; margin-left: 6%; }
   .specimen__slip { right: -36%; top: 22%; width: 50%; }
-  .tenets, .routes { grid-template-columns: minmax(0, 1fr); }
+  .tenets { grid-template-columns: minmax(0, 1fr); }
   .tenets { row-gap: var(--s-6); }
   .mailbox__link { font-size: clamp(2.25rem, 12.4vw, 4rem); }
-  .footer__cols { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -48,7 +48,7 @@ const pairs = [
   [t('ink-3'), t('paper-2'), BODY, '--ink-3 on --paper-2: labels on deeper paper'],
   [t('paper'), t('ink'), BODY, '--paper on --ink: ink buttons, toast'],
   [t('ink'), t('lime'), BODY, '--ink on --lime: highlighted text, lime button, contact band'],
-  [t('ink-2'), t('lime'), BODY, '--ink-2 on --lime: contact lede and labels'],
+  [t('ink-2'), t('lime'), BODY, '--ink-2 on --lime: secondary text on the contact band'],
   [t('on-ink'), t('ink'), BODY, '--on-ink on --ink: footer headings'],
   [t('on-ink-2'), t('ink'), BODY, '--on-ink-2 on --ink: footer body'],
   [t('on-ink-3'), t('ink'), BODY, '--on-ink-3 on --ink: labels on ink'],
