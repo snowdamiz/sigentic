@@ -34,6 +34,13 @@ corners/assets/js/instruments/     One module per product demo, started only whi
 tools/corners-og.html              Source of corners/assets/img/og.png and touch-icon.png
 ```
 
+To redraw the share image and the touch icon after a design change, serve the repo and run:
+
+```bash
+node tools/shoot.mjs http://localhost:4321/tools/corners-og.html corners/assets/img/og.png --width 1200 --height 630
+node tools/shoot.mjs "http://localhost:4321/tools/corners-og.html#icon" corners/assets/img/touch-icon.png --width 180 --height 180
+```
+
 The demos run in the browser, and each caption says what is real and what is only illustrated. Morse's demo does real ECDH and AES-GCM with Web Crypto, which needs `localhost` or https. The others simulate the product.
 
 The pages carry `noindex` while they are a candidate. Share the link with its trailing slash, `/corners/`. The Worker only maps paths that end in `/` to `index.html`, so `/corners` gets the root 404 page, and so does any missing `/corners/...` URL.
