@@ -12,12 +12,9 @@
   const title = hero.querySelector('.hero__title');
   const rotor = hero.querySelector('[data-rotator]');
   const caption = hero.querySelector('[data-stage-caption]');
-  const numEl = hero.querySelector('[data-stage-num]');
   const nameEl = hero.querySelector('[data-stage-name]');
-  const fieldEl = hero.querySelector('[data-stage-field]');
   const ticksEl = hero.querySelector('[data-stage-ticks]');
   const pauseBtn = hero.querySelector('[data-stage-pause]');
-  const indexLinks = [...hero.querySelectorAll('.index [data-product]')];
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -27,14 +24,12 @@
     {
       product: 'seed',
       name: 'The Seed',
-      field: 'Sigentic Labs',
       word: 'what’s next.',
       fills: [...document.querySelectorAll('#i-logo path')].map((path) => path.getAttribute('d')),
     },
     {
       product: 'savorly',
       name: 'Savorly',
-      field: 'Cooking',
       word: 'the kitchen.',
       box: [7, 0, 280],
       layers: [
@@ -47,7 +42,6 @@
     {
       product: 'morse',
       name: 'Morse',
-      field: 'Private messaging',
       word: 'private chats.',
       box: [212, 212, 600],
       layers: [
@@ -58,7 +52,6 @@
     {
       product: 'mesh',
       name: 'Mesh',
-      field: 'Programming language',
       word: 'the backend.',
       stroke: 7,
       paths: ['M50 17L88.1 83L11.9 83Z', 'M50 61L50 17', 'M50 61L88.1 83', 'M50 61L11.9 83'],
@@ -67,7 +60,6 @@
     {
       product: 'incant',
       name: 'Incant',
-      field: 'Game engine',
       word: 'game makers.',
       box: [0, 0, 512],
       layers: [
@@ -78,7 +70,6 @@
     {
       product: 'mixer',
       name: 'Mixer',
-      field: 'Mobile platform',
       word: 'every phone.',
       image: 'assets/img/work/mixer-flick.webp',
     },
@@ -281,9 +272,7 @@
     const s = SCENES[i];
     const apply = () => {
       if (token !== captionToken) return;
-      numEl.textContent = String(i).padStart(2, '0');
       nameEl.textContent = s.name;
-      fieldEl.textContent = s.field;
       caption.classList.remove('is-swapping');
     };
     if (animate) {
@@ -324,7 +313,6 @@
     });
     ticksEl.style.setProperty('--fill', reduceMotion ? 1 : elapsed / HOLD_MS);
     pauseBtn.setAttribute('aria-pressed', String(!playing));
-    indexLinks.forEach((a) => a.classList.toggle('is-lit', a.dataset.product === SCENES[current].product));
 
     if (reduceMotion) drawStatic();
     run();
