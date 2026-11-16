@@ -34,7 +34,6 @@
   --ease-io: cubic-bezier(.65, 0, .35, 1);
 }
 
-/* Each product's color and the ink that sits on it. Everything colored by product reads --t and --on. */
 [data-tone="savorly"] { --t: var(--tomato); --on: var(--ink); }
 [data-tone="morse"] { --t: var(--cobalt); --on: var(--chalk); }
 [data-tone="mesh"] { --t: var(--lime); --on: var(--ink); }
@@ -82,7 +81,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 }
 .skip:focus { transform: none; }
 
-/* Mono label voice, shared by every small caption on the page. */
 .eyebrow, .bar-now, .plan-n, .chip, .room-corner, .stage, .inst-bar, .inst-note,
 .meal-label, .wire-k, .witness-k, .agent-k, .phone-k, .install-k, .code-bar,
 .section-sub, .facts dt, .door-k, .foot h2, .foot-base, .rules-title, .fleet-stats dt, .update-steps {
@@ -98,7 +96,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 }
 .dot { width: 5px; height: 5px; background: currentColor; display: inline-block; }
 
-/* Buttons */
 .btn {
   display: inline-flex; align-items: center; justify-content: center; gap: 10px;
   min-height: 46px; padding: 0 20px;
@@ -125,7 +122,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 }
 .chip-solid { background: var(--fg, var(--ink)); color: var(--bg, var(--chalk)); border-color: var(--fg, var(--ink)); }
 
-/* The mark: a frame with one filled quarter. The quarter moves to the corner you are in. */
 .mark { width: 26px; height: 26px; flex: none; overflow: visible; }
 .mark-frame { fill: none; stroke: currentColor; stroke-width: 2; }
 .mark-fill { fill: currentColor; transition: transform .6s var(--ease); }
@@ -137,7 +133,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .brand-name { font-weight: 760; font-size: 18px; letter-spacing: -.02em; font-stretch: 108%; }
 .brand-name span { font-weight: 400; }
 
-/* Header. Its colors follow the room you are in. */
 .bar {
   --bar-bg: var(--t, var(--chalk)); --bar-fg: var(--on, var(--ink));
   position: fixed; inset: 0 0 auto 0; z-index: 50; height: var(--bar-h);
@@ -161,7 +156,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .bar-nav .bar-cta { margin-left: 8px; border: 1.5px solid currentColor; padding: 8px 15px; }
 .bar-nav .bar-cta:hover { background: var(--bar-fg); color: var(--bar-bg); text-decoration: none; }
 
-/* Hero */
 .hero {
   padding-top: calc(var(--bar-h) + clamp(40px, 7vw, 104px));
   padding-bottom: clamp(56px, 7vw, 104px);
@@ -198,7 +192,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .hero-lede { max-width: 34ch; font-size: clamp(18px, 1.55vw, 22px); line-height: 1.45; letter-spacing: -.01em; }
 .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
-/* The floor plan: every corner of the lab as a room. */
 .plan {
   margin-top: clamp(48px, 6vw, 88px);
   display: grid;
@@ -247,7 +240,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .plan-next > a:hover { background-color: var(--ink); color: var(--chalk); }
 .plan-next > a:hover .plan-name { color: inherit; }
 
-/* Door swings drawn in the walls of two rooms, like a real floor plan. */
 .plan-room:nth-child(2)::before, .plan-room:nth-child(5)::before {
   content: ""; position: absolute; z-index: 2; pointer-events: none;
   top: -2px; left: 58%; width: 40px; height: 2px; background: var(--chalk);
@@ -259,7 +251,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 }
 .plan-room > a:hover::after { opacity: 0; }
 
-/* Rooms: one product, one color, one instrument. */
 .room {
   --line: color-mix(in srgb, var(--fg) 26%, transparent);
   --fg-2: color-mix(in srgb, var(--fg) 78%, var(--bg));
@@ -346,7 +337,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .room-status .chip { margin-right: 8px; vertical-align: 2px; }
 .room-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
 
-/* Instruments: shared chrome. */
 .inst {
   --dev-bg: #151512; --dev-fg: #f1eee6; --dev-2: #a8a598; --dev-line: rgba(241, 238, 230, .13); --dev-soft: rgba(241, 238, 230, .06);
   container-type: inline-size;
@@ -378,7 +368,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .inst:not([data-mounted]) .inst-body, .inst:not([data-mounted]) .inst-try { display: none; }
 .inst-note { padding: 14px 18px 16px; border-top: 1px solid var(--dev-line); color: var(--dev-2); font-size: 11px; line-height: 1.6; }
 
-/* 01 Savorly: meal timeline */
 .inst[data-instrument="savorly"] { --c1: #f2552c; --c2: #e8a317; --c3: #4f9a3a; --c4: #8a5a3c; }
 .meal-controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 24px; }
 .meal-serve { display: flex; align-items: center; gap: 10px; }
@@ -465,7 +454,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .step.is-now + .step { border-top-color: transparent; }
 .step.is-now .step-left { color: var(--dev-fg); }
 
-/* 02 Morse: the wire */
 .wire { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; position: relative; }
 .wire-node {
   position: relative; display: flex; flex-direction: column; gap: 8px; min-width: 0;
@@ -535,7 +523,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .inst[data-instrument="morse"] .btn-line[aria-pressed="true"] { background: var(--tomato); border-color: var(--tomato); color: var(--ink); }
 .wire[data-cheating] .wire-fp { color: var(--tomato); }
 
-/* 03 Mesh: the fleet */
 .fleet { position: relative; aspect-ratio: 16 / 8.4; border-radius: 12px; overflow: hidden; background: #0d0d0b; border: 1px solid var(--dev-line); }
 .fleet-canvas { width: 100%; height: 100%; cursor: pointer; }
 .fleet-controls { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
@@ -599,7 +586,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .copy[data-done], .install-cmd .copy[data-done] { background: var(--lime); color: var(--ink); border-color: var(--lime); }
 .copy[data-done] > * { filter: none; }
 
-/* 04 Incant: the editor */
 .incant { display: grid; gap: 16px; }
 @container (min-width: 640px) {
   .incant { grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); align-items: start; }
@@ -653,7 +639,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .history-list .h-ok { color: var(--accent); white-space: nowrap; }
 .history-list li.history-empty { display: block; color: var(--dev-2); font-family: var(--sans); font-size: 13px; background: transparent; padding: 4px 0; }
 
-/* 05 Mixer: two phones, drawn in em so they scale as one picture on narrow screens. */
 .mixer { display: grid; gap: 22px; }
 .phones { display: flex; justify-content: center; gap: 3.2em; font-size: min(10px, calc((100cqi - 56px) / 51.2)); }
 .phone { display: flex; flex-direction: column; align-items: center; gap: 1.2em; width: 24em; flex: none; }
@@ -730,7 +715,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .update-msg.is-bad { color: #b8320f; }
 .update-msg.is-ok { color: var(--ink); }
 
-/* Lab log */
 .log { padding: clamp(80px, 10vw, 160px) 0; }
 .section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px 32px; padding-bottom: 22px; border-bottom: 2px solid var(--ink); }
 .section-title { font-size: clamp(3rem, 8vw, 7.5rem); font-weight: 800; font-stretch: 112%; line-height: .85; letter-spacing: -.05em; }
@@ -750,7 +734,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .log-month a:hover, .log-month a:focus-visible { background: var(--t); color: var(--on); }
 .log-month a:hover .log-sq { background: var(--on); box-shadow: none; }
 
-/* About */
 .about { background: var(--ink); color: var(--chalk); padding: clamp(80px, 10vw, 170px) 0; }
 .eyebrow-light { color: #a8a598; }
 .about-title {
@@ -777,7 +760,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .facts dt { font-size: 11px; text-transform: uppercase; color: #a8a598; }
 .facts dd { margin-top: 10px; font-size: clamp(22px, 2.2vw, 32px); font-weight: 700; letter-spacing: -.025em; line-height: 1.1; }
 
-/* Contact */
 .contact { padding: clamp(80px, 10vw, 170px) 0; }
 .contact-title { font-size: clamp(3.4rem, 10.4vw, 11rem); font-weight: 820; font-stretch: 112%; line-height: .82; letter-spacing: -.055em; margin-left: -.04em; }
 .contact-mail { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: clamp(28px, 4vw, 56px); }
@@ -802,7 +784,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .doors a:hover { background: var(--ink); color: var(--chalk); }
 .doors a:hover svg { transform: translateX(4px); }
 
-/* Footer */
 .foot { position: relative; background: var(--ink); color: var(--chalk); padding: clamp(56px, 6vw, 96px) 0 calc(28px + 12px); }
 .foot::after {
   content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12px;
@@ -819,7 +800,6 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .foot ul a:hover { text-decoration: underline; }
 .foot-base { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; padding-top: 22px; border-top: 1px solid rgba(243, 240, 232, .2); font-size: 11px; color: #a8a598; }
 
-/* Layout breakpoints */
 @media (max-width: 1080px) {
   .room-body { grid-template-columns: minmax(0, 1fr); }
   .room-copy { max-width: 640px; }
