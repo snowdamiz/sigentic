@@ -575,18 +575,6 @@ html:not(.js) .fig__caption { display: none; }
 .fig__pause[aria-pressed='true'] .i-pause { display: none; }
 .fig__pause[aria-pressed='true'] .i-play { display: block; }
 
-
-.about__text,
-.lost__title {
-  font-family: var(--serif);
-  font-optical-sizing: auto;
-  font-size: var(--t-passage);
-  font-weight: 340;
-  line-height: 1.16;
-  letter-spacing: -0.02em;
-  text-wrap: pretty;
-}
-
 .section-title {
   max-width: 11em;
   font-size: var(--t-title);
@@ -875,6 +863,16 @@ html:not(.js) .fig__caption { display: none; }
   padding-block: var(--section);
   border-top: 1px solid var(--ink);
 }
+.about__text,
+.lost__title {
+  font-family: var(--serif);
+  font-optical-sizing: auto;
+  font-size: var(--t-passage);
+  font-weight: 340;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
 .about__text { max-width: 21em; }
 .about__corner { color: var(--p-ink); white-space: nowrap; }
 
@@ -1123,9 +1121,7 @@ html:not(.js) .fig__caption { display: none; }
   html:not(.js) .nav__links { grid-area: 2 / 1 / 3 / -1; justify-content: space-between; gap: 12px; }
   html:not(.js) .nav__cta { display: inline-flex; }
 
-
   .tenets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
 
   .chapter { display: block; }
   .chapter .plate { margin-block: var(--s-6); }
