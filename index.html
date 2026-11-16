@@ -76,8 +76,7 @@
       </a>
       <nav class="nav__links" aria-label="Primary">
         <a href="#products">Products</a>
-        <a href="#approach">Approach</a>
-        <a href="#principles">Principles</a>
+        <a href="#about">About</a>
       </nav>
       <div class="nav__end">
         <a class="btn btn--lime btn--sm nav__cta" href="#contact">Get in touch</a>
@@ -90,10 +89,9 @@
 
   <div class="menu" id="menu" data-menu hidden>
     <nav class="menu__links" aria-label="Mobile">
-      <a href="#products"><span class="label">01</span>Products</a>
-      <a href="#approach"><span class="label">03</span>Approach</a>
-      <a href="#principles"><span class="label">04</span>Principles</a>
-      <a href="#contact"><span class="label">05</span>Contact</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
     </nav>
     <p class="menu__foot label">hello@sigenticlabs.com</p>
   </div>
@@ -135,21 +133,6 @@
         </figure>
       </div>
 
-    </section>
-
-    <section class="manifesto" id="about" aria-labelledby="manifesto-title">
-      <div class="container manifesto__grid">
-        <p class="label" id="manifesto-title" data-reveal>Why we exist</p>
-        <div class="manifesto__body">
-          <p class="manifesto__text" data-reveal>
-            Most software tries to be everything for everyone. We think the best tools do <mark class="hl">one&nbsp;thing</mark> with uncommon care. So we pick a corner of everyday life&thinsp;&mdash;&thinsp;<span class="manifesto__corner" data-product="savorly">the stovetop</span>, <span class="manifesto__corner" data-product="morse">the group chat</span>, <span class="manifesto__corner" data-product="mesh">the server</span>, <span class="manifesto__corner" data-product="incant">the game editor</span>&thinsp;&mdash;&thinsp;and build the software it deserves. Then we do it <em>again.</em>
-          </p>
-          <p class="manifesto__sig" data-reveal>
-            <svg aria-hidden="true"><use href="#i-logo"/></svg>
-            <span>Sigentic Labs</span>
-          </p>
-        </div>
-      </div>
     </section>
 
     <!-- Copy, status and facts come from each project's README and website (October 2026). -->
@@ -323,79 +306,30 @@
       </div>
     </section>
 
-    <section class="approach" id="approach" aria-labelledby="approach-title">
+    <section class="about" id="about" aria-labelledby="about-title">
       <div class="container">
-        <header class="head">
-          <p class="label" data-reveal><span class="label__num">03</span>Approach</p>
-          <h2 class="head__title" id="approach-title" data-reveal>From spark to&nbsp;<em>shipped.</em></h2>
-          <p class="head__lede" data-reveal>A repeatable process for turning everyday friction into software people genuinely love to use.</p>
-        </header>
-
-        <ol class="steps">
-          <li class="step" data-reveal style="--d:0">
-            <span class="step__num" aria-hidden="true">1</span>
-            <h3>Notice</h3>
-            <p>Every product starts with real friction: the recipe you can&rsquo;t scroll with flour on your hands, the chat you&rsquo;d rather nobody else could read.</p>
-          </li>
-          <li class="step" data-reveal style="--d:1">
-            <span class="step__num" aria-hidden="true">2</span>
-            <h3>Invent</h3>
-            <p>We prototype fast and test honestly. Most ideas don&rsquo;t survive the bench&thinsp;&mdash;&thinsp;the ones that do have earned the right to be built.</p>
-          </li>
-          <li class="step" data-reveal style="--d:2">
-            <span class="step__num" aria-hidden="true">3</span>
-            <h3>Build</h3>
-            <p>Native-quality engineering with privacy, performance and accessibility designed in from the very first commit&thinsp;&mdash;&thinsp;never bolted on later.</p>
-          </li>
-          <li class="step" data-reveal style="--d:3">
-            <span class="step__num" aria-hidden="true">4</span>
-            <h3>Deploy &amp; tend</h3>
-            <p>Launch day is the starting line. We ship, listen, measure what matters and keep making it better for as long as people rely on it.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <section class="principles" id="principles" aria-labelledby="principles-title">
-      <div class="container">
-        <header class="head">
-          <p class="label" data-reveal><span class="label__num">04</span>Principles</p>
-          <h2 class="head__title" id="principles-title" data-reveal>What we <mark class="hl">won&rsquo;t</mark> compromise&nbsp;on.</h2>
-          <p class="head__lede" data-reveal>Fields change from product to product. These don&rsquo;t. They&rsquo;re the reason you can trust anything with our name on it.</p>
-        </header>
-
-        <ol class="tenets">
+        <h2 class="visually-hidden" id="about-title">About Sigentic Labs</h2>
+        <p class="about__text" data-reveal>
+          Most software tries to be everything for everyone. We think the best tools do <mark class="hl">one&nbsp;thing</mark> with uncommon care. So we pick a corner of everyday life&thinsp;&mdash;&thinsp;<span class="about__corner" data-product="savorly">the stovetop</span>, <span class="about__corner" data-product="morse">the group chat</span>, <span class="about__corner" data-product="mesh">the server</span>, <span class="about__corner" data-product="incant">the game editor</span>&thinsp;&mdash;&thinsp;and build the software it deserves. Then we do it <em>again.</em>
+        </p>
+        <ul class="tenets">
           <li class="tenet" data-reveal style="--d:0">
-            <span class="tenet__num" aria-hidden="true">1</span>
             <h3>Private by default</h3>
-            <p>We collect the minimum, encrypt what we can, and never sell your data. Not to advertisers. Not to anyone.</p>
+            <p>We collect the minimum, encrypt what we can, and never sell your data.</p>
           </li>
           <li class="tenet" data-reveal style="--d:1">
-            <span class="tenet__num" aria-hidden="true">2</span>
-            <h3>Craft is the feature</h3>
-            <p>The details are the product. We sweat every transition, every word and every millisecond.</p>
+            <h3>One job, done well</h3>
+            <p>If a feature doesn&rsquo;t earn its place, it doesn&rsquo;t ship.</p>
           </li>
           <li class="tenet" data-reveal style="--d:2">
-            <span class="tenet__num" aria-hidden="true">3</span>
-            <h3>One job, done beautifully</h3>
-            <p>Focused tools beat bloated suites. If a feature doesn&rsquo;t earn its place, it doesn&rsquo;t ship.</p>
-          </li>
-          <li class="tenet" data-reveal style="--d:0">
-            <span class="tenet__num" aria-hidden="true">4</span>
             <h3>Respect for attention</h3>
-            <p>No dark patterns, no infinite feeds, no guilt-trip notifications. Your time is yours.</p>
+            <p>No dark patterns, no infinite feeds, no guilt-trip notifications.</p>
           </li>
-          <li class="tenet" data-reveal style="--d:1">
-            <span class="tenet__num" aria-hidden="true">5</span>
+          <li class="tenet" data-reveal style="--d:3">
             <h3>Made for everyone</h3>
-            <p>Dynamic type, screen readers, contrast and reduced motion are part of the design from day one, not an afterthought.</p>
+            <p>Screen readers, dynamic type, contrast and reduced motion are designed in from day one.</p>
           </li>
-          <li class="tenet" data-reveal style="--d:2">
-            <span class="tenet__num" aria-hidden="true">6</span>
-            <h3>Built to last</h3>
-            <p>Honest, sustainable business models&thinsp;&mdash;&thinsp;so the apps you depend on are still here, and still good, years from now.</p>
-          </li>
-        </ol>
+        </ul>
       </div>
     </section>
 
@@ -463,8 +397,7 @@
           </div>
           <div>
             <p class="label">Company</p>
-            <a href="#approach">Approach</a>
-            <a href="#principles">Principles</a>
+            <a href="#about">About</a>
             <a href="#contact">Contact</a>
           </div>
           <div>
