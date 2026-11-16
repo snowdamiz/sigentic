@@ -1,0 +1,580 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sigentic Labs · Software for one corner of everyday life at a time</title>
+  <meta name="description" content="Sigentic Labs is an independent software lab in New York. We pick one corner of everyday life, build the software it deserves, then do it again. Savorly, Morse, Mesh, Incant and Mixer.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#F3F0E8">
+  <meta name="color-scheme" content="light">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sigentic Labs">
+  <meta property="og:title" content="Sigentic Labs · Software for one corner of everyday life at a time">
+  <meta property="og:description" content="An independent software lab. Five corners of everyday life so far: the stovetop, the group chat, the server, the game editor and both app stores.">
+  <meta property="og:image" content="https://sigenticlabs.com/corners/assets/img/og.png">
+  <meta property="og:image:alt" content="Sigentic Labs. Software for one corner of everyday life at a time. Savorly, Morse, Mesh, Incant and Mixer.">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/img/mark.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/img/touch-icon.png">
+  <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/martian-mono-var.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script type="module" src="assets/js/site.js"></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M2 8h11M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
+  <symbol id="i-down" viewBox="0 0 16 16"><path d="M8 2v11M4 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
+  <symbol id="i-out" viewBox="0 0 16 16"><path d="M5 3h8v8M13 3 3 13" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="square"/></symbol>
+  <symbol id="i-file" viewBox="0 0 16 16"><path d="M3.5 1.5h6l3 3v10h-9zM9.5 1.5v3h3" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 16 16"><path d="M5.5 5.5h8v8h-8zM10.5 5.5v-3h-8v8h3" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-check" viewBox="0 0 16 16"><path d="m2.5 8.5 3.5 3.5 7.5-8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
+  <symbol id="i-cross" viewBox="0 0 16 16"><path d="m3.5 3.5 9 9M12.5 3.5l-9 9" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square"/></symbol>
+  <symbol id="i-play" viewBox="0 0 16 16"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 16 16"><path d="M4 2.5h3v11H4zM9 2.5h3v11H9z" fill="currentColor"/></symbol>
+  <symbol id="i-sound" viewBox="0 0 16 16"><path d="M2 6h3l4-3v10l-4-3H2z" fill="currentColor"/><path d="M11 5.5a3.5 3.5 0 0 1 0 5M12.8 3.5a6.3 6.3 0 0 1 0 9" fill="none" stroke="currentColor" stroke-width="1.3"/></symbol>
+</svg>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="bar" data-bar>
+  <div class="bar-in">
+    <a class="brand" href="#top" aria-label="Sigentic Labs, back to the top">
+      <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" data-mark data-corner="tr"><rect class="mark-frame" x="2" y="2" width="20" height="20"/><rect class="mark-fill" x="3" y="3" width="9" height="9"/></svg>
+      <span class="brand-name">Sigentic<span> Labs</span></span>
+    </a>
+    <p class="bar-now" aria-hidden="true"><span class="bar-now-n" data-now-n>00</span><span class="bar-now-t" data-now-t>The lab</span></p>
+    <nav class="bar-nav" aria-label="Main">
+      <a href="#plan">Corners</a>
+      <a href="#log">Log</a>
+      <a href="#about">About</a>
+      <a class="bar-cta" href="#contact">Write to us</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top" data-zone="lab" data-n="00" data-label="The floor plan" data-corner="tr" aria-labelledby="hero-title">
+  <div class="wrap">
+    <p class="eyebrow">Independent software lab <span class="dot" aria-hidden="true"></span> New York <span class="dot" aria-hidden="true"></span> Since 2025</p>
+    <h1 class="hero-title" id="hero-title">
+      <span class="sr-only">Software for one corner of everyday life at a time.</span>
+      <span class="hero-line" aria-hidden="true">Software for</span>
+      <span class="hero-swap" aria-hidden="true" data-swap><span class="hero-word" data-word>the stovetop.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <p class="hero-lede">We pick one corner of everyday life, build the software it deserves, and then do it again. Five corners so far, all developed in the open.</p>
+      <div class="hero-actions">
+        <a class="btn btn-ink" href="#savorly">Walk the corners <svg aria-hidden="true"><use href="#i-down"/></svg></a>
+        <a class="btn btn-line" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap" id="plan">
+    <h2 class="sr-only">The corners</h2>
+    <ol class="plan" data-plan>
+      <li class="plan-room" data-for="savorly">
+        <a href="#savorly">
+          <span class="plan-fill" aria-hidden="true"></span>
+          <span class="plan-n">01 · The stovetop</span>
+          <span class="plan-name">Savorly</span>
+          <span class="plan-meta"><span>Cooking</span><span class="chip">Live · Beta</span></span>
+        </a>
+      </li>
+      <li class="plan-room" data-for="morse">
+        <a href="#morse">
+          <span class="plan-fill" aria-hidden="true"></span>
+          <span class="plan-n">02 · The group chat</span>
+          <span class="plan-name">Morse</span>
+          <span class="plan-meta"><span>Private messaging</span><span class="chip">Prototype</span></span>
+        </a>
+      </li>
+      <li class="plan-room" data-for="mesh">
+        <a href="#mesh">
+          <span class="plan-fill" aria-hidden="true"></span>
+          <span class="plan-n">03 · The server</span>
+          <span class="plan-name">Mesh</span>
+          <span class="plan-meta"><span>Programming language</span><span class="chip">v0.1.8 · Beta</span></span>
+        </a>
+      </li>
+      <li class="plan-room" data-for="incant">
+        <a href="#incant">
+          <span class="plan-fill" aria-hidden="true"></span>
+          <span class="plan-n">04 · The game editor</span>
+          <span class="plan-name">Incant</span>
+          <span class="plan-meta"><span>Game engine</span><span class="chip">Prototype</span></span>
+        </a>
+      </li>
+      <li class="plan-room" data-for="mixer">
+        <a href="#mixer">
+          <span class="plan-fill" aria-hidden="true"></span>
+          <span class="plan-n">05 · Both app stores</span>
+          <span class="plan-name">Mixer</span>
+          <span class="plan-meta"><span>Mobile platform</span><span class="chip">Prototype</span></span>
+        </a>
+      </li>
+      <li class="plan-room plan-next">
+        <a href="mailto:hello@sigenticlabs.com?subject=A%20corner%20that%20deserves%20better">
+          <span class="plan-n">06 · Unclaimed</span>
+          <span class="plan-name">Your corner?</span>
+          <span class="plan-meta"><span>Tell us what bugs you</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+        </a>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- 01 · Savorly -->
+<section class="room" id="savorly" data-room="savorly" data-zone="savorly" data-n="01" data-corner="tl" data-label="The stovetop" aria-labelledby="savorly-name">
+  <div class="wrap">
+    <div class="room-head">
+      <p class="room-corner"><span class="room-n">01</span>The stovetop</p>
+      <ol class="stage" aria-label="Stage"><li>Prototype</li><li aria-current="step">Beta</li><li>Released</li></ol>
+    </div>
+    <h2 class="room-name" id="savorly-name">Savorly<span class="room-mark" aria-hidden="true"></span></h2>
+    <div class="room-body">
+      <div class="room-copy">
+        <p class="room-tag">Good recipes, and a sous-chef to cook them with.</p>
+        <p>A cooking community for finding recipes, sharing your own and actually cooking them. The sous-chef is built into every screen. Ask it by text, voice or photo, or talk to it hands-free with flour on your hands.</p>
+        <ul class="room-points">
+          <li>Cook mode with step timers and spoken steps.</li>
+          <li>Cook-tested times from people who made it.</li>
+          <li>One timeline for a whole meal of dishes.</li>
+          <li>Shared planner, pantry and grocery list.</li>
+        </ul>
+        <p class="room-status"><span class="chip chip-solid">Live on the web</span> The iPhone and Android apps are in testing ahead of their App Store and Google Play release.</p>
+        <p class="room-links">
+          <a class="btn btn-ink" href="https://savorly.cooking">Visit savorly.cooking <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="btn btn-line" href="https://github.com/snowdamiz/savorly-v2">Source</a>
+        </p>
+      </div>
+
+      <figure class="inst inst-paper" data-instrument="savorly" aria-labelledby="savorly-inst">
+        <div class="inst-bar">
+          <span class="inst-leds" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="inst-title" id="savorly-inst">Dinner on one timeline</span>
+          <span class="inst-try">Try it</span>
+        </div>
+        <div class="inst-body">
+          <div class="meal-controls">
+            <div class="meal-serve" role="group" aria-label="Serve time">
+              <span class="meal-label">Serve at</span>
+              <button class="knob" type="button" data-serve="-15" aria-label="Serve 15 minutes earlier">−</button>
+              <output class="meal-clock" data-serve-out aria-live="polite">7:30 pm</output>
+              <button class="knob" type="button" data-serve="15" aria-label="Serve 15 minutes later">+</button>
+            </div>
+            <div class="meal-dishes" role="group" aria-label="Dishes in this meal" data-dishes></div>
+          </div>
+          <div class="meal-chart" data-chart aria-hidden="true"></div>
+          <div class="meal-cook">
+            <button class="btn btn-ink btn-sm" type="button" data-cook aria-pressed="false"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Run cook mode</span></button>
+            <button class="btn btn-line btn-sm" type="button" data-speak aria-pressed="false" hidden><svg aria-hidden="true"><use href="#i-sound"/></svg><span>Read steps aloud</span></button>
+          </div>
+          <div class="meal-steps" data-steps aria-live="polite"></div>
+        </div>
+        <figcaption class="inst-note">Every dish counts back from the moment you sit down, so everything is ready together. A sketch of Savorly's meal timeline. The dishes here are made up.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · Morse -->
+<section class="room" id="morse" data-room="morse" data-zone="morse" data-n="02" data-corner="tr" data-label="The group chat" aria-labelledby="morse-name">
+  <div class="wrap">
+    <div class="room-head">
+      <p class="room-corner"><span class="room-n">02</span>The group chat</p>
+      <ol class="stage" aria-label="Stage"><li aria-current="step">Prototype</li><li>Beta</li><li>Released</li></ol>
+    </div>
+    <h2 class="room-name" id="morse-name">Morse <span class="morse-code" aria-hidden="true"><i class="d"></i><i class="d"></i><b></b><i class="d"></i><i class="d"></i><i class="d"></i><b></b><i></i><i class="d"></i><i></i><b></b><i></i><i></i><i></i><b></b><i></i></span><span class="room-mark" aria-hidden="true"></span></h2>
+    <div class="room-body">
+      <div class="room-copy">
+        <p class="room-tag">Private messaging, kept honest.</p>
+        <p>Pick a username and start talking. No phone number, no email, no address book. Only the people in a chat can read it, not even us, and independent witnesses check every key the server hands out.</p>
+        <ul class="room-points">
+          <li>End-to-end encrypted, file names included.</li>
+          <li>No phone number or address book.</li>
+          <li>Disappearing messages on any chat.</li>
+          <li>Protocol written in <a href="#mesh">Mesh</a>, our language.</li>
+        </ul>
+        <p class="room-status"><span class="chip chip-solid">In development</span> Early desktop builds for Mac and Windows. iPhone and Android share the same encrypted core and are in development, with no production-security claim yet.</p>
+        <p class="room-links">
+          <a class="btn btn-ink" href="https://morseapp.io">Join the waitlist <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="btn btn-line" href="https://github.com/snowdamiz/whatsdown">Source</a>
+        </p>
+      </div>
+
+      <figure class="inst" data-instrument="morse" aria-labelledby="morse-inst">
+        <div class="inst-bar">
+          <span class="inst-leds" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="inst-title" id="morse-inst">What the server sees</span>
+          <span class="inst-try">Type something</span>
+        </div>
+        <div class="inst-body">
+          <div class="wire">
+            <div class="wire-node wire-you">
+              <p class="wire-who"><span class="avatar" aria-hidden="true">Y</span>You</p>
+              <label class="sr-only" for="morse-input">Message to Alex</label>
+              <textarea id="morse-input" class="wire-input" rows="3" maxlength="140" spellcheck="false" data-msg>Dinner at 7:30? Bring the good bread.</textarea>
+              <p class="wire-file"><svg aria-hidden="true"><use href="#i-file"/></svg><span>menu-final-v3.pdf</span></p>
+            </div>
+            <div class="wire-node wire-server">
+              <p class="wire-who"><span class="avatar avatar-sq" aria-hidden="true"></span>Morse server</p>
+              <p class="wire-k">Can read</p>
+              <p class="wire-v wire-nothing">Nothing</p>
+              <p class="wire-k">Holds</p>
+              <p class="wire-cipher" data-cipher aria-label="Ciphertext">…</p>
+              <p class="wire-k">Hands out Alex’s key</p>
+              <p class="wire-fp" data-served-fp>…</p>
+            </div>
+            <div class="wire-node wire-alex">
+              <p class="wire-who"><span class="avatar" aria-hidden="true">A</span>Alex</p>
+              <div class="bubble" data-bubble aria-live="polite">…</div>
+              <p class="wire-file wire-file-in" data-file-in><svg aria-hidden="true"><use href="#i-file"/></svg><span>menu-final-v3.pdf</span></p>
+            </div>
+          </div>
+          <div class="witness" data-witness>
+            <p class="witness-k">Witnesses compare the key the server handed out with the one they recorded for Alex.</p>
+            <ul class="witness-list" data-witness-list>
+              <li><span class="wx" aria-hidden="true"></span>Witness A</li>
+              <li><span class="wx" aria-hidden="true"></span>Witness B</li>
+              <li><span class="wx" aria-hidden="true"></span>Witness C</li>
+            </ul>
+            <button class="btn btn-line btn-sm" type="button" data-cheat aria-pressed="false">Let the server cheat</button>
+          </div>
+        </div>
+        <figcaption class="inst-note">Real encryption, running in your browser with Web Crypto: an ECDH key agreement and AES-GCM. It shows the idea. It is not Morse’s protocol.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · Mesh -->
+<section class="room" id="mesh" data-room="mesh" data-zone="mesh" data-n="03" data-corner="br" data-label="The server" aria-labelledby="mesh-name">
+  <div class="wrap">
+    <div class="room-head">
+      <p class="room-corner"><span class="room-n">03</span>The server</p>
+      <ol class="stage" aria-label="Stage"><li>Prototype</li><li aria-current="step">Beta</li><li>Released</li></ol>
+    </div>
+    <h2 class="room-name" id="mesh-name">Mesh<span class="room-mark" aria-hidden="true"></span></h2>
+    <div class="room-body">
+      <div class="room-copy">
+        <p class="room-tag">Write a server. Ship a fleet.</p>
+        <p>A statically typed, actor-based language with Elixir-style syntax. It infers your types, compiles to a single native binary through LLVM, and builds clustering into the runtime. Mark the work that can run anywhere, and Mesh handles placement, routing and failover.</p>
+        <ul class="room-points">
+          <li>Typed actors, supervisors and channels.</li>
+          <li>Hindley-Milner type inference.</li>
+          <li>HTTP, WebSockets and Postgres built in.</li>
+          <li>Formatter, tests, REPL and language server.</li>
+        </ul>
+        <p class="room-status"><span class="chip chip-solid">v0.1.8</span> Installable today on macOS, Linux and Windows. The language and package format can still change before 1.0.</p>
+        <p class="room-links">
+          <a class="btn btn-ink" href="https://meshlang.dev">Visit meshlang.dev <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="btn btn-line" href="https://meshlang.dev/docs/getting-started/">Docs</a>
+          <a class="btn btn-line" href="https://github.com/snowdamiz/mesh-lang">Source</a>
+        </p>
+      </div>
+
+      <figure class="inst" data-instrument="mesh" aria-labelledby="mesh-inst">
+        <div class="inst-bar">
+          <span class="inst-leds" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="inst-title" id="mesh-inst">Pull the plug</span>
+          <span class="inst-try">Click a node</span>
+        </div>
+        <div class="inst-body">
+          <div class="fleet">
+            <canvas class="fleet-canvas" data-fleet aria-hidden="true"></canvas>
+          </div>
+          <div class="fleet-controls" role="group" aria-label="Nodes" data-nodes></div>
+          <dl class="fleet-stats">
+            <div><dt>Actors running</dt><dd data-stat="actors">0</dd></div>
+            <div><dt>Restarted elsewhere</dt><dd data-stat="restarts">0</dd></div>
+            <div><dt>Messages delivered</dt><dd data-stat="delivered">0</dd></div>
+          </dl>
+          <p class="sr-only" aria-live="polite" data-announce></p>
+        </div>
+        <figcaption class="inst-note">Each dot is an actor. Pull a node and its supervisors start the actors again on the nodes that are left, and messages follow them. A simulation of the idea, drawn in your browser.</figcaption>
+      </figure>
+    </div>
+
+    <div class="mesh-extra">
+      <figure class="code" aria-labelledby="mesh-code">
+        <figcaption class="code-bar"><span id="mesh-code">counter.mpl</span><span>Mesh</span></figcaption>
+<pre><code><span class="k">type</span> <span class="t">Message</span> <span class="k">do</span>
+  <span class="t">Add</span>(<span class="t">Int</span>)
+  <span class="t">Reset</span>
+<span class="k">end</span>
+
+<span class="k">actor</span> <span class="f">counter</span>(total :: <span class="t">Int</span>) <span class="k">do</span>
+  <span class="k">receive do</span>
+    message <span class="o">-></span>
+      <span class="k">case</span> message <span class="k">do</span>
+        <span class="t">Add</span>(value) <span class="o">-></span> counter(total + value)
+        <span class="t">Reset</span> <span class="o">-></span> counter(<span class="n">0</span>)
+      <span class="k">end</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="k">fn</span> <span class="f">main</span>() <span class="k">do</span>
+  <span class="k">let</span> pid :: <span class="t">Pid</span>&lt;<span class="t">Message</span>&gt; = spawn(counter, <span class="n">0</span>)
+  send(pid, <span class="t">Add</span>(<span class="n">40</span>))
+<span class="k">end</span></code></pre>
+      </figure>
+      <div class="mesh-side">
+      <div class="install">
+        <p class="install-k">Install on macOS, Linux or Windows</p>
+        <div class="install-cmd">
+          <code><span class="install-p" aria-hidden="true">$</span> curl -sSf https://meshlang.dev/install.sh | sh</code>
+          <button class="copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+        </div>
+      </div>
+      <ul class="mesh-facts">
+        <li>Types, inferred. <span>Hindley-Milner</span></li>
+        <li>One native binary. <span>via LLVM</span></li>
+        <li>Clustering in the runtime. <span>placement · routing · failover</span></li>
+      </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · Incant -->
+<section class="room" id="incant" data-room="incant" data-zone="incant" data-n="04" data-corner="bl" data-label="The game editor" aria-labelledby="incant-name">
+  <div class="wrap">
+    <div class="room-head">
+      <p class="room-corner"><span class="room-n">04</span>The game editor</p>
+      <ol class="stage" aria-label="Stage"><li aria-current="step">Prototype</li><li>Beta</li><li>Released</li></ol>
+    </div>
+    <h2 class="room-name" id="incant-name">Incant<span class="room-mark" aria-hidden="true"></span></h2>
+    <div class="room-body">
+      <div class="room-copy">
+        <p class="room-tag">The game engine you can talk to.</p>
+        <p>Model, script and ship 2D and 3D games in one application. Work by hand, in TypeScript, or by asking the agent. Every change lands as a command you can read, test and undo.</p>
+        <ul class="room-points">
+          <li>One undoable history for every edit.</li>
+          <li>Plain-text, diffable project files.</li>
+          <li>The agent play-tests and shows proof.</li>
+          <li>Bring your own OpenAI account.</li>
+        </ul>
+        <p class="room-status"><span class="chip chip-solid">In development</span> Rendering, physics, scripting, input and game saves are coming together in the first engine phase. No public release yet.</p>
+        <p class="room-links">
+          <a class="btn btn-ink" href="https://snowdamiz.github.io/incant/">See the project <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="btn btn-line" href="https://github.com/snowdamiz/incant">Source</a>
+        </p>
+      </div>
+
+      <figure class="inst" data-instrument="incant" aria-labelledby="incant-inst">
+        <div class="inst-bar">
+          <span class="inst-leds" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="inst-title" id="incant-inst">Ask for a change</span>
+          <span class="inst-try">Pick a request</span>
+        </div>
+        <div class="inst-body incant">
+          <div class="stage-view">
+            <canvas class="game" data-game tabindex="0" aria-label="A small sample game. Focus it and use the arrow keys to walk and jump."></canvas>
+            <p class="game-hud" data-hud aria-live="polite">Crystals 0/0</p>
+          </div>
+          <div class="agent">
+            <p class="agent-k">Ask the agent</p>
+            <div class="agent-asks" data-asks></div>
+            <div class="proposal" data-proposal aria-live="polite" hidden></div>
+            <div class="history">
+              <div class="history-head">
+                <p class="agent-k">History</p>
+                <div class="history-btns">
+                  <button class="btn btn-line btn-xs" type="button" data-undo disabled>Undo</button>
+                  <button class="btn btn-line btn-xs" type="button" data-redo disabled>Redo</button>
+                </div>
+              </div>
+              <ol class="history-list" data-history aria-live="polite"></ol>
+            </div>
+          </div>
+        </div>
+        <figcaption class="inst-note">Requests become readable commands. You allow them, the scene changes, and undo walks them back. A sketch of the idea, not the engine. Focus the scene to play with the arrow keys.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · Mixer -->
+<section class="room" id="mixer" data-room="mixer" data-zone="mixer" data-n="05" data-corner="tl" data-label="Both app stores" aria-labelledby="mixer-name">
+  <div class="wrap">
+    <div class="room-head">
+      <p class="room-corner"><span class="room-n">05</span>Both app stores</p>
+      <ol class="stage" aria-label="Stage"><li aria-current="step">Prototype</li><li>Beta</li><li>Released</li></ol>
+    </div>
+    <h2 class="room-name" id="mixer-name">Mixer<span class="room-mark" aria-hidden="true"></span></h2>
+    <div class="room-body">
+      <div class="room-copy">
+        <p class="room-tag">Write Swift. Ship both.</p>
+        <p>Build iPhone and Android apps from one Swift codebase. You write the screens and state once, and Mixer draws them with each platform’s own native controls. It’s designed to send compatible fixes as signed updates, without waiting on a new store build.</p>
+        <ul class="room-points">
+          <li>Native controls on iPhone and Android.</li>
+          <li>One CLI to create, test and build both.</li>
+          <li>Signed updates that fall back safely.</li>
+          <li>Compatibility report for existing Swift apps.</li>
+        </ul>
+        <p class="room-status"><span class="chip chip-solid">In development</span> A Swift app already runs with native controls on a physical Pixel, and the CLI builds iOS Simulator apps and unsigned Android APKs. Signed updates, app-store builds and the hosted release service are in progress. No public release yet.</p>
+        <p class="room-links">
+          <a class="btn btn-ink" href="https://github.com/snowdamiz/mixer/blob/main/mixer-product-plan.md">Read the plan <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="btn btn-line" href="https://github.com/snowdamiz/mixer">Source</a>
+        </p>
+      </div>
+
+      <figure class="inst inst-paper" data-instrument="mixer" aria-labelledby="mixer-inst">
+        <div class="inst-bar">
+          <span class="inst-leds" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="inst-title" id="mixer-inst">One state, two phones</span>
+          <span class="inst-try">Tap a plant</span>
+        </div>
+        <div class="inst-body mixer">
+          <div class="phones" data-phones>
+            <div class="phone phone-ios" data-os="ios">
+              <div class="phone-screen">
+                <div class="ios-status" aria-hidden="true"><span>9:41</span><span class="ios-island"></span><span class="ios-icons"><i></i><i></i></span></div>
+                <p class="ios-title">Today</p>
+                <p class="ios-sub" data-progress>3 of 5 watered</p>
+                <ul class="ios-list" data-list="ios" aria-label="Plants, iPhone"></ul>
+                <p class="phone-ver" data-ver>Version 1.0.0</p>
+              </div>
+              <p class="phone-k">iPhone</p>
+            </div>
+            <div class="phone phone-and" data-os="android">
+              <div class="phone-screen">
+                <div class="and-status" aria-hidden="true"><span>9:41</span><span class="and-cam"></span><span class="and-icons"><i></i><i></i></span></div>
+                <div class="and-bar"><span class="and-menu" aria-hidden="true"></span><p class="and-title">Today</p></div>
+                <p class="and-sub" data-progress>3 of 5 watered</p>
+                <ul class="and-list" data-list="android" aria-label="Plants, Android"></ul>
+                <span class="and-fab" aria-hidden="true">+</span>
+                <p class="phone-ver" data-ver>Version 1.0.0</p>
+              </div>
+              <p class="phone-k">Android</p>
+            </div>
+          </div>
+          <div class="update">
+            <div class="update-row">
+              <button class="btn btn-ink btn-sm" type="button" data-ship>Ship a signed fix</button>
+              <label class="tamper"><input type="checkbox" data-tamper> Tamper with it on the way</label>
+            </div>
+            <ol class="update-steps" data-update aria-live="polite">
+              <li>Signed</li><li>Delivered</li><li>Verified on device</li><li>Applied</li>
+            </ol>
+            <p class="update-msg" data-update-msg aria-live="polite">The fix adds a watering reminder to both apps without a new store build.</p>
+          </div>
+        </div>
+        <figcaption class="inst-note">One list of plants drives both screens, each drawn with its platform’s own kind of controls. Signed updates are part of Mixer’s design and still in progress. The plant app is made up.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="log" id="log" data-zone="lab" data-n="" data-label="Lab log" data-corner="br" aria-labelledby="log-title">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="section-title" id="log-title">Lab log</h2>
+      <p class="section-sub">What moved lately, newest first.</p>
+    </div>
+    <ol class="log-list">
+      <li class="log-month">
+        <h3><span>October</span> 2026</h3>
+        <ul>
+          <li><a href="#mesh" data-tone="mesh"><span class="log-sq" aria-hidden="true"></span><span class="log-p">Mesh</span><span class="log-t">v0.1.8 released.</span></a></li>
+          <li><a href="#mixer" data-tone="mixer"><span class="log-sq" aria-hidden="true"></span><span class="log-p">Mixer</span><span class="log-t">Runs a Swift app with native controls on a physical Pixel.</span></a></li>
+        </ul>
+      </li>
+      <li class="log-month">
+        <h3><span>September</span> 2026</h3>
+        <ul>
+          <li><a href="#savorly" data-tone="savorly"><span class="log-sq" aria-hidden="true"></span><span class="log-p">Savorly</span><span class="log-t">The iPhone and Android apps enter beta testing.</span></a></li>
+          <li><a href="#morse" data-tone="morse"><span class="log-sq" aria-hidden="true"></span><span class="log-p">Morse</span><span class="log-t">Early desktop builds for Mac and Windows.</span></a></li>
+        </ul>
+      </li>
+      <li class="log-month">
+        <h3><span>August</span> 2026</h3>
+        <ul>
+          <li><a href="#incant" data-tone="incant"><span class="log-sq" aria-hidden="true"></span><span class="log-p">Incant</span><span class="log-t">The core engine phase starts: rendering, physics, scripting, input and saves.</span></a></li>
+        </ul>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="about" id="about" data-zone="about" data-n="" data-label="About the lab" data-corner="bl" aria-labelledby="about-title">
+  <div class="wrap">
+    <p class="eyebrow eyebrow-light">About the lab</p>
+    <h2 class="about-title" id="about-title">Most software tries to be everything for everyone. <em>We’d rather do one thing with uncommon care.</em></h2>
+    <p class="about-lede">So we pick a corner of everyday life, like the stovetop, the group chat, the server or the game editor, and build the software it deserves. Then we pick another.</p>
+
+    <h3 class="rules-title">House rules</h3>
+    <ol class="rules">
+      <li><span class="rule-n">1</span><h4>Private by default.</h4><p>We collect the minimum, encrypt what we can and never sell your data.</p></li>
+      <li><span class="rule-n">2</span><h4>One job, done well.</h4><p>If a feature doesn’t earn its place, it doesn’t ship.</p></li>
+      <li><span class="rule-n">3</span><h4>Respect for attention.</h4><p>No dark patterns, no infinite feeds, no guilt-trip notifications.</p></li>
+      <li><span class="rule-n">4</span><h4>Made for everyone.</h4><p>Screen readers, dynamic type, contrast and reduced motion are designed in from day one.</p></li>
+      <li><span class="rule-n">5</span><h4>Built to last.</h4><p>Honest business models, so the software you rely on is still here years from now.</p></li>
+      <li><span class="rule-n">6</span><h4>Developed in public.</h4><p>Every project’s code is on <a href="https://github.com/snowdamiz">GitHub</a>.</p></li>
+    </ol>
+
+    <dl class="facts">
+      <div><dt>Founded</dt><dd>2025</dd></div>
+      <div><dt>Based in</dt><dd>New York</dd></div>
+      <div><dt>Funding</dt><dd>Independent and self-funded</dd></div>
+      <div><dt>Projects</dt><dd>5, all developed in public</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="contact" id="contact" data-zone="lab" data-n="" data-label="Write to us" data-corner="tl" aria-labelledby="contact-title">
+  <div class="wrap">
+    <h2 class="contact-title" id="contact-title">Write to the lab.</h2>
+    <div class="contact-mail">
+      <a class="contact-addr" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
+      <button class="copy copy-lg" type="button" data-copy="hello@sigenticlabs.com"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+    </div>
+    <p class="contact-lede">One inbox, and a person reads every message. Tell us which product it’s about and what you need.</p>
+    <ul class="doors">
+      <li><a href="mailto:hello@sigenticlabs.com?subject=Partnership"><span class="door-k">Partnerships</span><span class="door-t">Working on something together</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="mailto:hello@sigenticlabs.com?subject=Press%20inquiry"><span class="door-k">Press</span><span class="door-t">Interviews and stories</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="support.html"><span class="door-k">App support</span><span class="door-t">Help with any product, and deleting your data</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+      <li><a href="security.html"><span class="door-k">Security</span><span class="door-t">Report a vulnerability privately</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot" data-zone="foot" data-n="" data-label="Sigentic Labs" data-corner="tr">
+  <div class="wrap">
+    <div class="foot-top">
+      <a class="brand brand-lg" href="#top" aria-label="Sigentic Labs, back to the top">
+        <svg class="mark" viewBox="0 0 24 24" aria-hidden="true" data-corner="br"><rect class="mark-frame" x="2" y="2" width="20" height="20"/><rect class="mark-fill" x="3" y="3" width="9" height="9"/></svg>
+        <span class="brand-name">Sigentic<span> Labs</span></span>
+      </a>
+      <p class="foot-line">An independent software lab. Focused software for everyday life, and tools for the people who build software and games.</p>
+    </div>
+    <div class="foot-cols">
+      <nav aria-label="Products">
+        <h2>Products</h2>
+        <ul><li><a href="#savorly">Savorly</a></li><li><a href="#morse">Morse</a></li><li><a href="#mesh">Mesh</a></li><li><a href="#incant">Incant</a></li><li><a href="#mixer">Mixer</a></li></ul>
+      </nav>
+      <nav aria-label="Company">
+        <h2>Company</h2>
+        <ul><li><a href="#about">About</a></li><li><a href="#log">Lab log</a></li><li><a href="#contact">Contact</a></li><li><a href="https://github.com/snowdamiz">GitHub</a></li></ul>
+      </nav>
+      <nav aria-label="Legal">
+        <h2>Legal</h2>
+        <ul><li><a href="support.html">Support</a></li><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="security.html">Security</a></li></ul>
+      </nav>
+    </div>
+    <div class="foot-base">
+      <p>© 2026 Sigentic Labs LLC. New York.</p>
+      <p>This site has no analytics and sets no cookies.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
