@@ -637,6 +637,7 @@ html:not(.js) .fig__caption { display: none; }
   display: grid;
   gap: var(--s-4);
   margin-top: var(--s-5);
+  container-type: inline-size;
 }
 
 .plate {
@@ -843,6 +844,7 @@ html:not(.js) .fig__caption { display: none; }
 .install__copy svg { width: 14px; height: 14px; }
 .install__copy.is-copied { border-color: var(--lime); background: var(--lime); color: var(--ink); }
 .install__line {
+  --command-em: 28.4;
   display: flex;
   gap: 10px;
   font-family: var(--mono);
@@ -851,6 +853,12 @@ html:not(.js) .fig__caption { display: none; }
 .install__line > span { color: var(--lime); user-select: none; }
 .install__line code { font: inherit; }
 .nowrap { white-space: nowrap; }
+/* Below this width the command and the Copy button no longer fit on one line at 13px. */
+@container (max-width: 500px) {
+  .install { grid-template-columns: minmax(0, 1fr); padding: 14px 16px; }
+  .install__line { font-size: min(13px, (100cqi - 42px) / var(--command-em)); }
+  .install__copy { justify-self: start; }
+}
 
 .catalog-note {
   display: flex;
@@ -1145,9 +1153,6 @@ html:not(.js) .fig__caption { display: none; }
   .sheet { max-width: calc(100% - 32px); }
   .sheet__head { padding: 12px 16px 10px; }
   .sheet__code { padding: 16px; font-size: clamp(9px, (100cqi - 80px) / 27, 13px); }
-  .install { grid-template-columns: minmax(0, 1fr); padding: 14px 16px; container-type: inline-size; }
-  .install__line { --command-em: 28.4; font-size: min(12px, (100cqi - 10px) / var(--command-em)); }
-  .install__copy { justify-self: start; }
   .window { width: 90%; }
   .specimen { width: 66%; margin-left: 6%; }
   .specimen__slip { right: -36%; top: 22%; width: 50%; }
