@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Sigentic Labs — interactions
-   ========================================================================== */
 (() => {
   'use strict';
 
@@ -9,10 +6,8 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hasIO = 'IntersectionObserver' in window;
 
-  /* ---------- year ---------- */
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- nav ---------- */
   const nav = $('[data-nav]');
   const menu = $('[data-menu]');
   const toggle = $('[data-menu-toggle]');
@@ -20,7 +15,6 @@
   let menuOpen = false;
 
   function setMenu(open) {
-    if (!menu || !toggle) return;
     menuOpen = open;
     toggle.setAttribute('aria-expanded', String(open));
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
@@ -28,38 +22,43 @@
     behindMenu.forEach((el) => { el.inert = open; });
     if (open) {
       menu.hidden = false;
-      nav.classList.remove('is-hidden');
       requestAnimationFrame(() => menu.classList.add('is-open'));
     } else {
       menu.classList.remove('is-open');
-      setTimeout(() => { if (!menuOpen) menu.hidden = true; }, 400);
+      setTimeout(() => { if (!menuOpen) menu.hidden = true; }, 300);
     }
   }
-  toggle && toggle.addEventListener('click', () => setMenu(!menuOpen));
-  menu && $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  toggle.addEventListener('click', () => setMenu(!menuOpen));
+  $$('a', menu).forEach((a) => a.addEventListener('click', () => setMenu(false)));
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && menuOpen) { setMenu(false); toggle.focus(); } });
   window.addEventListener('resize', () => { if (menuOpen && window.innerWidth > 900) setMenu(false); });
 
-  // active section in nav
-  const navLinks = $$('.nav__links a');
-  if (hasIO && navLinks.length) {
-    const byId = new Map(navLinks.map((a) => [a.getAttribute('href').slice(1), a]));
+  // The nav's product links appear once the hero's picker has scrolled under the nav. Pages without a picker show them at once.
+  const picker = $('[data-picker]');
+  const dock = (docked) => nav.classList.toggle('is-docked', docked);
+  if (picker && hasIO) {
+    new IntersectionObserver(([e]) => dock(!e.isIntersecting && e.boundingClientRect.top < 0), { rootMargin: `-${nav.offsetHeight}px 0px 0px 0px` }).observe(picker);
+  } else {
+    dock(true);
+  }
+
+  const sectionLinks = $$('[data-nav-products] a[href^="#"]');
+  if (hasIO && sectionLinks.length) {
+    const byId = new Map(sectionLinks.map((a) => [a.hash.slice(1), a]));
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => {
         const link = byId.get(e.target.id);
-        if (!link) return;
-        if (e.isIntersecting) {
-          navLinks.forEach((l) => l.classList.remove('is-active'));
-          link.classList.add('is-active');
-        } else {
-          link.classList.remove('is-active');
-        }
+        if (e.isIntersecting) sectionLinks.forEach((l) => l.classList.toggle('is-active', l === link));
+        else link.classList.remove('is-active');
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    byId.forEach((_, id) => { const s = document.getElementById(id); s && io.observe(s); });
+    byId.forEach((_, id) => io.observe(document.getElementById(id)));
   }
 
-  /* ---------- reveal on scroll ---------- */
+  const onScroll = () => nav.classList.toggle('is-scrolled', window.scrollY > 8);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
   const revealEls = $$('[data-reveal]');
   if (hasIO && !reduceMotion) {
     const io = new IntersectionObserver((entries) => {
@@ -68,42 +67,19 @@
         e.target.classList.add('is-in');
         io.unobserve(e.target);
       });
-    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
     revealEls.forEach((el) => io.observe(el));
   } else {
     revealEls.forEach((el) => el.classList.add('is-in'));
   }
 
-  /* ---------- nav on scroll ---------- */
-  let lastY = window.scrollY;
-  let ticking = false;
-
-  function onScroll() {
-    ticking = false;
-    const y = window.scrollY;
-    const vh = window.innerHeight;
-    if (nav) {
-      nav.classList.toggle('is-scrolled', y > 24);
-      if (!menuOpen) {
-        if (y > vh * 0.9 && y > lastY + 6) nav.classList.add('is-hidden');
-        else if (y < lastY - 6 || y < vh * 0.9) nav.classList.remove('is-hidden');
-      }
-    }
-    lastY = y;
-  }
-  const requestScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } };
-  window.addEventListener('scroll', requestScroll, { passive: true });
-  window.addEventListener('resize', requestScroll);
-  onScroll();
-
   const toastEl = $('[data-toast]');
   let toastTimer = 0;
   function showToast(msg) {
-    if (!toastEl) return;
     toastEl.textContent = msg;
     toastEl.classList.add('is-shown');
     clearTimeout(toastTimer);
-    toastTimer = setTimeout(() => toastEl.classList.remove('is-shown'), 2400);
+    toastTimer = setTimeout(() => toastEl.classList.remove('is-shown'), 2600);
   }
 
   async function copyText(text) {
@@ -127,18 +103,34 @@
 
   $$('[data-copy]').forEach((btn) => {
     const label = $('[data-copy-label]', btn);
-    const idle = label && label.textContent;
+    const idle = label.textContent;
     let timer = 0;
     btn.addEventListener('click', async () => {
       if (!(await copyText(btn.dataset.copy))) {
         showToast('Couldn’t reach the clipboard. Select the text to copy it.');
         return;
       }
-      showToast(btn.dataset.copyToast || 'Copied.');
+      showToast(btn.dataset.copyToast);
       btn.classList.add('is-copied');
-      if (label) label.textContent = 'Copied';
+      label.textContent = 'Copied';
       clearTimeout(timer);
-      timer = setTimeout(() => { btn.classList.remove('is-copied'); if (label) label.textContent = idle; }, 2200);
+      timer = setTimeout(() => { btn.classList.remove('is-copied'); label.textContent = idle; }, 2200);
     });
   });
+
+  // The newsletter has no backend yet: a valid address only shows the thank-you toast.
+  const signup = $('[data-signup]');
+  if (signup) {
+    const input = $('input', signup);
+    signup.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!input.checkValidity()) {
+        showToast('Enter an email address to subscribe.');
+        input.focus();
+        return;
+      }
+      input.value = '';
+      showToast('Thanks. We’ll write when something ships.');
+    });
+  }
 })();

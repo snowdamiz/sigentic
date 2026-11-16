@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Checks the text-and-background colour pairs listed in `pairs` below, and the focus ring on each field,
+/* Checks the text-and-background colour pairs listed in `pairs` below, and the focus ring on each background,
    against WCAG AA. The colours come from the tokens in assets/css/styles.css (the :root block and the
    product token table), so a token change is rechecked. Each colour is taken at full strength: the tool
    finds no pairs on its own and cannot see opacity, so a new pairing needs a row here.
@@ -17,10 +17,11 @@ const resolve = (value, scope = {}) => {
   if (!ref) return value;
   return resolve(scope[ref[1]] ?? root[ref[1]], scope);
 };
-const products = [...css.matchAll(/\[data-product='(\w+)'\]\s*\{([^}]*)\}/g)].map(([, name, body]) => {
+const products = [...css.matchAll(/^\[data-product='(\w+)'\]\s*\{([^}]*)\}/gm)].map(([, name, body]) => {
   const own = props(body);
   return { name, ...Object.fromEntries(Object.entries(own).map(([k, v]) => [k, resolve(v, own)])) };
 });
+const brands = products.filter((p) => p.name !== 'seed');
 const token = (name) => {
   const v = resolve(root[name] ?? '');
   if (!/^#[0-9a-f]{6}$/i.test(v)) throw new Error(`--${name} is not a six-digit hex colour in styles.css`);
@@ -37,38 +38,38 @@ const ratio = (a, b) => {
   return (hi + 0.05) / (lo + 0.05);
 };
 
-const BODY = 4.5, LARGE = 3, UI = 3;
+const BODY = 4.5, UI = 3;
 const t = token;
 const pairs = [
-  [t('ink'), t('paper'), BODY, '--ink on --paper: body text, headings'],
-  [t('ink-2'), t('paper'), BODY, '--ink-2 on --paper: ledes, descriptions'],
-  [t('ink-3'), t('paper'), BODY, '--ink-3 on --paper: mono labels'],
-  [t('ink'), t('paper-2'), BODY, '--ink on --paper-2: legal-page note emphasis'],
-  [t('ink-2'), t('paper-2'), BODY, '--ink-2 on --paper-2: legal-page note'],
-  [t('ink-3'), t('paper-2'), BODY, '--ink-3 on --paper-2: labels on deeper paper'],
-  [t('paper'), t('ink'), BODY, '--paper on --ink: ink buttons, toast'],
-  [t('ink'), t('lime'), BODY, '--ink on --lime: highlighted text, lime button, contact band'],
-  [t('ink-2'), t('lime'), BODY, '--ink-2 on --lime: secondary text on the contact band'],
-  [t('on-ink'), t('ink'), BODY, '--on-ink on --ink: footer headings'],
-  [t('on-ink-2'), t('ink'), BODY, '--on-ink-2 on --ink: footer body'],
-  [t('on-ink-3'), t('ink'), BODY, '--on-ink-3 on --ink: labels on ink'],
-  [t('lime'), t('ink'), BODY, '--lime on --ink: install prompt'],
-  [t('code-type'), t('paper'), BODY, '--code-type on --paper: Mesh code types'],
-  [t('code-num'), t('paper'), BODY, '--code-num on --paper: Mesh code numbers'],
-  ...products.filter((p) => p.name !== 'seed').flatMap((p) => [
-    [p['p-ink'], t('paper'), BODY, `${p.name} --p-ink on --paper: tagline italic, About corner, code keywords`],
-    [p['p-ink'], p['p-tint'], LARGE, `${p.name} --p-ink on --p-tint: hero word on its highlighter`],
-    [p['p-on'], p['p-spot'], BODY, `${p.name} --p-on on --p-spot: text on its plate`],
+  [t('ink'), t('bg'), BODY, '--ink on --bg: body text, headings'],
+  [t('ink'), t('bg-2'), BODY, '--ink on --bg-2: text in grey stages, About, the footer, the legal-page note'],
+  [t('ink-2'), t('bg'), BODY, '--ink-2 on --bg: descriptions, ledes, the picker, nav links'],
+  [t('ink-2'), t('bg-2'), BODY, '--ink-2 on --bg-2: descriptions in grey stages, footer links'],
+  [t('ink-3'), t('bg-2'), BODY, '--ink-3 on --bg-2: the newsletter placeholder'],
+  [t('ink-3'), t('bg'), BODY, '--ink-3 on --bg: legal-page contents numbers and bullets'],
+  [t('on-ink'), t('ink'), BODY, '--on-ink on --ink: buttons, toast, skip link, avatar'],
+  [t('code-text'), t('code-bg'), BODY, '--code-text on --code-bg: Mesh code'],
+  [t('code-key'), t('code-bg'), BODY, '--code-key on --code-bg: Mesh keywords'],
+  [t('code-type'), t('code-bg'), BODY, '--code-type on --code-bg: Mesh types'],
+  [t('code-fn'), t('code-bg'), BODY, '--code-fn on --code-bg: Mesh function names'],
+  [t('code-num'), t('code-bg'), BODY, '--code-num on --code-bg: Mesh numbers'],
+  [t('code-dim'), t('code-bar'), BODY, '--code-dim on --code-bar: the code window title'],
+  [t('code-text'), t('code-term'), BODY, '--code-text on --code-term: install command, Copy button'],
+  [t('code-fn'), t('code-term'), BODY, '--code-fn on --code-term: install prompt'],
+  [t('code-term'), t('code-fn'), BODY, '--code-term on --code-fn: Copy button once copied'],
+  [t('ink'), t('lime'), BODY, '--ink on --lime: selected text'],
+  [t('ink'), t('bg'), BODY, 'seed --p-ink (--ink) on --bg: the hero word on the first scene'],
+  ...brands.flatMap((p) => [
+    [p['p-ink'], t('bg'), BODY, `${p.name} --p-ink on --bg: links, the hero word`],
+    [p['p-ink'], t('bg-2'), BODY, `${p.name} --p-ink on --bg-2: links in grey stages`],
+    [t('on-ink'), p['p-ink'], BODY, `${p.name} --on-ink on --p-ink: product button`],
   ]),
-  ...products.filter((p) => p.name === 'seed').map((p) => [p['p-ink'], p['p-tint'], LARGE, 'seed --p-ink on --p-tint: hero word on its highlighter']),
 ];
 
-const fields = [['paper', t('paper')], ['paper-2', t('paper-2')], ['ink', t('ink')], ['lime', t('lime')],
-  ...products.filter((p) => p.name !== 'seed').map((p) => [`${p.name} spot`, p['p-spot']])];
-const rings = fields.map(([name, bg]) => {
-  const best = Math.max(ratio(t('ink'), bg), ratio(t('lime'), bg));
-  return [best, UI, `focus ring on ${name} (best of ink ${ratio(t('ink'), bg).toFixed(2)}, lime ${ratio(t('lime'), bg).toFixed(2)})`];
-});
+const rings = [
+  ...[{ name: 'default', 'p-ink': t('ink') }, ...brands].flatMap((p) => ['bg', 'bg-2'].map((bg) => [p['p-ink'], t(bg), `${p.name} focus ring (--p-ink) on --${bg}`])),
+  ...['code-bg', 'code-term'].map((name) => [t('code-text'), t(name), `focus ring in the code window (--code-text) on --${name}`]),
+].map(([ring, bg, use]) => [ratio(ring, bg), UI, use]);
 
 let failed = 0;
 const report = (r, min, use) => {

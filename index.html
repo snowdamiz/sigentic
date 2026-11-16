@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Sigentic Labs — We invent apps for everyday life</title>
   <meta name="description" content="Sigentic Labs is an independent software lab that turns the small frustrations of everyday life into focused, carefully made software.">
-  <meta name="theme-color" content="#F4F1E9">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="color-scheme" content="light">
 
   <link rel="canonical" href="https://sigenticlabs.com/">
@@ -31,7 +31,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0,0;1,9..144,300..500,0,1&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=JetBrains+Mono&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css">
 
   <script>document.documentElement.classList.add('js')</script>
@@ -62,151 +62,168 @@
         <path d="M32.44 28.11 C21.82 28.11 13.37 32.23 9.03 38.73 C4.48 45.01 5.57 52.17 9.47 58.89 C12.94 64.74 17.49 68.86 21.61 70.37 C25.07 71.67 27.24 68.64 28.76 64.31 C32.23 53.68 35.69 48.7 43.28 45.23 C49.35 42.41 54.77 41.11 55.2 37.21 C55.64 32.88 50 30.06 44.36 29.19 C40.46 28.33 36.34 28.11 32.44 28.11 Z"/>
         <path d="M43.28 53.03 C39.16 56.29 35.69 61.49 35.48 67.77 C35.04 76.23 42.2 83.81 49.78 87.93 C57.59 92.48 67.77 94.22 77.09 92.05 C85.55 90.32 91.18 86.41 93.13 82.08 C95.3 77.31 91.4 69.07 87.28 64.96 C82.51 59.97 75.58 60.84 69.07 61.27 C59.75 62.35 55.42 58.02 50.87 53.9 C48.27 51.52 45.45 51.08 43.28 53.03 Z"/>
       </symbol>
-      <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></symbol>
-      <symbol id="i-arrow-up-right" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l6-6M6 5h5v5"/></symbol>
-      <symbol id="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="2"/><path d="M10.5 3.5V3a1.5 1.5 0 00-1.5-1.5H4A1.5 1.5 0 002.5 3v5A1.5 1.5 0 004 9.5h.5"/></symbol>
+      <symbol id="i-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5 10.5 8 6 12.5"/></symbol>
+      <symbol id="i-out" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11l6-6M6 5h5v5"/></symbol>
+      <symbol id="i-down" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></symbol>
+      <symbol id="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="2"/><path d="M10.5 3.5V3a1.5 1.5 0 00-1.5-1.5H4A1.5 1.5 0 002.5 3v5A1.5 1.5 0 004 9.5h.5"/></symbol>
     </defs>
   </svg>
 
   <header class="nav" data-nav>
-    <div class="nav__bar">
-      <a class="brand" href="#top" aria-label="Sigentic Labs — back to top">
+    <div class="nav__in">
+      <a class="brand" href="#top" aria-label="Sigentic Labs, back to top">
         <svg class="brand__mark" aria-hidden="true"><use href="#i-logo"/></svg>
-        <span class="brand__name">Sigentic<span> Labs</span></span>
+        <span>Sigentic Labs</span>
       </a>
-      <nav class="nav__links" aria-label="Primary">
-        <a href="#products">Products</a>
-        <a href="#about">About</a>
+      <nav class="nav__products" aria-label="Products" data-nav-products>
+        <a href="#savorly" data-product="savorly"><i aria-hidden="true"></i>Savorly</a>
+        <a href="#morse" data-product="morse"><i aria-hidden="true"></i>Morse</a>
+        <a href="#mesh" data-product="mesh"><i aria-hidden="true"></i>Mesh</a>
+        <a href="#incant" data-product="incant"><i aria-hidden="true"></i>Incant</a>
+        <a href="#mixer" data-product="mixer"><i aria-hidden="true"></i>Mixer</a>
       </nav>
-      <div class="nav__end">
-        <a class="btn btn--lime btn--sm nav__cta" href="#contact">Get in touch</a>
-        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-menu-toggle>
-          <span></span><span></span>
-        </button>
-      </div>
+      <a class="nav__cta" href="#contact">Contact</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
     </div>
   </header>
 
   <div class="menu" id="menu" data-menu hidden>
-    <nav class="menu__links" aria-label="Mobile">
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <nav class="menu__in" aria-label="Menu">
+      <ul class="menu__products">
+        <li><a href="#savorly"><img src="assets/img/work/savorly-icon.svg" width="40" height="40" alt=""><span>Savorly <small>Cooking</small></span></a></li>
+        <li><a href="#morse"><img src="assets/img/work/morse-icon.svg" width="40" height="40" alt=""><span>Morse <small>Private messaging</small></span></a></li>
+        <li><a href="#mesh"><img src="assets/img/work/mesh-icon.svg" width="40" height="40" alt=""><span>Mesh <small>Programming language</small></span></a></li>
+        <li><a href="#incant"><img src="assets/img/work/incant-icon.svg" width="40" height="40" alt=""><span>Incant <small>Game engine</small></span></a></li>
+        <li><a href="#mixer"><img src="assets/img/work/mixer-icon.png" width="40" height="40" alt=""><span>Mixer <small>Mobile platform</small></span></a></li>
+      </ul>
+      <ul class="menu__more">
+        <li><a href="#log">Lab log</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
     </nav>
-    <p class="menu__foot label">hello@sigenticlabs.com</p>
   </div>
 
   <main id="main">
 
-    <section class="hero" id="top" data-hero>
-      <div class="container hero__grid">
-        <div class="hero__copy">
-          <h1 class="hero__title" aria-label="We invent apps for everyday life.">
-            <span class="hero__line" aria-hidden="true"><span data-intro style="--i:1">We invent</span></span>
-            <span class="hero__line" aria-hidden="true"><span data-intro style="--i:2">apps for</span></span>
-            <span class="hero__line" aria-hidden="true"><span data-intro style="--i:3"><span class="rotor" data-product="seed" data-rotator>what&rsquo;s next.</span></span></span>
-          </h1>
-          <p class="hero__lede" data-intro style="--i:4">An independent software lab making focused, carefully made software for everyday life.</p>
-          <div class="hero__actions" data-intro style="--i:5">
-            <a class="btn btn--ink" href="#products">
-              See our work
-              <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <figure class="fig" data-intro style="--i:2">
-          <div class="fig__plate marks" data-stage aria-hidden="true">
-            <canvas class="fig__canvas"></canvas>
-            <svg class="fig__still"><use href="#i-logo"/></svg>
-          </div>
-          <figcaption class="fig__caption" data-stage-caption>
-            <em class="fig__name" data-stage-name></em>
-            <span class="fig__controls">
-              <span class="ticks" role="group" aria-label="Figures" data-stage-ticks></span>
-              <button class="fig__pause" type="button" aria-label="Pause animation" aria-pressed="false" data-stage-pause hidden>
-                <svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1h2v8H2zM6 1h2v8H6z" fill="currentColor"/></svg>
-                <svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 1l7 4-7 4z" fill="currentColor"/></svg>
-              </button>
-            </span>
-          </figcaption>
-        </figure>
+    <section class="hero" id="top" data-hero data-product="seed">
+      <div class="hero__fig" aria-hidden="true" data-figure>
+        <canvas></canvas>
+        <svg class="hero__still"><use href="#i-logo"/></svg>
       </div>
 
+      <div class="picker" data-picker>
+        <nav class="picker__list" aria-label="Jump to a product">
+          <a href="#savorly" data-scene="savorly" data-product="savorly">Savorly</a>
+          <a href="#morse" data-scene="morse" data-product="morse">Morse</a>
+          <a href="#mesh" data-scene="mesh" data-product="mesh">Mesh</a>
+          <a href="#incant" data-scene="incant" data-product="incant">Incant</a>
+          <a href="#mixer" data-scene="mixer" data-product="mixer">Mixer</a>
+        </nav>
+        <button class="picker__pause" type="button" aria-label="Pause animation" aria-pressed="false" data-pause hidden>
+          <svg class="i-pause" viewBox="0 0 10 10" aria-hidden="true"><path d="M2.5 1.5h1.6v7H2.5zM5.9 1.5h1.6v7H5.9z" fill="currentColor"/></svg>
+          <svg class="i-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M3 1.5l5.5 3.5L3 8.5z" fill="currentColor"/></svg>
+        </button>
+      </div>
+
+      <h1 class="hero__title" aria-label="We invent apps for what’s next.">
+        <span aria-hidden="true">We invent apps</span>
+        <span aria-hidden="true">for <span class="rotor" data-product="seed" data-rotator>what’s next.</span></span>
+      </h1>
+      <p class="hero__lede">An independent software lab. We build focused software for one corner of everyday life at a time.</p>
+      <a class="btn" href="#savorly">See the products<svg aria-hidden="true"><use href="#i-down"/></svg></a>
     </section>
 
     <!-- Copy, status and facts come from each project's README and website (October 2026). -->
-    <section class="products" id="products" aria-labelledby="products-title">
-      <div class="container">
-        <h2 class="section-title" id="products-title" data-reveal>Made in the lab, built for <em>real&nbsp;life.</em></h2>
 
-        <!-- Savorly -->
-        <article class="chapter" id="savorly" data-product="savorly" aria-labelledby="savorly-name">
-          <div class="chapter__head" data-reveal>
-            <p class="chapter__meta"><span class="swatch" aria-hidden="true"></span>Cooking<span class="state">Live</span></p>
-            <h3 class="chapter__name" id="savorly-name">Savorly</h3>
-            <p class="chapter__tagline">Good recipes, and a <em>sous-chef</em> to cook them with.</p>
+    <!-- Savorly -->
+    <section class="stage stage--alt" id="savorly" data-product="savorly" aria-labelledby="savorly-name">
+      <div class="stage__head" data-reveal>
+        <img class="stage__icon" src="assets/img/work/savorly-icon.svg" width="64" height="64" alt="">
+        <h2 class="stage__name" id="savorly-name">Savorly</h2>
+        <p class="stage__tagline">Good recipes, and a sous-chef to cook them with.</p>
+        <p class="stage__desc">A cooking community for finding recipes, sharing your own and actually cooking them. The sous-chef is built into every screen: ask it by text, voice or photo, or talk to it hands-free with flour on your hands.</p>
+        <div class="stage__links">
+          <a class="btn btn--product" href="https://savorly.cooking">Visit savorly.cooking<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="more" href="https://github.com/snowdamiz/savorly-v2">Source<svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+      <figure class="stage__media" data-reveal>
+        <div class="device device--iphone">
+          <div class="device__screen">
+            <div class="device__status" aria-hidden="true"><span>9:41</span><span class="device__sys"><i></i><i></i><i></i></span></div>
+            <img src="assets/img/work/savorly-discover.jpg" width="786" height="1702" loading="lazy"
+                 alt="Savorly’s Discover screen on a phone: a search bar, cuisines, and the daily dish, the everyday avocado toast.">
           </div>
-          <figure class="plate" data-reveal>
-            <div class="phone">
-              <div class="phone__screen">
-                <div class="phone__status" aria-hidden="true"><span>9:41</span><span class="phone__island"></span><span class="phone__sys"><i></i><i></i><i></i></span></div>
-                <img src="assets/img/work/savorly-discover.jpg" width="786" height="1702" loading="lazy"
-                     alt="Savorly's Discover screen on a phone: a search bar, cuisines, and the daily dish, the everyday avocado toast.">
-              </div>
-            </div>
-          </figure>
-          <div class="chapter__body" data-reveal>
-            <p class="chapter__desc">A cooking community for finding recipes, sharing your own and actually cooking them. The sous-chef is built into every screen: ask it by text, voice or photo, or talk to it hands-free with flour on your hands.</p>
-            <p class="chapter__avail">Live on the web. The iPhone and Android apps are in testing.</p>
-            <div class="chapter__actions">
-              <a class="btn btn--ink" href="https://savorly.cooking">
-                Visit savorly.cooking
-                <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="text-link" href="https://github.com/snowdamiz/savorly-v2">Source</a>
-            </div>
-          </div>
-        </article>
+        </div>
+      </figure>
+      <div class="stage__foot" data-reveal>
+        <ul class="feats">
+          <li>Cook mode with step timers and spoken steps.</li>
+          <li>Cook-tested times from people who made it.</li>
+          <li>One timeline for a whole meal of dishes.</li>
+          <li>Shared planner, pantry and grocery list.</li>
+        </ul>
+        <div class="avail">
+          <p class="avail__meta"><span>Cooking</span><span><i class="dot" aria-hidden="true"></i>Live</span><span class="meter" data-step="3"><span class="meter__bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="visually-hidden">Stage:</span> Beta</span></p>
+          <p class="avail__text">Live on the web. The iPhone and Android apps are in testing ahead of their App Store and Google Play release.</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Morse -->
-        <article class="chapter" id="morse" data-product="morse" aria-labelledby="morse-name">
-          <div class="chapter__head" data-reveal>
-            <p class="chapter__meta"><span class="swatch" aria-hidden="true"></span>Private messaging<span class="state state--dev">In development</span></p>
-            <h3 class="chapter__name" id="morse-name">Morse</h3>
-            <p class="chapter__tagline">Private messaging, <em>kept honest.</em></p>
+    <!-- Morse -->
+    <section class="stage" id="morse" data-product="morse" aria-labelledby="morse-name">
+      <div class="stage__head" data-reveal>
+        <img class="stage__icon" src="assets/img/work/morse-icon.svg" width="64" height="64" alt="">
+        <h2 class="stage__name" id="morse-name">Morse</h2>
+        <p class="stage__tagline">Private messaging, kept honest.</p>
+        <p class="stage__desc">Pick a username and start talking: no phone number, no email, no address book. Only the people in a chat can read it, not even us, and independent witnesses check every key the server hands out.</p>
+        <div class="stage__links">
+          <a class="btn btn--product" href="https://morseapp.io">Join the waitlist<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="more" href="https://github.com/snowdamiz/whatsdown">Source<svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+      <figure class="stage__media" data-reveal>
+        <div class="window window--morse">
+          <div class="window__bar" aria-hidden="true"><span class="window__lights"><i></i><i></i><i></i></span><span class="window__title">Morse</span></div>
+          <div class="window__body">
+            <img src="assets/img/work/morse-desktop.jpg" width="1397" height="1540" loading="lazy"
+                 alt="The Morse desktop app with its sample chats: a message request from Dan, and an open conversation with Alex Walker showing a verified-contact shield, emoji reactions and read receipts.">
           </div>
-          <figure class="plate" data-reveal>
-            <div class="window">
-              <div class="window__bar" aria-hidden="true"><i></i><i></i><i></i></div>
-              <img src="assets/img/work/morse-desktop.jpg" width="1397" height="1540" loading="lazy"
-                   alt="The Morse desktop app with its sample chats: a message request from Dan, and an open conversation with Alex Walker showing a verified-contact shield, emoji reactions, a quoted reply and read receipts.">
-            </div>
-          </figure>
-          <div class="chapter__body" data-reveal>
-            <p class="chapter__desc">Pick a username and start talking: no phone number, no email, no address book. Only the people in a chat can read it, not even us, and independent witnesses check every key the server hands out.</p>
-            <p class="chapter__avail">Early desktop builds for Mac and Windows. Mobile apps in development; no production-security claim yet.</p>
-            <div class="chapter__actions">
-              <a class="btn btn--ink" href="https://morseapp.io">
-                Join the waitlist
-                <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="text-link" href="https://github.com/snowdamiz/whatsdown">Source</a>
-            </div>
-          </div>
-        </article>
+        </div>
+      </figure>
+      <div class="stage__foot" data-reveal>
+        <ul class="feats">
+          <li>End-to-end encrypted, file names included.</li>
+          <li>No phone number or address book.</li>
+          <li>Disappearing messages on any chat.</li>
+          <li>Protocol written in <a href="#mesh">Mesh</a>, our language.</li>
+        </ul>
+        <div class="avail">
+          <p class="avail__meta"><span>Private messaging</span><span><i class="dot dot--ring" aria-hidden="true"></i>In development</span><span class="meter" data-step="2"><span class="meter__bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="visually-hidden">Stage:</span> Prototype</span></p>
+          <p class="avail__text">Early desktop builds for Mac and Windows. iPhone and Android share the same encrypted core and are in development, with no production-security claim yet.</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Mesh -->
-        <article class="chapter" id="mesh" data-product="mesh" aria-labelledby="mesh-name">
-          <div class="chapter__head" data-reveal>
-            <p class="chapter__meta"><span class="swatch" aria-hidden="true"></span>Programming language<span class="state">v0.1.8</span></p>
-            <h3 class="chapter__name" id="mesh-name">Mesh</h3>
-            <p class="chapter__tagline">Write a server. <em>Ship a fleet.</em></p>
-          </div>
-          <div class="plate" data-reveal>
-            <figure class="sheet" aria-label="An example Mesh program">
-              <p class="sheet__head label" aria-hidden="true">counter.mpl</p>
-<pre class="sheet__code"><code><span class="k">type</span> <span class="t">Message</span> <span class="k">do</span>
+    <!-- Mesh -->
+    <section class="stage stage--alt" id="mesh" data-product="mesh" aria-labelledby="mesh-name">
+      <div class="stage__head" data-reveal>
+        <img class="stage__icon" src="assets/img/work/mesh-icon.svg" width="64" height="64" alt="">
+        <h2 class="stage__name" id="mesh-name">Mesh</h2>
+        <p class="stage__tagline">Write a server. Ship a fleet.</p>
+        <p class="stage__desc">A statically typed, actor-based language with Elixir-style syntax. It infers your types, compiles to a single native binary through LLVM, and builds clustering into the runtime: mark the work that can run anywhere, and Mesh handles placement, routing and failover.</p>
+        <div class="stage__links">
+          <a class="btn btn--product" href="https://meshlang.dev">Visit meshlang.dev<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="more" href="https://github.com/snowdamiz/mesh-lang">Source<svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+      <figure class="stage__media" data-reveal>
+        <div class="window window--code">
+          <div class="window__bar"><span class="window__lights" aria-hidden="true"><i></i><i></i><i></i></span><span class="window__title">counter.mpl</span></div>
+<pre class="code"><code><span class="k">type</span> <span class="t">Message</span> <span class="k">do</span>
   <span class="t">Add</span>(<span class="t">Int</span>)
   <span class="t">Reset</span>
 <span class="k">end</span>
@@ -224,167 +241,245 @@
   <span class="k">let</span> pid :: <span class="t">Pid</span>&lt;<span class="t">Message</span>&gt; = spawn(counter, <span class="n">0</span>)
   send(pid, <span class="t">Add</span>(<span class="n">40</span>))
 <span class="k">end</span></code></pre>
-            </figure>
+          <div class="term">
+            <p class="term__line"><span aria-hidden="true">$</span><code>curl -sSf https://meshlang.dev/install.sh | sh</code></p>
+            <button class="copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh" data-copy-toast="Install command copied." aria-label="Copy install command">
+              <svg aria-hidden="true"><use href="#i-copy"/></svg><span data-copy-label>Copy</span>
+            </button>
           </div>
-          <div class="chapter__body" data-reveal>
-            <p class="chapter__desc">A statically typed, actor-based language with Elixir-style syntax. It infers your types, compiles to a single native binary through LLVM, and builds clustering into the runtime: mark the work that can run anywhere, and Mesh handles placement, routing and failover.</p>
-            <div class="install">
-              <p class="install__line"><span aria-hidden="true">$</span><code>curl -sSf https://meshlang.dev/install.sh <span class="nowrap">| sh</span></code></p>
-              <button class="install__copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh" data-copy-toast="Install command copied." aria-label="Copy install command">
-                <svg aria-hidden="true"><use href="#i-copy"/></svg>
-                <span data-copy-label>Copy</span>
-              </button>
-            </div>
-            <p class="chapter__avail">Installable today on macOS, Linux and Windows. The language can still change before 1.0.</p>
-            <div class="chapter__actions">
-              <a class="btn btn--ink" href="https://meshlang.dev">
-                Visit meshlang.dev
-                <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="text-link" href="https://github.com/snowdamiz/mesh-lang">Source</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Incant -->
-        <article class="chapter" id="incant" data-product="incant" aria-labelledby="incant-name">
-          <div class="chapter__head" data-reveal>
-            <p class="chapter__meta"><span class="swatch" aria-hidden="true"></span>Game engine<span class="state state--dev">In development</span></p>
-            <h3 class="chapter__name" id="incant-name">Incant</h3>
-            <p class="chapter__tagline">The game engine <em>you can talk to.</em></p>
-          </div>
-          <figure class="plate" data-reveal>
-            <div class="specimen">
-              <img class="specimen__game" src="assets/img/work/incant-native-game.jpg" width="1280" height="1024" loading="lazy"
-                   alt="Incant's native game window running its sample game: a small robot in a desert canyon, with the objective “Collect the core samples” and “Samples 0/4”.">
-              <img class="specimen__slip" src="assets/img/work/incant-agent.png" width="756" height="948" loading="lazy"
-                   alt="Incant's agent panel proposing four changes to the project, with Deny and Allow buttons.">
-            </div>
-          </figure>
-          <div class="chapter__body" data-reveal>
-            <p class="chapter__desc">Model, script and ship 2D and 3D games in one application. Work by hand, in TypeScript, or by asking the agent. Every change lands as a command you can read, test and undo.</p>
-            <p class="chapter__avail">No public release yet.</p>
-            <div class="chapter__actions">
-              <a class="btn btn--ink" href="https://snowdamiz.github.io/incant/">
-                See the project
-                <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="text-link" href="https://github.com/snowdamiz/incant">Source</a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Mixer -->
-        <article class="chapter" id="mixer" data-product="mixer" aria-labelledby="mixer-name">
-          <div class="chapter__head" data-reveal>
-            <p class="chapter__meta"><span class="swatch" aria-hidden="true"></span>Mobile platform<span class="state state--dev">In development</span></p>
-            <h3 class="chapter__name" id="mixer-name">Mixer</h3>
-            <p class="chapter__tagline">Write Swift. <em>Ship both.</em></p>
-          </div>
-          <figure class="plate" data-reveal>
-            <div class="phone phone--android">
-              <div class="phone__screen">
-                <img src="assets/img/work/mixer-app.jpg" width="864" height="1920" loading="lazy"
-                     alt="An illustration of the kind of app Mixer builds: a habit tracker on an Android phone, with today at 3 of 5 habits, a 12-day streak, and a list of habits to check off.">
-              </div>
-            </div>
-          </figure>
-          <div class="chapter__body" data-reveal>
-            <p class="chapter__desc">Build iPhone and Android apps from one Swift codebase. You write the screens and state once, and Mixer draws them with each platform&rsquo;s own native controls. It&rsquo;s designed to send compatible fixes as signed updates, without waiting on a new store build.</p>
-            <p class="chapter__avail">Runs on a physical Pixel today. No public release yet.</p>
-            <div class="chapter__actions">
-              <a class="btn btn--ink" href="https://github.com/snowdamiz/mixer/blob/main/mixer-product-plan.md">
-                Read the plan
-                <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow-up-right"/></svg>
-              </a>
-              <a class="text-link" href="https://github.com/snowdamiz/mixer">Source</a>
-            </div>
-          </div>
-        </article>
-
-        <p class="catalog-note" data-reveal>Every project is developed in public. <a class="text-link" href="https://github.com/snowdamiz">Browse the code on GitHub</a></p>
-      </div>
-    </section>
-
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div class="container">
-        <h2 class="visually-hidden" id="about-title">About Sigentic Labs</h2>
-        <p class="about__text" data-reveal>
-          Most software tries to be everything for everyone. We think the best tools do <mark class="hl">one&nbsp;thing</mark> with uncommon care. So we pick a corner of everyday life&thinsp;&mdash;&thinsp;<span class="about__corner" data-product="savorly">the stovetop</span>, <span class="about__corner" data-product="morse">the group chat</span>, <span class="about__corner" data-product="mesh">the server</span>, <span class="about__corner" data-product="incant">the game editor</span>&thinsp;&mdash;&thinsp;and build the software it deserves. Then we do it <em>again.</em>
-        </p>
-        <ul class="tenets">
-          <li class="tenet" data-reveal style="--d:0">
-            <h3>Private by default</h3>
-            <p>We collect the minimum, encrypt what we can, and never sell your data.</p>
-          </li>
-          <li class="tenet" data-reveal style="--d:1">
-            <h3>One job, done well</h3>
-            <p>If a feature doesn&rsquo;t earn its place, it doesn&rsquo;t ship.</p>
-          </li>
-          <li class="tenet" data-reveal style="--d:2">
-            <h3>Respect for attention</h3>
-            <p>No dark patterns, no infinite feeds, no guilt-trip notifications.</p>
-          </li>
-          <li class="tenet" data-reveal style="--d:3">
-            <h3>Made for everyone</h3>
-            <p>Screen readers, dynamic type, contrast and reduced motion are designed in from day one.</p>
-          </li>
+        </div>
+        <figcaption class="stage__caption">Install on macOS, Linux or Windows.</figcaption>
+      </figure>
+      <div class="stage__foot" data-reveal>
+        <ul class="feats">
+          <li>Typed actors, supervisors and channels.</li>
+          <li>Hindley-Milner type inference.</li>
+          <li>HTTP, WebSockets and Postgres built in.</li>
+          <li>Formatter, tests, REPL and language server.</li>
         </ul>
+        <div class="avail">
+          <p class="avail__meta"><span>Programming language</span><span><i class="dot" aria-hidden="true"></i>v0.1.8</span><span class="meter" data-step="3"><span class="meter__bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="visually-hidden">Stage:</span> Beta</span></p>
+          <p class="avail__text">Installable today. The language and package format can still change before 1.0.</p>
+        </div>
       </div>
     </section>
 
-    <section class="contact" id="contact" aria-labelledby="contact-title">
-      <div class="container">
-        <h2 class="section-title" id="contact-title" data-reveal>Have an idea worth <em>inventing?</em></h2>
+    <!-- Incant -->
+    <section class="stage" id="incant" data-product="incant" aria-labelledby="incant-name">
+      <div class="stage__head" data-reveal>
+        <img class="stage__icon" src="assets/img/work/incant-icon.svg" width="64" height="64" alt="">
+        <h2 class="stage__name" id="incant-name">Incant</h2>
+        <p class="stage__tagline">The game engine you can talk to.</p>
+        <p class="stage__desc">Model, script and ship 2D and 3D games in one application. Work by hand, in TypeScript, or by asking the agent. Every change lands as a command you can read, test and undo.</p>
+        <div class="stage__links">
+          <a class="btn btn--product" href="https://snowdamiz.github.io/incant/">See the project<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="more" href="https://github.com/snowdamiz/incant">Source<svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+      <figure class="stage__media" data-reveal>
+        <div class="duo">
+          <img class="duo__game" src="assets/img/work/incant-native-game.jpg" width="1280" height="1024" loading="lazy"
+               alt="Incant’s native game window running its sample game: a small robot in a desert canyon, with the objective “Collect the core samples” and “Samples 0/4”.">
+          <img class="duo__panel" src="assets/img/work/incant-agent.png" width="756" height="948" loading="lazy"
+               alt="Incant’s agent panel proposing four changes to the project, with Deny and Allow buttons.">
+        </div>
+      </figure>
+      <div class="stage__foot" data-reveal>
+        <ul class="feats">
+          <li>One undoable history for every edit.</li>
+          <li>Plain-text, diffable project files.</li>
+          <li>The agent play-tests and shows proof.</li>
+          <li>Bring your own OpenAI account.</li>
+        </ul>
+        <div class="avail">
+          <p class="avail__meta"><span>Game engine</span><span><i class="dot dot--ring" aria-hidden="true"></i>In development</span><span class="meter" data-step="2"><span class="meter__bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="visually-hidden">Stage:</span> Prototype</span></p>
+          <p class="avail__text">Rendering, physics, scripting, input and game saves are coming together in the first engine phase. No public release yet.</p>
+        </div>
+      </div>
+    </section>
 
-        <div class="mailbox" data-reveal>
-          <a class="mailbox__link" href="mailto:hello@sigenticlabs.com">hello<span class="mailbox__at">@</span><wbr>sigenticlabs.com</a>
-          <button class="btn btn--ink mailbox__copy" type="button" data-copy="hello@sigenticlabs.com" data-copy-toast="Email copied — talk soon." aria-label="Copy email address">
-            <svg class="btn__icon" aria-hidden="true"><use href="#i-copy"/></svg>
-            <span data-copy-label>Copy</span>
-          </button>
+    <!-- Mixer -->
+    <section class="stage stage--alt" id="mixer" data-product="mixer" aria-labelledby="mixer-name">
+      <div class="stage__head" data-reveal>
+        <img class="stage__icon" src="assets/img/work/mixer-icon.png" width="64" height="64" alt="">
+        <h2 class="stage__name" id="mixer-name">Mixer</h2>
+        <p class="stage__tagline">Write Swift. Ship both.</p>
+        <p class="stage__desc">Build iPhone and Android apps from one Swift codebase. You write the screens and state once, and Mixer draws them with each platform’s own native controls. It’s designed to send compatible fixes as signed updates, without waiting on a new store build.</p>
+        <div class="stage__links">
+          <a class="btn btn--product" href="https://github.com/snowdamiz/mixer/blob/main/mixer-product-plan.md">Read the plan<svg aria-hidden="true"><use href="#i-out"/></svg></a>
+          <a class="more" href="https://github.com/snowdamiz/mixer">Source<svg aria-hidden="true"><use href="#i-chev"/></svg></a>
+        </div>
+      </div>
+      <figure class="stage__media" data-reveal>
+        <div class="device device--pixel">
+          <div class="device__screen">
+            <img src="assets/img/work/mixer-app.jpg" width="864" height="1920" loading="lazy"
+                 alt="An illustration of the kind of app Mixer builds: a habit tracker on an Android phone, with today at 3 of 5 habits, a 12-day streak, and a list of habits to check off.">
+          </div>
+        </div>
+        <figcaption class="stage__caption">An illustrated example app on an Android phone.</figcaption>
+      </figure>
+      <div class="stage__foot" data-reveal>
+        <ul class="feats">
+          <li>Native controls on iPhone and Android.</li>
+          <li>One CLI to create, test and build both.</li>
+          <li>Signed updates that fall back safely.</li>
+          <li>Compatibility report for existing Swift apps.</li>
+        </ul>
+        <div class="avail">
+          <p class="avail__meta"><span>Mobile platform</span><span><i class="dot dot--ring" aria-hidden="true"></i>In development</span><span class="meter" data-step="2"><span class="meter__bar" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="visually-hidden">Stage:</span> Prototype</span></p>
+          <p class="avail__text">A Swift app already runs with native controls on a physical Pixel, and the CLI builds iOS Simulator apps and unsigned Android APKs. Signed updates, app-store builds and the hosted release service are in progress. No public release yet.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lab log -->
+    <section class="log" id="log" aria-labelledby="log-title">
+      <div class="wrap wrap--narrow">
+        <h2 class="section-title" id="log-title" data-reveal>Lab log</h2>
+        <ol class="log__list" data-reveal>
+          <li class="log__month">
+            <h3><time datetime="2026-10">October 2026</time></h3>
+            <ul>
+              <li><a href="#mesh" data-product="mesh"><i class="dot" aria-hidden="true"></i>Mesh v0.1.8 released.</a></li>
+              <li><a href="#mixer" data-product="mixer"><i class="dot" aria-hidden="true"></i>Mixer runs a Swift app with native controls on a physical Pixel.</a></li>
+            </ul>
+          </li>
+          <li class="log__month">
+            <h3><time datetime="2026-09">September 2026</time></h3>
+            <ul>
+              <li><a href="#savorly" data-product="savorly"><i class="dot" aria-hidden="true"></i>Savorly for iPhone and Android enters beta testing.</a></li>
+              <li><a href="#morse" data-product="morse"><i class="dot" aria-hidden="true"></i>Morse ships early desktop builds for Mac and Windows.</a></li>
+            </ul>
+          </li>
+          <li class="log__month">
+            <h3><time datetime="2026-08">August 2026</time></h3>
+            <ul>
+              <li><a href="#incant" data-product="incant"><i class="dot" aria-hidden="true"></i>Incant starts its core engine phase: rendering, physics, scripting, input and saves.</a></li>
+            </ul>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section class="about" id="about" aria-labelledby="about-title">
+      <div class="wrap">
+        <div class="about__intro" data-reveal>
+          <h2 class="section-title" id="about-title">Most software tries to be everything for everyone.</h2>
+          <p class="about__lede">We think the best tools do one thing with uncommon care. So we pick a corner of everyday life (the stovetop, the group chat, the server, the game editor) and build the software it deserves. Then we do it again.</p>
         </div>
 
-        <ul class="contact__links" data-reveal>
-          <li><a class="text-link" href="mailto:hello@sigenticlabs.com?subject=Partnership">Partnerships</a></li>
-          <li><a class="text-link" href="mailto:hello@sigenticlabs.com?subject=Press%20inquiry">Press</a></li>
-          <li><a class="text-link" href="support.html">App support</a></li>
-        </ul>
+        <div class="spec" data-reveal>
+          <div class="spec__row">
+            <h3 class="spec__label">Principles</h3>
+            <ul class="spec__grid spec__grid--principles">
+              <li><strong>Private by default.</strong> We collect the minimum, encrypt what we can, and never sell your data.</li>
+              <li><strong>One job, done well.</strong> If a feature doesn’t earn its place, it doesn’t ship.</li>
+              <li><strong>Respect for attention.</strong> No dark patterns, no infinite feeds, no guilt-trip notifications.</li>
+              <li><strong>Made for everyone.</strong> Screen readers, dynamic type, contrast and reduced motion are designed in from day one.</li>
+              <li><strong>Built to last.</strong> Honest business models, so the software you rely on is still here years from now.</li>
+              <li><strong>Developed in public.</strong> Every project’s code is on <a href="https://github.com/snowdamiz">GitHub</a>.</li>
+            </ul>
+          </div>
+          <div class="spec__row">
+            <h3 class="spec__label">Studio</h3>
+            <dl class="spec__grid spec__grid--facts">
+              <div><dt>Founded</dt><dd>2025</dd></div>
+              <div><dt>Based in</dt><dd>New York</dd></div>
+              <div><dt>Funding</dt><dd>Independent and self-funded</dd></div>
+              <div><dt>Projects</dt><dd>5, all developed in public</dd></div>
+            </dl>
+          </div>
+          <div class="spec__row">
+            <h3 class="spec__label">Team</h3>
+            <div class="person">
+              <span class="person__avatar" aria-hidden="true">FN</span>
+              <div>
+                <p class="person__name">Founder name</p>
+                <p class="person__role">Founder, Sigentic Labs</p>
+                <p class="person__bio">Builds the products and answers the email.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter and contact -->
+    <section class="reach" id="contact" aria-label="Newsletter and contact">
+      <div class="wrap reach__grid">
+        <div class="reach__half" data-reveal>
+          <h2 class="reach__title">Get one short email when something ships.</h2>
+          <form class="signup" data-signup novalidate>
+            <label class="visually-hidden" for="signup-email">Email address</label>
+            <input id="signup-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required>
+            <button class="btn" type="submit">Subscribe</button>
+          </form>
+        </div>
+        <div class="reach__half" data-reveal>
+          <h2 class="reach__title">Write to the lab.</h2>
+          <div class="mail">
+            <a class="mail__link" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
+            <button class="copy" type="button" data-copy="hello@sigenticlabs.com" data-copy-toast="Email copied." aria-label="Copy email address">
+              <svg aria-hidden="true"><use href="#i-copy"/></svg><span data-copy-label>Copy</span>
+            </button>
+          </div>
+          <ul class="routes">
+            <li><a class="more" href="mailto:hello@sigenticlabs.com?subject=Partnership">Partnerships<svg aria-hidden="true"><use href="#i-chev"/></svg></a></li>
+            <li><a class="more" href="mailto:hello@sigenticlabs.com?subject=Press%20inquiry">Press<svg aria-hidden="true"><use href="#i-chev"/></svg></a></li>
+            <li><a class="more" href="#">Press kit<svg aria-hidden="true"><use href="#i-chev"/></svg></a></li>
+            <li><a class="more" href="/support.html">App support<svg aria-hidden="true"><use href="#i-chev"/></svg></a></li>
+          </ul>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <div class="container">
+    <div class="wrap">
       <div class="footer__top">
         <div class="footer__brand">
-          <a class="brand" href="#top" aria-label="Sigentic Labs — back to top">
+          <a class="brand" href="#top" aria-label="Sigentic Labs, back to top">
             <svg class="brand__mark" aria-hidden="true"><use href="#i-logo"/></svg>
-            <span class="brand__name">Sigentic<span> Labs</span></span>
+            <span>Sigentic Labs</span>
           </a>
-          <p>An independent software lab building focused tools for everyday life.</p>
+          <p>An independent software lab. Focused software for everyday life, and tools for the people who build software and games.</p>
         </div>
         <nav class="footer__cols" aria-label="Footer">
           <div>
-            <p class="label">Company</p>
-            <a href="#products">Products</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-            <a href="https://github.com/snowdamiz">GitHub</a>
+            <h2>Products</h2>
+            <ul>
+              <li><a href="#savorly">Savorly</a></li>
+              <li><a href="#morse">Morse</a></li>
+              <li><a href="#mesh">Mesh</a></li>
+              <li><a href="#incant">Incant</a></li>
+              <li><a href="#mixer">Mixer</a></li>
+            </ul>
           </div>
           <div>
-            <p class="label">Legal</p>
-            <a href="support.html">Support</a>
-            <a href="privacy.html">Privacy</a>
-            <a href="terms.html">Terms</a>
-            <a href="security.html">Security</a>
+            <h2>Company</h2>
+            <ul>
+              <li><a href="#about">About</a></li>
+              <li><a href="#log">Lab log</a></li>
+              <li><a href="#contact">Contact</a></li>
+              <li><a href="https://github.com/snowdamiz">GitHub</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Legal</h2>
+            <ul>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/privacy.html">Privacy</a></li>
+              <li><a href="/terms.html">Terms</a></li>
+              <li><a href="/security.html">Security</a></li>
+            </ul>
           </div>
         </nav>
       </div>
-
-      <div class="footer__bottom label">
-        <span>&copy; <span data-year>2026</span> Sigentic Labs LLC. All rights reserved.</span>
-        <a href="#top">Back to top <span aria-hidden="true">&uarr;</span></a>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Sigentic Labs LLC.</p>
+        <p><a href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a></p>
       </div>
     </div>
   </footer>

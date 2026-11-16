@@ -4,17 +4,15 @@
   const hero = document.querySelector('[data-hero]');
   if (!hero) return;
 
-  const stage = hero.querySelector('[data-stage]');
-  const canvas = stage && stage.querySelector('canvas');
+  const figure = hero.querySelector('[data-figure]');
+  const canvas = figure && figure.querySelector('canvas');
   const ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
   if (!ctx) return;
 
-  const title = hero.querySelector('.hero__title');
   const rotor = hero.querySelector('[data-rotator]');
-  const caption = hero.querySelector('[data-stage-caption]');
-  const nameEl = hero.querySelector('[data-stage-name]');
-  const ticksEl = hero.querySelector('[data-stage-ticks]');
-  const pauseBtn = hero.querySelector('[data-stage-pause]');
+  const picker = hero.querySelector('[data-picker]');
+  const pickLinks = [...picker.querySelectorAll('[data-scene]')];
+  const pauseBtn = hero.querySelector('[data-pause]');
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -23,13 +21,11 @@
   const SCENES = [
     {
       product: 'seed',
-      name: 'The Seed',
       word: 'what’s next.',
       fills: [...document.querySelectorAll('#i-logo path')].map((path) => path.getAttribute('d')),
     },
     {
       product: 'savorly',
-      name: 'Savorly',
       word: 'the kitchen.',
       box: [7, 0, 280],
       layers: [
@@ -41,7 +37,6 @@
     },
     {
       product: 'morse',
-      name: 'Morse',
       word: 'private chats.',
       box: [212, 212, 600],
       layers: [
@@ -51,7 +46,6 @@
     },
     {
       product: 'mesh',
-      name: 'Mesh',
       word: 'the backend.',
       stroke: 7,
       paths: ['M50 17L88.1 83L11.9 83Z', 'M50 61L50 17', 'M50 61L88.1 83', 'M50 61L11.9 83'],
@@ -59,7 +53,6 @@
     },
     {
       product: 'incant',
-      name: 'Incant',
       word: 'game makers.',
       box: [0, 0, 512],
       layers: [
@@ -69,7 +62,6 @@
     },
     {
       product: 'mixer',
-      name: 'Mixer',
       word: 'every phone.',
       image: 'assets/img/work/mixer-flick.webp',
     },
@@ -114,7 +106,6 @@
   let elapsed = 0, last = 0, raf = 0, visible = true;
   const pointer = { x: -1e5, y: -1e5, on: false };
 
-  /* ---------- sampling ---------- */
   function sample(scene, n) {
     const S = 240;
     const [bx, by, bs] = scene.box || [0, 0, 100];
@@ -177,9 +168,8 @@
     return { out, shade };
   }
 
-  /* ---------- layout ---------- */
   function layout() {
-    const r = stage.getBoundingClientRect();
+    const r = figure.getBoundingClientRect();
     dpr = Math.min(window.devicePixelRatio || 1, 2);
     W = Math.round(r.width * dpr);
     H = Math.round(r.height * dpr);
@@ -187,7 +177,7 @@
     canvas.height = H;
     cx = W / 2;
     cy = H / 2;
-    size = Math.min(W, H) * 0.74;
+    size = Math.min(W, H) * 0.94;
   }
 
   function init() {
@@ -226,20 +216,6 @@
     });
   }
 
-  function fitHeadline() {
-    const host = document.createElement('span');
-    host.style.cssText = 'position:absolute;left:0;top:0;visibility:hidden;white-space:nowrap';
-    title.append(host);
-    const em = parseFloat(getComputedStyle(title).fontSize);
-    const width = (el) => { host.replaceChildren(el); return el.getBoundingClientRect().width / em; };
-    const line = (text) => Object.assign(document.createElement('span'), { textContent: text, style: 'display:inline-block' });
-    const word = (text) => { const w = rotor.cloneNode(false); w.append(...letters(text, 'ch')); return w; };
-    const fixed = [...title.querySelectorAll('.hero__line')].filter((l) => !l.contains(rotor)).map((l) => l.textContent.trim());
-    const widest = Math.max(...fixed.map((t) => width(line(t))), ...SCENES.map((s) => width(word(s.word))));
-    host.remove();
-    hero.style.setProperty('--fit', widest.toFixed(3));
-  }
-
   const mix = (a, b, t) => a.map((v, i) => Math.round(v + (b[i] - v) * t));
   const rgb = (c) => `rgb(${c[0]},${c[1]},${c[2]})`;
 
@@ -250,11 +226,9 @@
       if (token !== wordToken) return;
       rotor.replaceChildren(...letters(scene.word, animate ? 'ch in' : 'ch'));
       rotor.dataset.product = scene.product;
-      rotor.classList.remove('is-wiping');
     };
     const old = rotor.querySelectorAll('.ch');
     if (animate && old.length) {
-      rotor.classList.add('is-wiping');
       old.forEach((s, k) => {
         s.classList.remove('in');
         s.style.setProperty('--k', k);
@@ -266,30 +240,15 @@
     }
   }
 
-  let captionToken = 0;
-  function setCaption(i, animate) {
-    const token = ++captionToken;
-    const s = SCENES[i];
-    const apply = () => {
-      if (token !== captionToken) return;
-      nameEl.textContent = s.name;
-      caption.classList.remove('is-swapping');
-    };
-    if (animate) {
-      caption.classList.add('is-swapping');
-      setTimeout(apply, 360);
-    } else {
-      apply();
-    }
-  }
-
-  const ticks = SCENES.map((s, i) => {
-    const b = document.createElement('button');
-    b.type = 'button';
-    b.setAttribute('aria-label', `Show ${s.name}`);
-    b.addEventListener('click', () => set({ scene: i }));
-    ticksEl.appendChild(b);
-    return b;
+  let held = false;
+  const sceneOf = (a) => SCENES.findIndex((sc) => sc.product === a.dataset.scene);
+  pickLinks.forEach((a) => {
+    const i = sceneOf(a);
+    a.addEventListener('pointerenter', (e) => { if (e.pointerType !== 'mouse') return; held = true; set({ scene: i }); });
+    a.addEventListener('pointerleave', () => { held = false; });
+    a.addEventListener('focus', () => { held = true; set({ scene: i }); });
+    a.addEventListener('blur', () => { held = false; });
+    a.addEventListener('click', () => set({ scene: i }));
   });
 
   function set({ scene = current, play = playing }) {
@@ -302,16 +261,12 @@
       elapsed = 0;
       settle = SETTLE_MS;
       setWord(SCENES[scene], !reduceMotion);
-      setCaption(scene, !reduceMotion);
+      hero.dataset.product = SCENES[scene].product;
     }
     playing = play;
 
-    ticks.forEach((b, i) => {
-      if (i === current) b.setAttribute('aria-current', 'true');
-      else b.removeAttribute('aria-current');
-      b.classList.toggle('is-done', i < current);
-    });
-    ticksEl.style.setProperty('--fill', reduceMotion ? 1 : elapsed / HOLD_MS);
+    pickLinks.forEach((a) => a.classList.toggle('is-current', a.dataset.scene === SCENES[current].product));
+    picker.style.setProperty('--fill', reduceMotion || !playing ? 1 : elapsed / HOLD_MS);
     pauseBtn.setAttribute('aria-pressed', String(!playing));
 
     if (reduceMotion) drawStatic();
@@ -334,16 +289,17 @@
     return { tint: mix(palFrom.tint, palTo.tint, t), ink: mix(palFrom.ink, palTo.ink, t) };
   }
 
-  /* ---------- simulation ---------- */
   function step(now) {
     raf = 0;
     const dt = last ? Math.min(now - last, 50) : 0;
     last = now;
     settle = Math.max(0, settle - dt);
-    if (playing) {
+    if (playing && !held) {
       elapsed += dt;
       if (elapsed >= HOLD_MS) set({ scene: (current + 1) % SCENES.length });
-      ticksEl.style.setProperty('--fill', elapsed / HOLD_MS);
+      picker.style.setProperty('--fill', Math.min(1, elapsed / HOLD_MS));
+    } else if (held) {
+      picker.style.setProperty('--fill', 1);
     }
 
     const since = SETTLE_MS - settle;
@@ -435,16 +391,15 @@
     draw(Infinity);
   }
 
-  /* ---------- events ---------- */
   pauseBtn.addEventListener('click', () => set({ play: !playing }));
 
-  stage.addEventListener('pointermove', (e) => {
+  figure.addEventListener('pointermove', (e) => {
     const r = canvas.getBoundingClientRect();
     pointer.x = (e.clientX - r.left) * dpr;
     pointer.y = (e.clientY - r.top) * dpr;
     pointer.on = true;
   }, { passive: true });
-  stage.addEventListener('pointerleave', () => { pointer.on = false; });
+  figure.addEventListener('pointerleave', () => { pointer.on = false; });
 
   let resizeTimer = 0;
   function onResize() {
@@ -463,7 +418,6 @@
     }, 120);
   }
 
-  /* ---------- boot ---------- */
   init();
   SCENES.forEach((s, i) => {
     if (!s.image) return;
@@ -478,11 +432,9 @@
     picture.src = s.image;
   });
   setWord(SCENES[0], false);
-  setCaption(0, false);
-  document.fonts.ready.then(fitHeadline);
   pauseBtn.hidden = reduceMotion;
 
-  if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(stage);
+  if ('ResizeObserver' in window) new ResizeObserver(onResize).observe(figure);
   else window.addEventListener('resize', onResize);
 
   if ('IntersectionObserver' in window) {

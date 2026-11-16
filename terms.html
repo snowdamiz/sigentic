@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Terms of Use — Sigentic Labs</title>
   <meta name="description" content="The terms that govern your use of the Sigentic Labs websites.">
-  <meta name="theme-color" content="#F4F1E9">
+  <meta name="theme-color" content="#FFFFFF">
   <meta name="color-scheme" content="light">
   <link rel="canonical" href="https://sigenticlabs.com/terms.html">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
@@ -20,7 +20,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..500,0,0;1,9..144,300..500,0,1&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..700&family=JetBrains+Mono&display=swap">
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>document.documentElement.classList.add('js')</script>
   <script src="assets/js/main.js" defer></script>
@@ -35,38 +35,61 @@
         <path d="M32.44 28.11 C21.82 28.11 13.37 32.23 9.03 38.73 C4.48 45.01 5.57 52.17 9.47 58.89 C12.94 64.74 17.49 68.86 21.61 70.37 C25.07 71.67 27.24 68.64 28.76 64.31 C32.23 53.68 35.69 48.7 43.28 45.23 C49.35 42.41 54.77 41.11 55.2 37.21 C55.64 32.88 50 30.06 44.36 29.19 C40.46 28.33 36.34 28.11 32.44 28.11 Z"/>
         <path d="M43.28 53.03 C39.16 56.29 35.69 61.49 35.48 67.77 C35.04 76.23 42.2 83.81 49.78 87.93 C57.59 92.48 67.77 94.22 77.09 92.05 C85.55 90.32 91.18 86.41 93.13 82.08 C95.3 77.31 91.4 69.07 87.28 64.96 C82.51 59.97 75.58 60.84 69.07 61.27 C59.75 62.35 55.42 58.02 50.87 53.9 C48.27 51.52 45.45 51.08 43.28 53.03 Z"/>
       </symbol>
-      <symbol id="i-arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 8H3M7 4L3 8l4 4"/></symbol>
     </defs>
   </svg>
 
   <header class="nav" data-nav>
-    <div class="nav__bar">
-      <a class="brand" href="index.html" aria-label="Sigentic Labs — home">
+    <div class="nav__in">
+      <a class="brand" href="/" aria-label="Sigentic Labs, home">
         <svg class="brand__mark" aria-hidden="true"><use href="#i-logo"/></svg>
-        <span class="brand__name">Sigentic<span> Labs</span></span>
+        <span>Sigentic Labs</span>
       </a>
-      <a class="btn btn--sm btn--ghost" href="index.html">
-        <svg class="btn__icon" aria-hidden="true"><use href="#i-arrow"/></svg>
-        Back to site
-      </a>
+      <nav class="nav__products" aria-label="Products" data-nav-products>
+        <a href="/#savorly" data-product="savorly"><i aria-hidden="true"></i>Savorly</a>
+        <a href="/#morse" data-product="morse"><i aria-hidden="true"></i>Morse</a>
+        <a href="/#mesh" data-product="mesh"><i aria-hidden="true"></i>Mesh</a>
+        <a href="/#incant" data-product="incant"><i aria-hidden="true"></i>Incant</a>
+        <a href="/#mixer" data-product="mixer"><i aria-hidden="true"></i>Mixer</a>
+      </nav>
+      <a class="nav__cta" href="/#contact">Contact</a>
+      <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
     </div>
   </header>
 
-  <main id="main" class="doc container">
+  <div class="menu" id="menu" data-menu hidden>
+    <nav class="menu__in" aria-label="Menu">
+      <ul class="menu__products">
+        <li><a href="/#savorly"><img src="assets/img/work/savorly-icon.svg" width="40" height="40" alt=""><span>Savorly <small>Cooking</small></span></a></li>
+        <li><a href="/#morse"><img src="assets/img/work/morse-icon.svg" width="40" height="40" alt=""><span>Morse <small>Private messaging</small></span></a></li>
+        <li><a href="/#mesh"><img src="assets/img/work/mesh-icon.svg" width="40" height="40" alt=""><span>Mesh <small>Programming language</small></span></a></li>
+        <li><a href="/#incant"><img src="assets/img/work/incant-icon.svg" width="40" height="40" alt=""><span>Incant <small>Game engine</small></span></a></li>
+        <li><a href="/#mixer"><img src="assets/img/work/mixer-icon.png" width="40" height="40" alt=""><span>Mixer <small>Mobile platform</small></span></a></li>
+      </ul>
+      <ul class="menu__more">
+        <li><a href="/#log">Lab log</a></li>
+        <li><a href="/#about">About</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <main id="main" class="doc">
     <!--
       TEMPLATE: have a qualified attorney review this before relying on it.
       Fill in the bracketed details (state of organization, county, mailing address).
     -->
 
-    <p class="eyebrow">Legal</p>
-    <h1 class="doc__title">Terms of <em>Use</em></h1>
-    <p class="doc__meta mono">Effective October 23, 2026</p>
+    <p class="doc__label">Legal</p>
+    <h1 class="doc__title">Terms of Use</h1>
+    <p class="doc__meta">Effective October 23, 2026</p>
 
     <p class="doc__lede">These terms govern your use of the websites run by Sigentic Labs LLC (&ldquo;Sigentic Labs,&rdquo; &ldquo;we,&rdquo; &ldquo;us&rdquo;). By using them, you agree to these terms.</p>
 
     <p class="doc__note"><strong>Products have their own terms.</strong> Savorly is governed by the <a href="https://savorly.cooking/terms">Savorly terms</a>. Our open-source code is covered by each repository&rsquo;s license. Where a product&rsquo;s own terms conflict with these, the product&rsquo;s terms apply to that product.</p>
 
-    <ol class="doc__toc specs">
+    <ol class="doc__toc">
       <li><a href="#scope">Scope</a></li>
       <li><a href="#use">Using our sites</a></li>
       <li><a href="#products">Product terms &amp; licenses</a></li>
@@ -122,11 +145,50 @@
     <p>Questions? Email <a href="mailto:hello@sigenticlabs.com?subject=Terms%20question">hello@sigenticlabs.com</a>.</p>
   </main>
 
-  <footer class="footer footer--slim">
-    <div class="container">
-      <div class="footer__bottom mono">
-        <span>&copy; <span data-year>2026</span> Sigentic Labs LLC. All rights reserved.</span>
-        <span class="footer__legal"><a class="footer__top-link" href="privacy.html">Privacy</a> &middot; <a class="footer__top-link" href="terms.html">Terms</a> &middot; <a class="footer__top-link" href="security.html">Security</a> &middot; <a class="footer__top-link" href="support.html">Support</a></span>
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <a class="brand" href="/" aria-label="Sigentic Labs, home">
+            <svg class="brand__mark" aria-hidden="true"><use href="#i-logo"/></svg>
+            <span>Sigentic Labs</span>
+          </a>
+          <p>An independent software lab. Focused software for everyday life, and tools for the people who build software and games.</p>
+        </div>
+        <nav class="footer__cols" aria-label="Footer">
+          <div>
+            <h2>Products</h2>
+            <ul>
+              <li><a href="/#savorly">Savorly</a></li>
+              <li><a href="/#morse">Morse</a></li>
+              <li><a href="/#mesh">Mesh</a></li>
+              <li><a href="/#incant">Incant</a></li>
+              <li><a href="/#mixer">Mixer</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Company</h2>
+            <ul>
+              <li><a href="/#about">About</a></li>
+              <li><a href="/#log">Lab log</a></li>
+              <li><a href="/#contact">Contact</a></li>
+              <li><a href="https://github.com/snowdamiz">GitHub</a></li>
+            </ul>
+          </div>
+          <div>
+            <h2>Legal</h2>
+            <ul>
+              <li><a href="/support.html">Support</a></li>
+              <li><a href="/privacy.html">Privacy</a></li>
+              <li><a href="/terms.html" aria-current="page">Terms</a></li>
+              <li><a href="/security.html">Security</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="footer__bottom">
+        <p>© <span data-year>2026</span> Sigentic Labs LLC.</p>
+        <p><a href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a></p>
       </div>
     </div>
   </footer>
