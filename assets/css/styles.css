@@ -69,7 +69,10 @@
 /* ---------- Base ---------- */
 
 *, *::before, *::after { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: var(--nav-h); }
+html { -webkit-text-size-adjust: 100%; }
+/* Margin on the content rather than scroll-padding on html: with scroll-padding, focusing a link in the
+   sticky nav scrolls the page up, which also hides the docked product links. */
+main, main * { scroll-margin-top: var(--nav-h); }
 body {
   margin: 0;
   background: var(--bg);
