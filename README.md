@@ -3,14 +3,14 @@
 The marketing site for **Sigentic Labs LLC**: a hand-built static site with no framework and no build step. It's served from Cloudflare (see "Deploy").
 
 ```
-index.html          Landing page (hero, five product rows, about, contact)
+index.html          Landing page (hero, five product stages, lab log, about, newsletter and contact)
 privacy.html        Privacy policy (a template, see "Before you launch")
 terms.html          Terms of use (a template)
 support.html        Support page, and the Support URL for the app stores
 security.html       Vulnerability disclosure policy
 404.html            Not-found page (uses absolute /assets paths)
 assets/css/         styles.css: the tokens, the components and every page's rules
-assets/js/          main.js: nav, reveals, copy buttons · sigil.js: the hero figure and its headline word
+assets/js/          main.js: nav, menu, reveals, copy buttons, newsletter form · sigil.js: the hero figure, its picker and its headline word
 assets/img/         logo, favicons, app icons, social share image (og.png), product captures in work/
 tools/              shoot.mjs (screenshots), contrast.mjs (AA check), sync-brand.mjs, and the templates for og.png and the PNG icons
 site.webmanifest, robots.txt, sitemap.xml
@@ -18,6 +18,8 @@ site.webmanifest, robots.txt, sitemap.xml
 wrangler.jsonc      Cloudflare Worker config · worker.js: www redirect · .assetsignore: files kept out of the site
 .github/workflows/  deploy.yml: deploys on pushes to the release branch
 ```
+
+All six pages share one nav, menu and footer, written out in each file. The homepage links to its own sections (`#savorly`, `#about`). The other five pages link back to them (`/#savorly`, `/#about`). When you change one copy, change all six.
 
 ## Preview locally
 
@@ -33,14 +35,25 @@ To see `404.html` locally, serve with `python3 .claude/devserver.py 4321` instea
 
 1. **Domain.** Find and replace `sigenticlabs.com` across the project with your real domain. It appears in canonical URLs, Open Graph tags, the sitemap and the email addresses.
 2. **Email.** Every contact link is `mailto:hello@…` with a pre-filled subject, so you need only one inbox. Change the address in the same find and replace.
-3. **Products.** The products section is five rows, one `<article class="chapter" data-product="…">` per project in `index.html` (`<!-- Savorly -->`, `<!-- Morse -->` and so on). Every row has the same parts. The text column starts with a meta line (`chapter__meta`: the product's swatch, its field and its status), then the name and tagline, a description, an availability line (`chapter__avail`: where the product runs today and what is not out yet) and its links. Mesh also has its install command with a copy button. Beside the text sits a plate: a colour field at a fixed height with the real product on it. Those are Savorly's phone screenshot, the Morse desktop capture, a Mesh program, Incant's game window with its agent panel, and an example Mixer app on an Android phone. Even rows put the plate on the right, so a new row alternates without a modifier class. A plate takes its colours from the product's four tokens (`--p-spot`, `--p-ink`, `--p-tint`, `--p-on`) in the token table at the top of `styles.css`, which `data-product` selects. Links like `#mesh` scroll to that row. Copy, statuses and links come from each repo's README and live site as of October 2026. When something ships, update its status and rewrite its availability line. The status is `state` (a filled lime dot: live or released) or `state state--dev` (a hollow dot: in development).
-4. **Legal and operations pages.** These are templates, **not legal advice**. Have an attorney review them. `terms.html` section 9 names the State of New York and Kings County as the governing law and venue, so confirm both.
+3. **Products.** Each product is one `<section class="stage" id="…" data-product="…">` in `index.html` (`<!-- Savorly -->`, `<!-- Morse -->` and so on). Every stage has the same three parts:
+   - `stage__head`: the app icon, the name, the tagline, a description and the links. The first link is the product button (`btn btn--product`), the second the Source link.
+   - `stage__media`: the product itself. Those are Savorly's phone screen, the Morse desktop window, the Mesh program with its install command, Incant's game window with its agent panel, and an example Mixer app on an Android phone.
+   - `stage__foot`: four features (`feats`), then the availability line (`avail`). The line holds the field, the status, the stage meter and a sentence on where the product runs today and what is not out yet.
+
+   Stages alternate white and grey, so keep `stage--alt` on every other one. The status dot is `dot` (filled: live or released) or `dot dot--ring` (hollow: in development). The meter's `data-step` is the stage on a four-step scale (1 Spark, 2 Prototype, 3 Beta, 4 Shipped), and the word after it names the same stage. Colours come from the product's row in the token table at the top of `styles.css`, which `data-product` selects. Copy, statuses and links come from each repo's README and live site as of October 2026. When something ships, update its status, meter and availability line, and add it to the lab log. A product also appears in the hero picker, the nav, the menu and the footer of all six pages.
+4. **Placeholders.** Some homepage content is invented so the design reads as finished. Replace or remove each item before launch. To find one, search `index.html` for the text in code font.
+   - Lab log dates: `datetime="2026-`. The months are guesses. The events are real milestones.
+   - Studio facts: `spec__grid--facts`. "Founded 2025", "Based in New York" and "Independent and self-funded" are placeholders. "5, all developed in public" is real.
+   - Founder card: `Founder name`. The name, the `FN` initials, the role and the one-line bio are all placeholders.
+   - Press kit link: `Press kit`. It points to `#`.
+   - Newsletter form: `data-signup`. The form has no backend. Submitting a valid address only clears the field and shows the toast "Thanks. We'll write when something ships." Nothing is sent or stored. Connect it to a mailing service or remove it. If you connect one, add it to the privacy policy.
+5. **Legal and operations pages.** These are templates, **not legal advice**. Have an attorney review them. `terms.html` section 9 names the State of New York and Kings County as the governing law and venue, so confirm both.
    - `privacy.html` covers this site, morseapp.io (including the Morse waitlist), meshlang.dev, the Incant site, and email. It points to Savorly's own policy. Publish a full Morse privacy policy before Morse's public release. Publish one for Mixer's hosted release service before it launches.
    - `terms.html` covers the same sites, plus product licenses, pre-release software and copyright (DMCA) notices.
    - `support.html` is the **Support URL** for App Store Connect and Google Play listings. It links each product's help, privacy and account-deletion pages. Savorly's own `/privacy` and `/account-deletion` are the URLs to give the stores for Savorly.
    - `security.html` and `/.well-known/security.txt` set out the vulnerability disclosure policy. `security.txt` has an `Expires` date (2027-10-20), so update it before then.
    - No cookie banner is needed: the site sets no cookies and has no analytics. Revisit this if you add analytics.
-5. **Social links.** The footer's Company column links GitHub. Add other profiles there as you create them.
+6. **Social links.** The footer's Company column links GitHub. Add other profiles there as you create them.
 
 ## Deploy
 
@@ -67,12 +80,11 @@ git push origin main:release
 
 ## Customizing the hero
 
-The hero is an ink stipple figure on a dotted notebook page, drawn on a canvas, and it morphs between product marks. The headline's last word changes with it, and so does the product name in the caption. Everything that changes with a scene comes from one entry in `SCENES` at the top of `assets/js/sigil.js`:
+The hero is an ink stipple figure drawn on a canvas. It morphs between the Seed mark and each product's mark. The headline's last word changes with it. Below the figure sits the picker, one link per product. Everything that changes with a scene comes from one entry in `SCENES` at the top of `assets/js/sigil.js`:
 
 ```js
 {
-  product: 'savorly',          // the scene's row in the stylesheet's token table
-  name: 'Savorly',             // the italic name in the caption, and each tick's label
+  product: 'savorly',          // the scene's row in the stylesheet's token table, and its picker link's data-scene
   word: 'the kitchen.',        // the headline's last word
   box: [7, 0, 280],            // the square of the drawing the figure uses: x, y, size
   layers: [                    // the drawing: fills, and cuts that knock holes in them
@@ -82,58 +94,60 @@ The hero is an ink stipple figure on a dotted notebook page, drawn on a canvas, 
 }
 ```
 
-- **`product`** names a row of `[data-product='…']` in `styles.css`. The script reads that row's `--p-tint` (the flat hand-tint printed slightly off the ink) and `--p-ink` (the colour of the lightest dots), so a scene needs no colour of its own. The script reads each colour back through the canvas, so the figure accepts hex, named colours, `rgb()` and `hsl()`. It cannot read `oklch()`, `lab()`, `color()` or `color-mix()`, which Chrome hands back in their own syntax. Keep the table in six-digit hex anyway, because `tools/contrast.mjs` reads only that form. The word in the headline wears the same row. The first scene uses `seed`, which is not a product.
+- **`product`** names a row of `[data-product='…']` in `styles.css`. The script reads that row's `--p-tint` (the flat wash printed slightly off the dots) and `--p-ink` (the colour of the lightest dots), so a scene needs no colour of its own. The script reads each colour back through the canvas, so the figure accepts hex, named colours, `rgb()` and `hsl()`. It cannot read `oklch()`, `lab()`, `color()` or `color-mix()`, which Chrome hands back in their own syntax. Keep the table in six-digit hex anyway, because `tools/contrast.mjs` reads only that form. The headline word and the hero's focus ring wear the same row. The first scene uses `seed`, which is not a product and has no picker link.
 - **The shape** is one of three kinds. `paths` are stroked at `stroke` width on a 100 by 100 grid, with optional `fills` for shapes that are filled (Mesh). `layers` are ordered `['fill' | 'cut', pathData]` pairs drawn on the square `box` of `[x, y, size]` (Savorly, Morse, Incant). An `image` is the URL of art whose opaque pixels the dots fill (Mixer's fox). Scene 0 passes only `fills`, read from the Seed paths in the page's `#i-logo` sprite symbol.
-- **Image art** should be on a transparent background. Its dark features (eyes, nose) are drawn in the darkest ink, its mid tones in the product ink, and its palest fur gets only the hand-tint.
+- **Image art** should be on a transparent background. Its dark features (eyes, nose) are drawn in the darkest ink, its mid tones in the product ink, and its palest fur gets only the wash.
 
-**To add a scene,** add a `[data-product='…']` row with its four tokens to the stylesheet (if it is a new product), then add an entry to `SCENES`. The caption, the ticks and the headline size follow from the list.
+**The picker** (`[data-picker]`) holds one link per product, `<a href="#mesh" data-scene="mesh" data-product="mesh">Mesh</a>`. A link's `data-scene` must match a scene's `product`. Hovering a link with a mouse, or focusing it with the keyboard, shows its scene and holds it there. Clicking it scrolls to the product's stage. The current link's underline fills over the hold time (`HOLD_MS`, 4.8 seconds), and the scene changes when it is full. The Pause button (`[data-pause]`) stops and restarts the cycle and reports its state in `aria-pressed`. After the page loads and after every jump, the figure keeps drawing for 1.8 seconds of on-screen time (`SETTLE_MS`) so the dots land, paused or not. With `prefers-reduced-motion` the figure draws one still scene and never cycles, and the Pause button is hidden. The picker still switches the still figure.
 
-**Headline size.** `.hero__title` is sized as its column's width divided by its widest line in em (`--fit`), so the longest line fills the column and never wraps. `sigil.js` measures the two fixed lines and every scene's `word` as they are set, once the fonts load, and writes `--fit` on the hero. A longer word needs no CSS change. The default `--fit` in the `.hero` rule is the widest today. It only matters for the first paint, so update it if you add a longer word.
+**To add a scene,** add a `[data-product='…']` row with its three tokens to the stylesheet (if it is a new product), add an entry to `SCENES`, and add its link to the picker.
 
-**Ticks and Pause.** The script builds one tick per scene in `[data-stage-ticks]`. Each is a button labelled "Show" and the scene's `name` (for example "Show Savorly") that jumps to its scene and keeps the current play state. The current tick fills over the hold time (`HOLD_MS`, 4.8 seconds) and finished ticks stay filled. The fill and the cycle read one clock, the script's running time, so the tick is full exactly when the scene changes. The Pause button (`[data-stage-pause]`) stops and restarts the cycle and reports its state in `aria-pressed`. After the page loads and after every jump, the figure keeps drawing for 1.8 seconds of on-screen time (`SETTLE_MS`) so the dots land, paused or not. Time spent off-screen or in a hidden tab does not count against it. With `prefers-reduced-motion` the figure draws one still scene, never cycles, and the Pause button is hidden.
+**Headline size.** `.hero__title` is sized by `--t-hero`, from 40px on phones to 84px. The rotating word never wraps (`.rotor` is `nowrap`), so check a longer word at 390px wide.
 
 ## Design system
 
-Colour is a small set of tokens in `:root` at the top of `assets/css/styles.css`. The page is paper and the type is ink. Lime is only ever a highlighter or a dot, because lime text fails AA on paper.
+`assets/css/styles.css` is in five parts, in order: tokens, base, components, sections and motion. Each component and section keeps its own phone rules beside it. The breakpoints are 1000px (grids drop to two columns), 900px (the nav becomes a menu) and 640px (phones).
+
+Colour is a small set of tokens in `:root`. The page is white, the type is near-black ink, and a light grey field marks every other stage, About and the footer.
 
 | Token | Value | Use |
 | --- | --- | --- |
-| `--paper` / `--paper-2` | `#F4F1E9` / `#E9E5D8` | Page, and deeper paper (the legal-page note) |
-| `--ink` | `#14160F` | Text, rules, the footer band |
-| `--ink-2` / `--ink-3` | `#4C5044` / `#5F6255` | Secondary text and mono labels |
-| `--rule` / `--rule-2` | ink at 16% / 32% | Hairlines |
-| `--lime` | `#BDF75F` | The highlighter, status dots, the contact band, the focus halo |
-| `--on-ink` / `-2` / `-3`, `--rule-on-ink` | `#F4F1E9` / `#C9C6BA` / `#8E9182`, paper at 18% | Text and rules on ink |
-| `--code-type` / `--code-num` | `#2238B8` / `#A63D0C` | The Mesh code sample |
+| `--bg` / `--bg-2` | `#FFFFFF` / `#F5F5F3` | Page, and the grey field (alternate stages, About, the footer, the legal-page note) |
+| `--ink` | `#16171A` | Text, the ink button, the toast |
+| `--ink-2` | `#5B5E65` | Secondary text: descriptions, ledes, nav and footer links |
+| `--ink-3` | `#6C6F75` | The newsletter placeholder, and the numbers and bullets on the legal pages |
+| `--on-ink` | `#FFFFFF` | Text on ink and on product buttons |
+| `--rule` / `--rule-2` | ink at 10% / 18% | Hairlines and outlined buttons |
+| `--lime` | `#BDF75F` | Text selection |
+| `--code-bg`, `--code-bar`, `--code-term` | `#141518`, `#1B1C20`, `#0F1012` | The Mesh code window, its title bar and its install bar |
+| `--code-text`, `--code-dim` | `#E4E5E8`, `#9A9CA3` | Code and the window title |
+| `--code-key`, `--code-type`, `--code-fn`, `--code-num` | `#FF7AB2`, `#8FD6FF`, `#7EE0B5`, `#F8C77E` | Mesh syntax colours |
 
-Each product has one row in the token table below `:root`, selected by `data-product`. A product row, its plate and swatch, the About corners and the hero all read only these four tokens.
+Each product has one row in the token table below `:root`, selected by `data-product`. A stage, its links and status, the nav and picker marks, the lab log dots and the hero read only these three tokens.
 
-| `data-product` | `--p-spot` (plate) | `--p-ink` (text on paper) | `--p-tint` (highlighter) | `--p-on` (text on the spot) |
-| --- | --- | --- | --- | --- |
-| `seed` | `#BDF75F` | `--ink` | `#BDF75F` | `--ink` |
-| `savorly` | `#F26B2A` | `#A63D0C` | `#FFD6BA` | `--ink` |
-| `morse` | `#2B50E0` | `#2238B8` | `#CFD8FF` | `--paper` |
-| `mesh` | `#0B7A55` | `#0B6E4C` | `#BDEBD5` | `--paper` |
-| `incant` | `#6645E8` | `#5332D0` | `#DCD3FF` | `--paper` |
-| `mixer` | `#F0503C` | `#A82A18` | `#FFD0C6` | `--ink` |
+| `data-product` | `--p-spot` (dots, meter, underline) | `--p-ink` (button, links, hero word, focus ring) | `--p-tint` (the hero figure's wash) |
+| --- | --- | --- | --- |
+| `seed` | `#BDF75F` | `--ink` | `#BDF75F` |
+| `savorly` | `#F26B2A` | `#A63D0C` | `#FFD6BA` |
+| `morse` | `#2B50E0` | `#2238B8` | `#CFD8FF` |
+| `mesh` | `#0B7A55` | `#0B6E4C` | `#BDEBD5` |
+| `incant` | `#6645E8` | `#5332D0` | `#DCD3FF` |
+| `mixer` | `#F0503C` | `#A82A18` | `#FFD0C6` |
 
-The rest of the scale is also tokens: type sizes `--t-display` to `--t-label`, spacing `--s-1` to `--s-9` and `--section`, radii `--r-*`, and `--measure` (33rem, the reading column of the text pages, about 68 characters of Geist). Pages are built from components, not one-off rules:
+The rest of the scale is also tokens. The type sizes run `--t-hero` (84px, 40px on phones), `--t-name` (80/52), `--t-h2` (52/34), `--t-h3` (36/28), `--t-tag` (28/22), `--t-lead` (20/18), `--t-body` (17) and `--t-small` (14). Spacing runs on 8px steps, `--s1` (8px) to `--s7` (96px), with `--section` for the padding of each section. `--wrap` (1200px) is the widest column, `--gutter` the page margin and `--nav-h` the nav's height. Pages are built from these components:
 
-- **Label** (`.label`, `.mono`, `.eyebrow`): small uppercase Geist Mono.
-- **Highlighter** (`.hl`): a lime stroke behind ink text.
-- **Swatch** (`.swatch`): a small square in the product's spot colour.
-- **Buttons and links** (`.btn` with `--ink`, `--lime`, `--ghost` and `--sm`, and `.text-link`).
-- **Status** (`.state`, `.state--dev`).
-- **Corner marks** (`.marks`): crop marks on the hero figure.
-- **Ruled list** (`.specs`): a numbered list between hairlines. The text pages use it for their contents.
-- **Product row and plate** (`.chapter`, `.plate`).
-- **Section title** (`.section-title`) and **text page** (`.doc`, with `.doc__title`, `.doc__note` and `.doc__toc`).
-- **Visually hidden** (`.visually-hidden`): read by screen readers, not drawn. The About section's heading uses it.
-- **Copy button**: any button with `data-copy` puts that text on the clipboard. Its toast says `data-copy-toast`, or "Copied." without one. The element inside it marked `data-copy-label` reads "Copied" for about two seconds, then returns to its own text.
+- **Buttons and links**: `.btn` (ink), `.btn--product` (the product's ink), and `.more`, a text link with a chevron.
+- **Copy button** (`.copy`): any button with `data-copy` puts that text on the clipboard and shows its `data-copy-toast` in the toast. Give it both attributes and a `data-copy-label` element, which reads "Copied" for about two seconds. Inside the code window it turns dark.
+- **Status** (`.dot`, `.dot--ring`) and **stage meter** (`.meter` with `data-step`).
+- **Section title** (`.section-title`).
+- **Devices and windows**: `.device--iphone` and `.device--pixel` frame phone screens. `.window` frames a desktop capture (`.window--morse`) or the code sample (`.window--code`, with `.code` and the install bar `.term`). `.duo` overlaps two images (Incant).
+- **Product stage** (`.stage`, grey with `.stage--alt`), **lab log** (`.log`), **About** (`.about`, `.spec`, `.person`) and **newsletter and contact** (`.reach`, `.signup`, `.mail`, `.routes`).
+- **Text page** (`.doc`, with `.doc__label`, `.doc__title`, `.doc__meta`, `.doc__lede`, `.doc__note` and the numbered contents `.doc__toc`), used by the four legal and support pages. **Not-found page** (`.lost`).
+- **Visually hidden** (`.visually-hidden`): read by screen readers, not drawn.
 
-Type: **Fraunces** for display, headings and the italic emphasis, **Geist** for body text and interface, and **Geist Mono** for labels, status and code. All three load from Google Fonts, in one `<link>` on each of the six pages. A `Fraunces Fallback` face in the stylesheet sizes Georgia to Fraunces' metrics so the headline does not jump when the font arrives. If you want zero third-party requests, self-host the font files, update the `<link>` tags and keep the `--serif`, `--sans` and `--mono` tokens. The privacy policy mentions Google Fonts, so edit that paragraph if you do.
+Type is **Schibsted Grotesk** (weights 400 to 700) for everything, and **JetBrains Mono** for the Mesh code and the install command. Both load from Google Fonts, in one `<link>` on each of the six pages. If you want zero third-party requests, self-host the font files, update the `<link>` tags and keep the `--sans` and `--mono` tokens. The privacy policy mentions Google Fonts, so edit that paragraph if you do.
 
-The **Seed** logo is three soft, asymmetric forms growing around an open center. The approved artwork lives in `assets/img/logo.svg`. On paper the mark is ink (`.brand__mark` takes `--ink`), and on the ink footer it is lime. Lime is the highlighter on paper, never the mark's colour there. The mark can be rendered in one color. Keep the three shapes together and preserve their spacing. `logo-tile.svg` / `favicon.svg` is the icon version, lime on a flat charcoal tile.
+The **Seed** logo is three soft, asymmetric forms growing around an open center. The approved artwork lives in `assets/img/logo.svg`. On the site the mark takes the text colour (`.brand__mark` uses `currentColor`), so it is ink. The mark can be rendered in one color. Keep the three shapes together and preserve their spacing. `logo-tile.svg` / `favicon.svg` is the icon version, lime on a flat charcoal tile.
 
 After editing the source SVG, run `node tools/sync-brand.mjs` to update the six page sprites and SVG icon tiles. The animated hero reads its paths from the page sprite; both image templates load the source SVG directly. The brand preview at `tools/brand/preview.html` shows the mark at navigation and favicon sizes.
 
@@ -152,18 +166,20 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 ## Accessibility & performance
 
 - Respects `prefers-reduced-motion`: animations and transitions are off, reveals appear at once, the hero draws one still figure and never cycles, and the Pause button is hidden because there is nothing to pause.
-- Without reduced motion the hero cycles every 4.8 seconds. The Pause button stops it, and each tick jumps to a scene.
-- Without JavaScript the nav has no menu. At 900 px and under it takes two rows, with the brand and "Get in touch" on the first and the two links on the second, and every link stays on screen. With JavaScript on, those widths get the menu button instead.
-- Semantic landmarks, a skip link, labelled controls, and an accessible name for the animated headline. The focus ring is an ink outline over a lime halo, so it reads on paper, on ink and on every product colour.
-- `node tools/contrast.mjs` checks a hand-kept list of text and background pairs, and the focus ring on each field, against WCAG AA. It reads the colours from `styles.css`, so a token change is rechecked, and it exits 1 if a pair fails. It checks each colour at full strength. It does not find pairs on its own and does not see opacity, so add a row to its `pairs` list when you put a text colour on a new background, and do not fade text below its token. At the time of writing all 40 pairs pass.
+- Without reduced motion the hero cycles every 4.8 seconds. The Pause button stops it. Hovering or focusing a picker link shows that product and holds it.
+- On the homepage the nav's product links stay hidden while the hero's picker is on screen, and appear (dock) once it scrolls under the nav. The other pages show them from the start.
+- Without JavaScript the hero shows the still Seed mark and the nav has no menu. At 900px and under, the nav's product links take a second row instead, so every link stays on screen. With JavaScript on, those widths get the menu button.
+- Semantic landmarks, a skip link, labelled controls, and an accessible name for the animated headline. The focus ring is a 2px outline in the product's `--p-ink`, or in ink outside a product, and light (`--code-text`) inside the Mesh code window. The stage meter's word is read with a hidden "Stage:" before it, so the bars carry nothing that text does not.
+- Anchors and focused content stop below the sticky nav through `scroll-margin-top` on `main` and everything in it. It is not `scroll-padding-top` on `html`, because with that, focusing a link in the sticky nav scrolls the page.
+- `node tools/contrast.mjs` checks a hand-kept list of text and background pairs, and the focus ring on each background, against WCAG AA. It reads the colours from `styles.css`, so a token change is rechecked, and it exits 1 if a pair fails. It checks each colour at full strength. It does not find pairs on its own and does not see opacity, so add a row to its `pairs` list when you put a text colour on a new background, and do not fade text below its token. At the time of writing all 47 pairs pass.
 - The particle canvas pauses when the hero is off-screen or the tab is hidden. It draws 4,200 particles, or 2,600 under 900 px wide.
-- No frameworks or trackers. The JavaScript is about 24 KB unminified (`wc -c assets/js/*.js`).
+- No frameworks or trackers. The JavaScript is about 23 KB unminified (`wc -c assets/js/*.js`).
 
 ## Tools
 
 Neither tool needs a package. `shoot.mjs` needs Node 22 or newer.
 
-- **`tools/shoot.mjs`** takes screenshots with headless Chrome, for checking a page at a given width. It scrolls the page first so scroll reveals have run. It exits non-zero when the page cannot be reached, when it does not finish loading within 30 seconds, and on any page error, including a 404 response. It looks for Chrome at the macOS path, or at `$CHROME`. Options include `--width`, `--height`, `--mobile`, `--scale`, `--tiles` (one image per screen height), `--full`, `--selector` and `--eval`.
+- **`tools/shoot.mjs`** takes screenshots with headless Chrome, for checking a page at a given width. It scrolls the page first so scroll reveals have run. It exits non-zero when the page cannot be reached, when it does not finish loading within 30 seconds, and on any page error, including a 404 response. A shot of a missing path therefore exits 1 on the 404 page's own status, so read its error list rather than the exit code. It looks for Chrome at the macOS path, or at `$CHROME`. Options include `--width`, `--height`, `--mobile`, `--scale`, `--tiles` (one image per screen height), `--full`, `--selector` and `--eval`.
 
   ```bash
   node tools/shoot.mjs http://127.0.0.1:4321/ /tmp/home.png --tiles --width 1440 --height 900
