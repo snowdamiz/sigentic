@@ -43,9 +43,9 @@ const pairs = [
   [t('ink'), t('paper'), BODY, '--ink on --paper: body text, headings'],
   [t('ink-2'), t('paper'), BODY, '--ink-2 on --paper: ledes, descriptions'],
   [t('ink-3'), t('paper'), BODY, '--ink-3 on --paper: mono labels'],
-  [t('ink'), t('paper-2'), BODY, '--ink on --paper-2: lab ledger names and titles'],
-  [t('ink-2'), t('paper-2'), BODY, '--ink-2 on --paper-2: lab notes, legal-page note'],
-  [t('ink-3'), t('paper-2'), BODY, '--ink-3 on --paper-2: labels in the ledger'],
+  [t('ink'), t('paper-2'), BODY, '--ink on --paper-2: legal-page note emphasis'],
+  [t('ink-2'), t('paper-2'), BODY, '--ink-2 on --paper-2: legal-page note'],
+  [t('ink-3'), t('paper-2'), BODY, '--ink-3 on --paper-2: labels on deeper paper'],
   [t('paper'), t('ink'), BODY, '--paper on --ink: ink buttons, toast'],
   [t('ink'), t('lime'), BODY, '--ink on --lime: highlighted text, lime button, contact band'],
   [t('ink-2'), t('lime'), BODY, '--ink-2 on --lime: contact lede and labels'],
@@ -58,7 +58,7 @@ const pairs = [
   ...products.filter((p) => p.name !== 'seed').flatMap((p) => [
     [p['p-ink'], t('paper'), BODY, `${p.name} --p-ink on --paper: tagline italic, manifesto corner, code keywords`],
     [p['p-ink'], p['p-tint'], LARGE, `${p.name} --p-ink on --p-tint: hero word on its highlighter`],
-    [p['p-on'], p['p-spot'], BODY, `${p.name} --p-on on --p-spot: plate captions and notes`],
+    [p['p-on'], p['p-spot'], BODY, `${p.name} --p-on on --p-spot: text on its plate`],
   ]),
   ...products.filter((p) => p.name === 'seed').map((p) => [p['p-ink'], p['p-tint'], LARGE, 'seed --p-ink on --p-tint: hero word on its highlighter']),
 ];
