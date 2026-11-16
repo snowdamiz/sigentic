@@ -376,8 +376,13 @@
         </div>
         <div class="inst-body incant">
           <div class="stage-view">
-            <canvas class="game" data-game tabindex="0" role="img" aria-label="A small sample game. Focus it and use the arrow keys to walk and jump."></canvas>
+            <canvas class="game" data-game tabindex="0" role="application" aria-roledescription="game" aria-label="Sample game. Use the arrow keys to walk and Space to jump, or the buttons on the scene."></canvas>
             <p class="game-hud" data-hud aria-live="polite">Crystals 0/0</p>
+            <div class="pad" role="group" aria-label="Game controls">
+              <button type="button" data-pad="left" aria-label="Walk left"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+              <button type="button" data-pad="jump">Jump</button>
+              <button type="button" data-pad="right" aria-label="Walk right"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
           </div>
           <div class="agent">
             <p class="agent-k">Ask the agent</p>
@@ -396,7 +401,7 @@
             </div>
           </div>
         </div>
-        <figcaption class="inst-note">Requests become readable commands. You allow them, the scene changes, and undo walks them back. A sketch of the idea, not the engine. Focus the scene to play with the arrow keys.</figcaption>
+        <figcaption class="inst-note">Requests become readable commands. You allow them, the scene changes, and undo walks them back. A sketch of the idea, not the engine. Steer the robot with the arrow keys or the buttons on the scene.</figcaption>
       </figure>
     </div>
   </div>

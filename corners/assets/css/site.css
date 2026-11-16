@@ -607,6 +607,15 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .stage-view { position: relative; border-radius: 12px; overflow: hidden; border: 1px solid var(--dev-line); }
 .game { width: 100%; aspect-ratio: 4 / 3; background: #87b6e8; outline: none; }
 .stage-view:has(.game:focus-visible) { outline: 3px solid var(--accent); outline-offset: 3px; }
+.pad { position: absolute; right: 10px; bottom: 10px; display: flex; gap: 6px; }
+.pad button {
+  display: grid; place-items: center; min-width: 40px; height: 40px; padding: 0 12px; border: 0; border-radius: 999px;
+  background: rgba(10, 10, 8, .72); color: #fff; font-size: 13px; font-weight: 650;
+  touch-action: manipulation; -webkit-user-select: none; user-select: none;
+}
+.pad button:active { background: rgba(10, 10, 8, .9); }
+.pad svg { width: 16px; height: 16px; }
+.pad [data-pad="left"] svg { transform: scaleX(-1); }
 .game-hud {
   position: absolute; top: 10px; left: 10px; padding: 5px 9px; border-radius: 6px;
   background: rgba(10, 10, 8, .6); color: #fff; font: 600 11px/1 var(--mono); font-stretch: 87.5%;
@@ -680,9 +689,10 @@ a { color: inherit; text-decoration-thickness: 1.5px; text-underline-offset: .18
 .p-sub { display: block; font-size: 1em; font-weight: 450; color: #6c6c70; }
 .ios-row label, .and-row label { flex: 1; min-width: 0; cursor: pointer; }
 .ios-switch, .and-switch { appearance: none; -webkit-appearance: none; margin: 0; flex: none; cursor: pointer; position: relative; }
-.ios-switch { width: 3.8em; height: 2.3em; border-radius: 1.2em; background: #e9e9eb; transition: background-color .25s; }
-.ios-switch::after { content: ""; position: absolute; top: .2em; left: .2em; width: 1.9em; height: 1.9em; border-radius: 50%; background: #fff; box-shadow: 0 .2em .4em rgba(0, 0, 0, .2); transition: transform .25s var(--ease); }
-.ios-switch:checked { background: #34c759; }
+.ios-switch { width: 3.8em; height: 2.3em; border-radius: 1.2em; background: #e9e9eb; box-shadow: inset 0 0 0 .15em #79797e; transition: background-color .25s, box-shadow .25s; }
+.ios-switch::after { content: ""; position: absolute; top: .2em; left: .2em; width: 1.9em; height: 1.9em; border-radius: 50%; background: #fff; box-shadow: 0 0 0 .1em #79797e, 0 .2em .4em rgba(0, 0, 0, .2); transition: transform .25s var(--ease), box-shadow .25s; }
+.ios-switch:checked { background: #1f8f3f; box-shadow: none; }
+.ios-switch:checked::after { box-shadow: 0 .2em .4em rgba(0, 0, 0, .25); }
 .ios-switch:checked::after { transform: translateX(1.5em); }
 .ios-switch:focus-visible, .and-switch:focus-visible { outline: .2em solid #0a84ff; outline-offset: .2em; }
 

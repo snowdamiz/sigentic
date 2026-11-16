@@ -53,7 +53,8 @@ function cycleHero() {
   let turns = 0;
   let timer = 0;
   let swapTimer = 0;
-  let held = false;
+  let hovering = false;
+  let focused = false;
   let visible = true;
 
   const paint = (i, animate) => {
@@ -78,7 +79,7 @@ function cycleHero() {
 
   const schedule = () => {
     clearTimeout(timer);
-    if (held || !visible || reduced.matches || document.hidden || turns >= rooms.length) return;
+    if (hovering || focused || !visible || reduced.matches || document.hidden || turns >= rooms.length) return;
     timer = setTimeout(() => {
       turns++;
       paint((index + 1) % rooms.length, true);
@@ -87,15 +88,14 @@ function cycleHero() {
   };
 
   rooms.forEach((el, i) => {
-    const enter = () => { held = true; clearTimeout(timer); if (i !== index) paint(i, true); };
-    const leave = () => { held = false; schedule(); };
-    el.addEventListener('pointerenter', enter);
-    el.addEventListener('pointerleave', leave);
-    el.addEventListener('focusin', enter);
-    el.addEventListener('focusout', leave);
+    const show = () => { clearTimeout(timer); if (i !== index) paint(i, true); };
+    el.addEventListener('pointerenter', () => { hovering = true; show(); });
+    el.addEventListener('pointerleave', () => { hovering = false; schedule(); });
+    el.addEventListener('focusin', () => { focused = true; show(); });
+    el.addEventListener('focusout', () => { focused = false; schedule(); });
   });
-  swap.addEventListener('pointerenter', () => { held = true; clearTimeout(timer); });
-  swap.addEventListener('pointerleave', () => { held = false; schedule(); });
+  swap.addEventListener('pointerenter', () => { hovering = true; clearTimeout(timer); });
+  swap.addEventListener('pointerleave', () => { hovering = false; schedule(); });
   document.addEventListener('visibilitychange', schedule);
   reduced.addEventListener('change', schedule);
   new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; schedule(); }).observe(swap);

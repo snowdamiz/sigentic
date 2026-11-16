@@ -34,7 +34,7 @@ corners/assets/js/instruments/     One module per product demo, started only whi
 tools/corners-og.html              Source of corners/assets/img/og.png and touch-icon.png
 ```
 
-The demos are sketches that run in the browser. Each one says so in its caption. Morse's demo does real ECDH and AES-GCM with Web Crypto, which needs `localhost` or https.
+The demos run in the browser, and each caption says what is real and what is only illustrated. Morse's demo does real ECDH and AES-GCM with Web Crypto, which needs `localhost` or https. The others simulate the product.
 
 The pages carry `noindex` while they are a candidate. Share the link with its trailing slash, `/corners/`. The Worker only maps paths that end in `/` to `index.html`, so `/corners` gets the root 404 page, and so does any missing `/corners/...` URL.
 

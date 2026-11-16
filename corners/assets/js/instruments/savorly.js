@@ -31,7 +31,7 @@ const DISHES = [
   },
 ];
 
-const DEMO_SECONDS = 16;
+const DEMO_SECONDS = 28;
 
 const clock = (m) => {
   const day = ((Math.round(m) % 1440) + 1440) % 1440;
@@ -152,12 +152,12 @@ export function mountSavorly(root, { reduced }) {
       chart.querySelector(`[data-seg="${d.id}-${i}"]`)?.classList.toggle('is-now', mode !== 'idle' && s.start <= t && t < s.end);
     }));
     if (mode === 'idle') return;
-    for (const s of meal.steps) {
-      if (s.start > t || started.has(stepKey(s))) continue;
-      started.add(stepKey(s));
-      say.textContent = `${clock(s.start)}. ${s.dish.name}. ${s.text}`;
-      if (speak) voice.speak(new SpeechSynthesisUtterance(`${s.dish.name}. ${s.text}`));
-    }
+    const fresh = meal.steps.filter((s) => s.start <= t && !started.has(stepKey(s)));
+    if (!fresh.length) return;
+    fresh.forEach((s) => started.add(stepKey(s)));
+    const line = fresh.map((s) => `${s.dish.name}. ${s.text}`).join(' ');
+    say.textContent = `${clock(fresh[0].start)}. ${line}`;
+    if (speak) voice.speak(new SpeechSynthesisUtterance(line));
   }
 
   function setMode(next) {
@@ -166,6 +166,7 @@ export function mountSavorly(root, { reduced }) {
     cookIcon.setAttribute('href', next === 'running' ? '#i-pause' : '#i-play');
     chart.toggleAttribute('data-cooking', next !== 'idle');
     cancelAnimationFrame(raf);
+    if (next === 'paused') voice?.cancel();
     if (next === 'running') {
       last = performance.now();
       raf = requestAnimationFrame(frame);
@@ -225,7 +226,8 @@ export function mountSavorly(root, { reduced }) {
     speakBtn.addEventListener('click', () => {
       speak = !speak;
       speakBtn.setAttribute('aria-pressed', String(speak));
-      if (!speak) voice.cancel();
+      voice.cancel();
+      if (speak) voice.speak(new SpeechSynthesisUtterance('Steps will be read aloud.'));
     });
   }
 

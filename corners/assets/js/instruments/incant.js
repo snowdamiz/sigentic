@@ -145,16 +145,29 @@ export function mountIncant(root, { reduced }) {
   redoBtn.addEventListener('click', () => { if (cursor < history.length) step(1); });
 
   const CONTROL = { ArrowLeft: 'left', a: 'left', ArrowRight: 'right', d: 'right', ArrowUp: 'jump', w: 'jump', ' ': 'jump' };
+  const hold = (k) => {
+    keys.add(k);
+    manualUntil = time + 4;
+    if (!raf) loop();
+  };
   canvas.addEventListener('keydown', (e) => {
     const k = CONTROL[e.key];
     if (!k) return;
     e.preventDefault();
-    keys.add(k);
-    manualUntil = time + 4;
-    if (!raf) loop();
+    hold(k);
   });
   canvas.addEventListener('keyup', (e) => { const k = CONTROL[e.key]; if (k) keys.delete(k); });
   canvas.addEventListener('blur', () => keys.clear());
+  root.querySelectorAll('[data-pad]').forEach((btn) => {
+    const k = btn.dataset.pad;
+    btn.addEventListener('pointerdown', (e) => { btn.setPointerCapture(e.pointerId); hold(k); });
+    for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) btn.addEventListener(type, () => keys.delete(k));
+    btn.addEventListener('click', (e) => {
+      if (e.detail) return;
+      hold(k);
+      setTimeout(() => keys.delete(k), 350);
+    });
+  });
 
   function jump() {
     if (!player.ground) return;
@@ -164,6 +177,7 @@ export function mountIncant(root, { reduced }) {
 
   function update(dt) {
     time += dt;
+    if (keys.size) manualUntil = time + 4;
     const manual = time < manualUntil;
     let dir = 0;
     if (manual) {
