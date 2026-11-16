@@ -72,6 +72,7 @@ export function mountSavorly(root, { reduced }) {
   const cookIcon = cookBtn.querySelector('use');
   const speakBtn = $('[data-speak]');
   const dishBox = $('[data-dishes]');
+  const say = $('[data-say]');
 
   const on = new Set(DISHES.map((d) => d.id));
   let serve = 19 * 60 + 30;
@@ -79,11 +80,11 @@ export function mountSavorly(root, { reduced }) {
   let mode = 'idle';
   let t = meal.from;
   let speak = false;
-  let spoken = new Set();
+  let started = new Set();
   let raf = 0;
   let last = 0;
 
-  for (const d of DISHES) {
+  const toggles = DISHES.map((d) => {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'dish-toggle';
@@ -91,16 +92,21 @@ export function mountSavorly(root, { reduced }) {
     b.setAttribute('aria-pressed', 'true');
     b.textContent = d.name;
     b.addEventListener('click', () => {
-      if (on.has(d.id) && on.size === 1) return;
       on.has(d.id) ? on.delete(d.id) : on.add(d.id);
       b.setAttribute('aria-pressed', String(on.has(d.id)));
+      toggles.forEach((btn, i) => {
+        btn.disabled = on.size === 1 && on.has(DISHES[i].id);
+        btn.title = btn.disabled ? 'A meal needs at least one dish' : '';
+      });
       replan();
     });
     dishBox.append(b);
-  }
+    return b;
+  });
 
   const pct = (m) => ((m - meal.from) / (meal.serve - meal.from)) * 100;
   const stepKey = (s) => `${s.dish.id}-${s.start}`;
+  const voice = 'speechSynthesis' in window ? speechSynthesis : null;
 
   function drawChart() {
     const every = meal.serve - meal.from > 120 ? 30 : 15;
@@ -145,18 +151,17 @@ export function mountSavorly(root, { reduced }) {
     meal.dishes.forEach((d) => d.steps.forEach((s, i) => {
       chart.querySelector(`[data-seg="${d.id}-${i}"]`)?.classList.toggle('is-now', mode !== 'idle' && s.start <= t && t < s.end);
     }));
-    if (!speak || mode === 'idle') return;
+    if (mode === 'idle') return;
     for (const s of meal.steps) {
-      if (s.start <= t && !spoken.has(stepKey(s))) {
-        spoken.add(stepKey(s));
-        speechSynthesis.speak(new SpeechSynthesisUtterance(`${s.dish.name}. ${s.text}`));
-      }
+      if (s.start > t || started.has(stepKey(s))) continue;
+      started.add(stepKey(s));
+      say.textContent = `${clock(s.start)}. ${s.dish.name}. ${s.text}`;
+      if (speak) voice.speak(new SpeechSynthesisUtterance(`${s.dish.name}. ${s.text}`));
     }
   }
 
   function setMode(next) {
     mode = next;
-    cookBtn.setAttribute('aria-pressed', String(next === 'running'));
     cookLabel.textContent = reduced.matches && next === 'paused' ? 'Next step' : LABEL[next];
     cookIcon.setAttribute('href', next === 'running' ? '#i-pause' : '#i-play');
     chart.toggleAttribute('data-cooking', next !== 'idle');
@@ -174,7 +179,12 @@ export function mountSavorly(root, { reduced }) {
     last = now;
     const minute = Math.floor(t);
     t += dt * ((meal.serve - meal.from) / DEMO_SECONDS);
-    if (t >= meal.serve) { t = meal.serve; setMode('done'); return; }
+    if (t >= meal.serve) {
+      t = meal.serve;
+      setMode('done');
+      say.textContent = `Dinner is ready at ${clock(meal.serve)}.`;
+      return;
+    }
     drawLive();
     if (Math.floor(t) !== minute) drawSteps();
     raf = requestAnimationFrame(frame);
@@ -182,8 +192,8 @@ export function mountSavorly(root, { reduced }) {
 
   function rewind() {
     t = meal.from;
-    spoken = new Set();
-    if ('speechSynthesis' in window) speechSynthesis.cancel();
+    started = new Set();
+    voice?.cancel();
   }
 
   function replan() {
@@ -210,19 +220,21 @@ export function mountSavorly(root, { reduced }) {
     replan();
   }));
 
-  if ('speechSynthesis' in window) {
+  if (voice) {
     speakBtn.hidden = false;
     speakBtn.addEventListener('click', () => {
       speak = !speak;
       speakBtn.setAttribute('aria-pressed', String(speak));
-      if (speak) spoken = new Set(meal.steps.filter((s) => s.start < t).map(stepKey));
-      else speechSynthesis.cancel();
+      if (!speak) voice.cancel();
     });
   }
 
   replan();
 
   return {
-    stop() { if (mode === 'running') setMode('paused'); },
+    stop() {
+      if (mode === 'running') setMode('paused');
+      voice?.cancel();
+    },
   };
 }

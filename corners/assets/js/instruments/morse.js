@@ -30,6 +30,7 @@ export function mountMorse(root) {
   if (!subtle) {
     cipherOut.textContent = 'Web Crypto needs a secure (https) page.';
     bubble.textContent = input.value;
+    cheatBtn.disabled = true;
     return {};
   }
 
@@ -54,17 +55,22 @@ export function mountMorse(root) {
     servedOut.textContent = servedFp;
     wire.toggleAttribute('data-cheating', cheating);
 
-    witnesses.forEach((w) => w.classList.remove('is-ok', 'is-bad'));
+    const matches = servedFp === keys.alexFp;
+    witnesses.forEach((w) => {
+      w.classList.remove('is-ok', 'is-bad');
+      w.querySelector('[data-verdict]').textContent = '';
+    });
     witnesses.forEach((w, i) => setTimeout(() => {
       if (mine !== run) return;
-      w.classList.add(servedFp === keys.alexFp ? 'is-ok' : 'is-bad');
+      w.classList.add(matches ? 'is-ok' : 'is-bad');
+      w.querySelector('[data-verdict]').textContent = matches ? ', key matches' : ', key does not match';
     }, 140 * (i + 1)));
 
-    if (servedFp !== keys.alexFp) {
+    if (!matches) {
       cipherOut.textContent = 'Nothing new. Your app refused to encrypt to a key the witnesses never saw.';
       bubble.textContent = 'Held back. The key the server offered for Alex doesn’t match what the witnesses recorded, so nothing was sent.';
       bubble.classList.add('is-held');
-      fileIn.classList.add('is-held');
+      fileIn.hidden = true;
       return;
     }
 
@@ -81,7 +87,7 @@ export function mountMorse(root) {
     if (mine !== run) return;
     bubble.textContent = opened.text;
     bubble.classList.remove('is-held');
-    fileIn.classList.remove('is-held');
+    fileIn.hidden = false;
     fileIn.querySelector('span').textContent = opened.file;
   }
 

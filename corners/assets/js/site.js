@@ -6,14 +6,6 @@ import { mountMixer } from './instruments/mixer.js';
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)');
 
-const CORNERS = [
-  { room: 'savorly', word: 'the stovetop.', swatch: 'var(--tomato)', ink: 'var(--ink)' },
-  { room: 'morse', word: 'the group chat.', swatch: 'var(--cobalt)', ink: 'var(--chalk)' },
-  { room: 'mesh', word: 'the server.', swatch: 'var(--lime)', ink: 'var(--ink)' },
-  { room: 'incant', word: 'the game editor.', swatch: 'var(--violet)', ink: 'var(--chalk)' },
-  { room: 'mixer', word: 'both app stores.', swatch: 'var(--pink)', ink: 'var(--ink)' },
-];
-
 const INSTRUMENTS = {
   savorly: mountSavorly,
   morse: mountMorse,
@@ -40,7 +32,7 @@ function trackZones() {
     }) || zones[0];
     if (zone === current) return;
     current = zone;
-    bar.dataset.tone = zone.dataset.zone;
+    bar.dataset.tone = zone.dataset.tone;
     mark.dataset.corner = zone.dataset.corner || 'tr';
     nowN.textContent = zone.dataset.n;
     nowT.textContent = zone.dataset.label;
@@ -54,29 +46,31 @@ function trackZones() {
 }
 
 function cycleHero() {
-  const word = document.querySelector('[data-word]');
+  const word = document.querySelector('[data-hero-word]');
   const swap = document.querySelector('[data-swap]');
-  const rooms = new Map([...document.querySelectorAll('[data-plan] [data-for]')].map((el) => [el.dataset.for, el]));
+  const rooms = [...document.querySelectorAll('[data-plan] [data-word]')];
   let index = 0;
+  let turns = 0;
   let timer = 0;
+  let swapTimer = 0;
   let held = false;
   let visible = true;
 
   const paint = (i, animate) => {
-    const c = CORNERS[i];
+    const room = rooms[i];
     index = i;
-    rooms.forEach((el, key) => el.toggleAttribute('data-active', key === c.room));
+    rooms.forEach((el) => el.toggleAttribute('data-active', el === room));
     const apply = () => {
-      word.textContent = c.word;
-      word.style.setProperty('--sw', c.swatch);
-      word.style.setProperty('--sw-ink', c.ink);
+      word.classList.remove('is-out');
+      word.textContent = room.dataset.word;
+      word.dataset.tone = room.dataset.tone;
     };
+    clearTimeout(swapTimer);
     if (!animate || reduced.matches) { apply(); return; }
     word.classList.add('is-out');
-    setTimeout(() => {
-      word.classList.remove('is-out');
-      word.classList.add('is-pre');
+    swapTimer = setTimeout(() => {
       apply();
+      word.classList.add('is-pre');
       void word.offsetWidth;
       word.classList.remove('is-pre');
     }, 420);
@@ -84,12 +78,15 @@ function cycleHero() {
 
   const schedule = () => {
     clearTimeout(timer);
-    if (held || !visible || reduced.matches || document.hidden) return;
-    timer = setTimeout(() => { paint((index + 1) % CORNERS.length, true); schedule(); }, 2600);
+    if (held || !visible || reduced.matches || document.hidden || turns >= rooms.length) return;
+    timer = setTimeout(() => {
+      turns++;
+      paint((index + 1) % rooms.length, true);
+      schedule();
+    }, 2600);
   };
 
-  rooms.forEach((el, key) => {
-    const i = CORNERS.findIndex((c) => c.room === key);
+  rooms.forEach((el, i) => {
     const enter = () => { held = true; clearTimeout(timer); if (i !== index) paint(i, true); };
     const leave = () => { held = false; schedule(); };
     el.addEventListener('pointerenter', enter);
@@ -142,6 +139,7 @@ function mountInstruments() {
     if (!mount) return;
     try {
       live.set(el, mount(el, { reduced }) || {});
+      el.toggleAttribute('data-mounted', true);
       io.observe(el);
     } catch (err) {
       console.warn(`The ${el.dataset.instrument} instrument could not start.`, err);

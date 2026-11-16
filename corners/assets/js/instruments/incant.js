@@ -41,6 +41,7 @@ export function mountIncant(root, { reduced }) {
   const historyBox = root.querySelector('[data-history]');
   const undoBtn = root.querySelector('[data-undo]');
   const redoBtn = root.querySelector('[data-redo]');
+  const say = root.querySelector('[data-say]');
 
   const scene = { sky: 'noon', crystals: false, jump: 1, drone: false };
   const history = [];
@@ -81,24 +82,32 @@ export function mountIncant(root, { reduced }) {
     sync();
   }
 
+  function setScene(key, value) {
+    scene[key] = value;
+    if (key === 'crystals') { got = new Set(); respawnAt = 0; }
+  }
+
   function allow() {
     const { ask, from, to } = pending;
     pending = null;
     history.length = cursor;
-    scene[ask.key] = to;
-    if (ask.key === 'crystals') got = new Set();
+    setScene(ask.key, to);
     const proof = playtest(scene, ask.key);
     history.push({ ask, from, to, proof });
     cursor = history.length;
     showProof(proof);
     sync();
     paintOnce();
+    proposalBox.focus();
   }
 
   function deny() {
+    const { ask } = pending;
     pending = null;
     proposalBox.hidden = true;
     sync();
+    const back = buttons[ASKS.indexOf(ask)];
+    (back.disabled ? buttons.find((btn) => !btn.disabled) : back)?.focus();
   }
 
   function showProof(proof) {
@@ -107,23 +116,15 @@ export function mountIncant(root, { reduced }) {
     proposalBox.querySelector('[data-hint]')?.addEventListener('click', () => propose(ASKS.find((a) => a.id === proof.hint)));
   }
 
-  function undo() {
-    if (!cursor) return;
-    const h = history[--cursor];
-    scene[h.ask.key] = h.from;
+  function step(dir) {
+    const h = dir < 0 ? history[--cursor] : history[cursor++];
+    setScene(h.ask.key, dir < 0 ? h.from : h.to);
     proposalBox.hidden = true;
     sync();
     paintOnce();
-  }
-
-  function redo() {
-    if (cursor >= history.length) return;
-    const h = history[cursor++];
-    scene[h.ask.key] = h.to;
-    if (h.ask.key === 'crystals') got = new Set();
-    proposalBox.hidden = true;
-    sync();
-    paintOnce();
+    say.textContent = `${dir < 0 ? 'Undid' : 'Redid'} ${h.ask.code(h.from, h.to).split('\n')[0]}.`;
+    const [used, other] = dir < 0 ? [undoBtn, redoBtn] : [redoBtn, undoBtn];
+    if (used.disabled) other.focus();
   }
 
   function sync() {
@@ -140,8 +141,8 @@ export function mountIncant(root, { reduced }) {
     hud.textContent = scene.crystals ? `Crystals ${got.size}/${SPOTS.length}` : 'No crystals yet';
   }
 
-  undoBtn.addEventListener('click', undo);
-  redoBtn.addEventListener('click', redo);
+  undoBtn.addEventListener('click', () => { if (cursor) step(-1); });
+  redoBtn.addEventListener('click', () => { if (cursor < history.length) step(1); });
 
   const CONTROL = { ArrowLeft: 'left', a: 'left', ArrowRight: 'right', d: 'right', ArrowUp: 'jump', w: 'jump', ' ': 'jump' };
   canvas.addEventListener('keydown', (e) => {

@@ -64,11 +64,6 @@
 
 /* Support: each product's heading carries its room color. */
 .doc h2[data-tone]::before { content: ""; width: 18px; height: 18px; flex: none; background: var(--t); box-shadow: inset 0 0 0 1px rgba(20, 19, 16, .2); }
-[data-tone="savorly"] { --t: var(--tomato); }
-[data-tone="morse"] { --t: var(--cobalt); }
-[data-tone="mesh"] { --t: var(--lime); }
-[data-tone="incant"] { --t: var(--violet); }
-[data-tone="mixer"] { --t: var(--pink); }
 
 /* 404: the empty corner. */
 .lost { padding-bottom: clamp(56px, 7vw, 104px); }

@@ -58,13 +58,13 @@
 
 <main id="main">
 
-<section class="hero" id="top" data-zone="lab" data-n="00" data-label="The floor plan" data-corner="tr" aria-labelledby="hero-title">
+<section class="hero" id="top" data-zone data-tone="lab" data-n="00" data-label="The floor plan" data-corner="tr" aria-labelledby="hero-title">
   <div class="wrap">
     <p class="eyebrow">Independent software lab <span class="dot" aria-hidden="true"></span> New York <span class="dot" aria-hidden="true"></span> Since 2025</p>
     <h1 class="hero-title" id="hero-title">
       <span class="sr-only">Software for one corner of everyday life at a time.</span>
       <span class="hero-line" aria-hidden="true">Software for</span>
-      <span class="hero-swap" aria-hidden="true" data-swap><span class="hero-word" data-word>the stovetop.</span></span>
+      <span class="hero-swap" aria-hidden="true" data-swap><span class="hero-word" data-tone="savorly" data-hero-word>the stovetop.</span></span>
     </h1>
     <div class="hero-foot">
       <p class="hero-lede">We pick one corner of everyday life, build the software it deserves, and then do it again. Five corners so far, all developed in the open.</p>
@@ -78,7 +78,7 @@
   <div class="wrap" id="plan">
     <h2 class="sr-only">The corners</h2>
     <ol class="plan" data-plan>
-      <li class="plan-room" data-for="savorly">
+      <li class="plan-room" data-tone="savorly" data-word="the stovetop.">
         <a href="#savorly">
           <span class="plan-fill" aria-hidden="true"></span>
           <span class="plan-n">01 · The stovetop</span>
@@ -86,7 +86,7 @@
           <span class="plan-meta"><span>Cooking</span><span class="chip">Live · Beta</span></span>
         </a>
       </li>
-      <li class="plan-room" data-for="morse">
+      <li class="plan-room" data-tone="morse" data-word="the group chat.">
         <a href="#morse">
           <span class="plan-fill" aria-hidden="true"></span>
           <span class="plan-n">02 · The group chat</span>
@@ -94,7 +94,7 @@
           <span class="plan-meta"><span>Private messaging</span><span class="chip">Prototype</span></span>
         </a>
       </li>
-      <li class="plan-room" data-for="mesh">
+      <li class="plan-room" data-tone="mesh" data-word="the server.">
         <a href="#mesh">
           <span class="plan-fill" aria-hidden="true"></span>
           <span class="plan-n">03 · The server</span>
@@ -102,7 +102,7 @@
           <span class="plan-meta"><span>Programming language</span><span class="chip">v0.1.8 · Beta</span></span>
         </a>
       </li>
-      <li class="plan-room" data-for="incant">
+      <li class="plan-room" data-tone="incant" data-word="the game editor.">
         <a href="#incant">
           <span class="plan-fill" aria-hidden="true"></span>
           <span class="plan-n">04 · The game editor</span>
@@ -110,7 +110,7 @@
           <span class="plan-meta"><span>Game engine</span><span class="chip">Prototype</span></span>
         </a>
       </li>
-      <li class="plan-room" data-for="mixer">
+      <li class="plan-room" data-tone="mixer" data-word="both app stores.">
         <a href="#mixer">
           <span class="plan-fill" aria-hidden="true"></span>
           <span class="plan-n">05 · Both app stores</span>
@@ -130,7 +130,7 @@
 </section>
 
 <!-- 01 · Savorly -->
-<section class="room" id="savorly" data-room="savorly" data-zone="savorly" data-n="01" data-corner="tl" data-label="The stovetop" aria-labelledby="savorly-name">
+<section class="room" id="savorly" data-zone data-tone="savorly" data-n="01" data-corner="tl" data-label="The stovetop" aria-labelledby="savorly-name">
   <div class="wrap">
     <div class="room-head">
       <p class="room-corner"><span class="room-n">01</span>The stovetop</p>
@@ -172,10 +172,11 @@
           </div>
           <div class="meal-chart" data-chart aria-hidden="true"></div>
           <div class="meal-cook">
-            <button class="btn btn-ink btn-sm" type="button" data-cook aria-pressed="false"><svg aria-hidden="true"><use href="#i-play"/></svg><span>Run cook mode</span></button>
+            <button class="btn btn-ink btn-sm" type="button" data-cook><svg aria-hidden="true"><use href="#i-play"/></svg><span>Run cook mode</span></button>
             <button class="btn btn-line btn-sm" type="button" data-speak aria-pressed="false" hidden><svg aria-hidden="true"><use href="#i-sound"/></svg><span>Read steps aloud</span></button>
           </div>
-          <div class="meal-steps" data-steps aria-live="polite"></div>
+          <div class="meal-steps" data-steps></div>
+          <p class="sr-only" aria-live="polite" data-say></p>
         </div>
         <figcaption class="inst-note">Every dish counts back from the moment you sit down, so everything is ready together. A sketch of Savorly's meal timeline. The dishes here are made up.</figcaption>
       </figure>
@@ -184,7 +185,7 @@
 </section>
 
 <!-- 02 · Morse -->
-<section class="room" id="morse" data-room="morse" data-zone="morse" data-n="02" data-corner="tr" data-label="The group chat" aria-labelledby="morse-name">
+<section class="room" id="morse" data-zone data-tone="morse" data-n="02" data-corner="tr" data-label="The group chat" aria-labelledby="morse-name">
   <div class="wrap">
     <div class="room-head">
       <p class="room-corner"><span class="room-n">02</span>The group chat</p>
@@ -227,7 +228,7 @@
               <p class="wire-k">Can read</p>
               <p class="wire-v wire-nothing">Nothing</p>
               <p class="wire-k">Holds</p>
-              <p class="wire-cipher" data-cipher aria-label="Ciphertext">…</p>
+              <p class="wire-cipher" data-cipher>…</p>
               <p class="wire-k">Hands out Alex’s key</p>
               <p class="wire-fp" data-served-fp>…</p>
             </div>
@@ -240,9 +241,9 @@
           <div class="witness" data-witness>
             <p class="witness-k">Witnesses compare the key the server handed out with the one they recorded for Alex.</p>
             <ul class="witness-list" data-witness-list>
-              <li><span class="wx" aria-hidden="true"></span>Witness A</li>
-              <li><span class="wx" aria-hidden="true"></span>Witness B</li>
-              <li><span class="wx" aria-hidden="true"></span>Witness C</li>
+              <li><span class="wx" aria-hidden="true"></span>Witness A<span class="sr-only" data-verdict></span></li>
+              <li><span class="wx" aria-hidden="true"></span>Witness B<span class="sr-only" data-verdict></span></li>
+              <li><span class="wx" aria-hidden="true"></span>Witness C<span class="sr-only" data-verdict></span></li>
             </ul>
             <button class="btn btn-line btn-sm" type="button" data-cheat aria-pressed="false">Let the server cheat</button>
           </div>
@@ -254,7 +255,7 @@
 </section>
 
 <!-- 03 · Mesh -->
-<section class="room" id="mesh" data-room="mesh" data-zone="mesh" data-n="03" data-corner="br" data-label="The server" aria-labelledby="mesh-name">
+<section class="room" id="mesh" data-zone data-tone="mesh" data-n="03" data-corner="br" data-label="The server" aria-labelledby="mesh-name">
   <div class="wrap">
     <div class="room-head">
       <p class="room-corner"><span class="room-n">03</span>The server</p>
@@ -329,7 +330,7 @@
         <p class="install-k">Install on macOS, Linux or Windows</p>
         <div class="install-cmd">
           <code><span class="install-p" aria-hidden="true">$</span> curl -sSf https://meshlang.dev/install.sh | sh</code>
-          <button class="copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+          <button class="copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh"><svg aria-hidden="true"><use href="#i-copy"/></svg><span aria-live="polite">Copy</span></button>
         </div>
       </div>
       <ul class="mesh-facts">
@@ -343,7 +344,7 @@
 </section>
 
 <!-- 04 · Incant -->
-<section class="room" id="incant" data-room="incant" data-zone="incant" data-n="04" data-corner="bl" data-label="The game editor" aria-labelledby="incant-name">
+<section class="room" id="incant" data-zone data-tone="incant" data-n="04" data-corner="bl" data-label="The game editor" aria-labelledby="incant-name">
   <div class="wrap">
     <div class="room-head">
       <p class="room-corner"><span class="room-n">04</span>The game editor</p>
@@ -375,13 +376,13 @@
         </div>
         <div class="inst-body incant">
           <div class="stage-view">
-            <canvas class="game" data-game tabindex="0" aria-label="A small sample game. Focus it and use the arrow keys to walk and jump."></canvas>
+            <canvas class="game" data-game tabindex="0" role="img" aria-label="A small sample game. Focus it and use the arrow keys to walk and jump."></canvas>
             <p class="game-hud" data-hud aria-live="polite">Crystals 0/0</p>
           </div>
           <div class="agent">
             <p class="agent-k">Ask the agent</p>
             <div class="agent-asks" data-asks></div>
-            <div class="proposal" data-proposal aria-live="polite" hidden></div>
+            <div class="proposal" data-proposal tabindex="-1" aria-live="polite" hidden></div>
             <div class="history">
               <div class="history-head">
                 <p class="agent-k">History</p>
@@ -390,7 +391,8 @@
                   <button class="btn btn-line btn-xs" type="button" data-redo disabled>Redo</button>
                 </div>
               </div>
-              <ol class="history-list" data-history aria-live="polite"></ol>
+              <ol class="history-list" data-history></ol>
+              <p class="sr-only" aria-live="polite" data-say></p>
             </div>
           </div>
         </div>
@@ -401,7 +403,7 @@
 </section>
 
 <!-- 05 · Mixer -->
-<section class="room" id="mixer" data-room="mixer" data-zone="mixer" data-n="05" data-corner="tl" data-label="Both app stores" aria-labelledby="mixer-name">
+<section class="room" id="mixer" data-zone data-tone="mixer" data-n="05" data-corner="tl" data-label="Both app stores" aria-labelledby="mixer-name">
   <div class="wrap">
     <div class="room-head">
       <p class="room-corner"><span class="room-n">05</span>Both app stores</p>
@@ -432,7 +434,11 @@
           <span class="inst-try">Tap a plant</span>
         </div>
         <div class="inst-body mixer">
-          <div class="phones" data-phones>
+          <div class="phone-pick" role="group" aria-label="Show a phone">
+            <button type="button" data-pick="ios" aria-pressed="true">iPhone</button>
+            <button type="button" data-pick="android" aria-pressed="false">Android</button>
+          </div>
+          <div class="phones" data-phones data-show="ios">
             <div class="phone phone-ios" data-os="ios">
               <div class="phone-screen">
                 <div class="ios-status" aria-hidden="true"><span>9:41</span><span class="ios-island"></span><span class="ios-icons"><i></i><i></i></span></div>
@@ -460,19 +466,19 @@
               <button class="btn btn-ink btn-sm" type="button" data-ship>Ship a signed fix</button>
               <label class="tamper"><input type="checkbox" data-tamper> Tamper with it on the way</label>
             </div>
-            <ol class="update-steps" data-update aria-live="polite">
+            <ol class="update-steps" data-update>
               <li>Signed</li><li>Delivered</li><li>Verified on device</li><li>Applied</li>
             </ol>
             <p class="update-msg" data-update-msg aria-live="polite">The fix adds a watering reminder to both apps without a new store build.</p>
           </div>
         </div>
-        <figcaption class="inst-note">One list of plants drives both screens, each drawn with its platform’s own kind of controls. Signed updates are part of Mixer’s design and still in progress. The plant app is made up.</figcaption>
+        <figcaption class="inst-note">One list of plants drives both screens, each drawn with its platform’s own kind of controls. Signed updates are part of Mixer’s design and still in progress, and nothing is really signed in this sketch. The plant app is made up.</figcaption>
       </figure>
     </div>
   </div>
 </section>
 
-<section class="log" id="log" data-zone="lab" data-n="" data-label="Lab log" data-corner="br" aria-labelledby="log-title">
+<section class="log" id="log" data-zone data-tone="lab" data-n="" data-label="Lab log" data-corner="br" aria-labelledby="log-title">
   <div class="wrap">
     <div class="section-head">
       <h2 class="section-title" id="log-title">Lab log</h2>
@@ -503,7 +509,7 @@
   </div>
 </section>
 
-<section class="about" id="about" data-zone="about" data-n="" data-label="About the lab" data-corner="bl" aria-labelledby="about-title">
+<section class="about" id="about" data-zone data-tone="about" data-n="" data-label="About the lab" data-corner="bl" aria-labelledby="about-title">
   <div class="wrap">
     <p class="eyebrow eyebrow-light">About the lab</p>
     <h2 class="about-title" id="about-title">Most software tries to be everything for everyone. <em>We’d rather do one thing with uncommon care.</em></h2>
@@ -528,12 +534,12 @@
   </div>
 </section>
 
-<section class="contact" id="contact" data-zone="lab" data-n="" data-label="Write to us" data-corner="tl" aria-labelledby="contact-title">
+<section class="contact" id="contact" data-zone data-tone="lab" data-n="" data-label="Write to us" data-corner="tl" aria-labelledby="contact-title">
   <div class="wrap">
     <h2 class="contact-title" id="contact-title">Write to the lab.</h2>
     <div class="contact-mail">
       <a class="contact-addr" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
-      <button class="copy copy-lg" type="button" data-copy="hello@sigenticlabs.com"><svg aria-hidden="true"><use href="#i-copy"/></svg><span>Copy</span></button>
+      <button class="copy copy-lg" type="button" data-copy="hello@sigenticlabs.com"><svg aria-hidden="true"><use href="#i-copy"/></svg><span aria-live="polite">Copy</span></button>
     </div>
     <p class="contact-lede">One inbox, and a person reads every message. Tell us which product it’s about and what you need.</p>
     <ul class="doors">
@@ -547,7 +553,7 @@
 
 </main>
 
-<footer class="foot" data-zone="foot" data-n="" data-label="Sigentic Labs" data-corner="tr">
+<footer class="foot" data-zone data-tone="foot" data-n="" data-label="Sigentic Labs" data-corner="tr">
   <div class="wrap">
     <div class="foot-top">
       <a class="brand brand-lg" href="#top" aria-label="Sigentic Labs, back to the top">

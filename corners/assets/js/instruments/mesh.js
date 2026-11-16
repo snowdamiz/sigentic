@@ -104,7 +104,7 @@ export function mountMesh(root, { reduced }) {
     } else {
       say(`${node.id} in ${node.city} is back. New work will be placed there.`);
     }
-    if (reduced.matches) settle();
+    if (!raf) settle();
     syncStats();
     if (!raf) draw();
   }
@@ -114,18 +114,18 @@ export function mountMesh(root, { reduced }) {
       if (a.phase === 'down') restart(a);
       if (a.phase === 'move' || a.phase === 'born') a.phase = 'run';
     }
+    actors = actors.filter((a) => a.phase !== 'exit');
+    delivered += messages.length;
+    messages = [];
     draw();
   }
 
   function restart(a) {
     const target = leastLoaded();
-    const p = { x: a.fx, y: a.fy };
     a.node = target;
     a.slot = -1;
     a.slot = freeSlot(target);
     a.phase = 'move';
-    a.fx = p.x;
-    a.fy = p.y;
     a.t0 = clock;
     restarts++;
   }
@@ -135,10 +135,11 @@ export function mountMesh(root, { reduced }) {
   function syncButtons() {
     const alone = upNodes().length === 1;
     for (const n of nodes) {
-      n.btn.setAttribute('aria-pressed', String(!n.up));
+      n.btn.toggleAttribute('data-down', !n.up);
       n.btn.disabled = n.up && alone;
       n.btn.title = n.btn.disabled ? 'Keep one node running' : '';
-      n.btn.querySelector('span').textContent = n.up ? `Running · ${load(n)} actors` : 'Unplugged';
+      n.btn.querySelector('[data-act]').textContent = n.up ? 'Unplug ' : 'Plug in ';
+      n.btn.querySelector('[data-state]').textContent = n.up ? `Running · ${load(n)} actors` : 'Unplugged';
     }
   }
 
@@ -325,8 +326,7 @@ export function mountMesh(root, { reduced }) {
     const b = document.createElement('button');
     b.type = 'button';
     b.className = 'node-btn';
-    b.setAttribute('aria-label', `Unplug ${n.id} in ${n.city}`);
-    b.innerHTML = `<b>${n.id} · ${n.city}</b><span></span>`;
+    b.innerHTML = `<b><span class="sr-only" data-act></span>${n.id} · ${n.city}</b><span data-state></span>`;
     b.addEventListener('click', () => setNode(n, !n.up));
     n.btn = b;
     controls.append(b);
@@ -348,15 +348,22 @@ export function mountMesh(root, { reduced }) {
   syncStats();
   draw();
 
+  let visible = false;
+  const run = () => {
+    if (raf || !visible || reduced.matches) return;
+    last = performance.now();
+    raf = requestAnimationFrame(frame);
+  };
+  const halt = () => {
+    cancelAnimationFrame(raf);
+    raf = 0;
+  };
+  reduced.addEventListener('change', () => {
+    if (reduced.matches) { halt(); settle(); syncStats(); } else run();
+  });
+
   return {
-    start() {
-      if (raf || reduced.matches) return;
-      last = performance.now();
-      raf = requestAnimationFrame(frame);
-    },
-    stop() {
-      cancelAnimationFrame(raf);
-      raf = 0;
-    },
+    start() { visible = true; run(); },
+    stop() { visible = false; halt(); },
   };
 }

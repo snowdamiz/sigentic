@@ -7,6 +7,7 @@ const PLANTS = [
 ];
 
 const STEP_MS = 650;
+const list = new Intl.ListFormat('en', { type: 'conjunction' });
 
 export function mountMixer(root, { reduced }) {
   const lists = {
@@ -20,6 +21,9 @@ export function mountMixer(root, { reduced }) {
   const tamper = root.querySelector('[data-tamper]');
   const steps = [...root.querySelectorAll('[data-update] li')];
   const msg = root.querySelector('[data-update-msg]');
+  const phones = root.querySelector('[data-phones]');
+  const picks = [...root.querySelectorAll('[data-pick]')];
+  steps.forEach((li) => li.insertAdjacentHTML('beforeend', '<span class="sr-only" data-step-state></span>'));
 
   const plants = PLANTS.map((p) => ({ ...p }));
   let version = '1.0.0';
@@ -43,14 +47,11 @@ export function mountMixer(root, { reduced }) {
     render();
   }));
 
-  function thirsty() {
-    return plants.filter((p) => !p.watered).map((p) => p.name);
-  }
-
   function reminderText() {
-    const left = thirsty();
+    const left = plants.filter((p) => !p.watered).map((p) => p.name);
     if (!left.length) return 'Everything is watered. Next check tomorrow at 9:00.';
-    return `${left.join(' and ')} ${left.length === 1 ? 'still needs' : 'still need'} water today.`;
+    if (left.length > 2) return `${left.length} plants still need water today.`;
+    return `${list.format(left)} ${left.length === 1 ? 'still needs' : 'still need'} water today.`;
   }
 
   function render() {
@@ -74,6 +75,7 @@ export function mountMixer(root, { reduced }) {
     steps.forEach((li, i) => {
       li.classList.toggle('is-ok', states[i] === 'ok');
       li.classList.toggle('is-bad', states[i] === 'bad');
+      li.querySelector('[data-step-state]').textContent = { ok: ', done', bad: ', failed' }[states[i]] || '';
     });
   }
 
@@ -88,7 +90,7 @@ export function mountMixer(root, { reduced }) {
     version = '1.0.0';
     update = 'idle';
     paintSteps([]);
-    shipBtn.disabled = false;
+    shipBtn.removeAttribute('aria-disabled');
     shipBtn.textContent = 'Ship a signed fix';
     tamper.disabled = false;
     setMessage('The fix adds a watering reminder to both apps without a new store build.');
@@ -96,9 +98,10 @@ export function mountMixer(root, { reduced }) {
   }
 
   function ship() {
+    if (update === 'shipping') return;
     if (update === 'applied' || update === 'refused') { reset(); return; }
     update = 'shipping';
-    shipBtn.disabled = true;
+    shipBtn.setAttribute('aria-disabled', 'true');
     tamper.disabled = true;
     const tampered = tamper.checked;
     const plan = tampered ? ['ok', 'ok', 'bad'] : ['ok', 'ok', 'ok', 'ok'];
@@ -107,7 +110,7 @@ export function mountMixer(root, { reduced }) {
       timers.push(setTimeout(() => {
         paintSteps(plan.slice(0, i + 1));
         if (i < plan.length - 1) return;
-        shipBtn.disabled = false;
+        shipBtn.removeAttribute('aria-disabled');
         if (tampered) {
           update = 'refused';
           shipBtn.textContent = 'Start over';
@@ -125,6 +128,10 @@ export function mountMixer(root, { reduced }) {
   }
 
   shipBtn.addEventListener('click', ship);
+  picks.forEach((btn) => btn.addEventListener('click', () => {
+    phones.dataset.show = btn.dataset.pick;
+    picks.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+  }));
   render();
   return {};
 }

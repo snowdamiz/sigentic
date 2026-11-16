@@ -36,7 +36,14 @@ tools/corners-og.html              Source of corners/assets/img/og.png and touch
 
 The demos are sketches that run in the browser. Each one says so in its caption. Morse's demo does real ECDH and AES-GCM with Web Crypto, which needs `localhost` or https.
 
-The pages carry `noindex` while they are a candidate. To adopt the design, move `corners/` to the root in place of the old pages and `assets/`, remove the `noindex` lines, point `og:image` at the root path, and give `404.html` absolute `/assets` paths, because the Worker serves it for every missing URL.
+The pages carry `noindex` while they are a candidate. Share the link with its trailing slash, `/corners/`. The Worker only maps paths that end in `/` to `index.html`, so `/corners` gets the root 404 page, and so does any missing `/corners/...` URL.
+
+To adopt the design:
+
+1. Move `corners/` to the root in place of the old pages and `assets/`.
+2. Remove the `noindex` lines and point `og:image` at the root path.
+3. Give `404.html` absolute `/assets` paths, because the Worker serves it for every missing URL.
+4. Update the privacy policy. It says the site loads fonts from Google Fonts, and Corners serves its own.
 
 ## Preview locally
 
