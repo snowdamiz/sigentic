@@ -18,7 +18,7 @@
 
 .doc { font-size: 17.5px; line-height: 1.7; color: var(--ink-2); }
 .doc > * + * { margin-top: 18px; }
-.doc h2 { margin-top: 56px; font-size: clamp(24px, 2.4vw, 30px); font-weight: 900; line-height: 1.15; letter-spacing: -.03em; color: var(--ink); scroll-margin-top: 110px; }
+.doc h2 { margin-top: 56px; font-size: clamp(24px, 2.4vw, 30px); font-weight: 900; line-height: 1.15; letter-spacing: -.03em; color: var(--ink); scroll-margin-top: 14px; }
 .doc > h2:first-child, .doc-note + h2 { margin-top: 40px; }
 .doc h3 { margin-top: 32px; font-size: 20px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
 .doc h3 + p { margin-top: 8px; }
