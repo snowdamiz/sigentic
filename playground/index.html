@@ -52,7 +52,7 @@
 
 <a class="skip" href="#main">Skip to content</a>
 
-<header class="nav">
+<header class="nav" data-nav>
   <div class="wrap nav-in">
     <a class="brand" href="#top" aria-label="Sigentic Labs, back to the top">
       <svg class="brand-seed" viewBox="0 0 100 100" aria-hidden="true"><use href="#seed"/></svg>
@@ -72,16 +72,16 @@
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="wrap hero-in">
     <div class="hero-copy">
-      <h1 class="hero-title" id="hero-title"><span>We invent apps</span> <span>for everyday life.</span></h1>
+      <h1 class="hero-title" id="hero-title"><span>We invent apps</span> <span>for <span class="hl">everyday life.<svg class="squiggle" viewBox="0 0 300 18" preserveAspectRatio="none" aria-hidden="true"><path d="M3 12c22-9 40-9 60-3s38 7 58-1 40-8 60-1 38 7 58 0 30-6 58-2" pathLength="1" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round"/></svg></span></span></h1>
       <p class="hero-lede">An independent lab in New York. We find small, everyday needs and build a focused app for each one.</p>
       <a class="btn" href="#apps">Explore our apps<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
-    <div class="blocks" aria-label="Our apps" role="group">
-      <a class="block" href="#incant" style="--x: 20%; --y: 0%; --r: -7deg; --side: #b9acf2; --d: -1.2s"><img src="assets/img/apps/incant-icon.svg" alt="" width="180" height="180"><span class="sr-only">Incant</span></a>
-      <a class="block" href="#savorly" style="--x: 53%; --y: 5%; --r: 8deg; --side: #d6d1c3; --d: -2.6s"><img src="assets/img/apps/savorly-icon.svg" alt="" width="180" height="180"><span class="sr-only">Savorly</span></a>
-      <a class="block" href="#morse" style="--x: 1%; --y: 41%; --r: -4deg; --side: #1c4ab0; --d: -.4s"><img src="assets/img/apps/morse-icon.svg" alt="" width="180" height="180"><span class="sr-only">Morse</span></a>
-      <a class="block" href="#mesh" style="--x: 34%; --y: 44%; --r: 1deg; --side: #20a06e; --d: -3.1s"><img src="assets/img/apps/mesh-icon.svg" alt="" width="180" height="180"><span class="sr-only">Mesh</span></a>
-      <a class="block" href="#mixer" style="--x: 67%; --y: 40%; --r: 5deg; --side: #3b4350; --d: -1.9s"><span class="block-mixer"><img src="assets/img/apps/mixer-flick.webp" alt="" width="512" height="512"></span><span class="sr-only">Mixer</span></a>
+    <div class="blocks" aria-label="Our apps" role="group" data-blocks>
+      <a class="block" href="#incant" style="--x: 20%; --y: 0%; --r: -7deg; --side: #b9acf2; --d: -1.2s; --i: 3"><img src="assets/img/apps/incant-icon.svg" alt="" width="180" height="180"><span class="sr-only">Incant</span></a>
+      <a class="block" href="#savorly" style="--x: 53%; --y: 5%; --r: 8deg; --side: #d6d1c3; --d: -2.6s; --i: 4"><img src="assets/img/apps/savorly-icon.svg" alt="" width="180" height="180"><span class="sr-only">Savorly</span></a>
+      <a class="block" href="#morse" style="--x: 1%; --y: 41%; --r: -4deg; --side: #1c4ab0; --d: -.4s; --i: 1"><img src="assets/img/apps/morse-icon.svg" alt="" width="180" height="180"><span class="sr-only">Morse</span></a>
+      <a class="block" href="#mesh" style="--x: 34%; --y: 44%; --r: 1deg; --side: #20a06e; --d: -3.1s; --i: 0"><img src="assets/img/apps/mesh-icon.svg" alt="" width="180" height="180"><span class="sr-only">Mesh</span></a>
+      <a class="block" href="#mixer" style="--x: 67%; --y: 40%; --r: 5deg; --side: #3b4350; --d: -1.9s; --i: 2"><span class="block-mixer"><img src="assets/img/apps/mixer-flick.webp" alt="" width="512" height="512"></span><span class="sr-only">Mixer</span></a>
       <span class="blocks-floor" aria-hidden="true"></span>
     </div>
   </div>
@@ -92,7 +92,7 @@
   <div class="wrap bento">
     <article class="app app-big" id="mesh" data-app="mesh" aria-labelledby="mesh-name" data-reveal>
       <div class="app-copy">
-        <p class="app-pill">v0.1.8 · Beta</p>
+        <p class="app-pill pill-live">v0.1.8 · Beta</p>
         <h3 id="mesh-name">Mesh</h3>
         <p class="app-text">Write a server, ship a fleet. A typed, actor-based language that compiles to one native binary and builds clustering into the runtime.</p>
         <a class="app-link" href="https://meshlang.dev">Explore Mesh<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -101,7 +101,7 @@
     </article>
     <article class="app " id="savorly" data-app="savorly" aria-labelledby="savorly-name" data-reveal>
       <div class="app-copy">
-        <p class="app-pill">Live on the web · Beta</p>
+        <p class="app-pill pill-live">Live on the web · Beta</p>
         <h3 id="savorly-name">Savorly</h3>
         <p class="app-text">Good recipes, and a sous-chef to cook them with.</p>
         <a class="app-link" href="https://savorly.cooking">Explore Savorly<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -110,7 +110,7 @@
     </article>
     <article class="app " id="morse" data-app="morse" aria-labelledby="morse-name" data-reveal>
       <div class="app-copy">
-        <p class="app-pill">Prototype</p>
+        <p class="app-pill pill-dev">Prototype</p>
         <h3 id="morse-name">Morse</h3>
         <p class="app-text">Private messaging with no phone number, kept honest by independent key witnesses.</p>
         <a class="app-link" href="https://morseapp.io">Explore Morse<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -119,7 +119,7 @@
     </article>
     <article class="app " id="mixer" data-app="mixer" aria-labelledby="mixer-name" data-reveal>
       <div class="app-copy">
-        <p class="app-pill">Prototype</p>
+        <p class="app-pill pill-dev">Prototype</p>
         <h3 id="mixer-name">Mixer</h3>
         <p class="app-text">Write Swift once and ship native apps to iPhone and Android.</p>
         <a class="app-link" href="https://github.com/snowdamiz/mixer/blob/main/mixer-product-plan.md">Explore Mixer<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -128,7 +128,7 @@
     </article>
     <article class="app " id="incant" data-app="incant" aria-labelledby="incant-name" data-reveal>
       <div class="app-copy">
-        <p class="app-pill">Prototype</p>
+        <p class="app-pill pill-dev">Prototype</p>
         <h3 id="incant-name">Incant</h3>
         <p class="app-text">The game engine you can talk to, with every change a command you can undo.</p>
         <a class="app-link" href="https://snowdamiz.github.io/incant/">Explore Incant<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -142,9 +142,9 @@
   <div class="wrap">
     <h2 class="section-title" id="approach-title" data-reveal>Our approach</h2>
     <ol class="steps" data-reveal>
-      <li><h3>Notice<br> a need.</h3><p>We pay attention to small frictions in everyday life.</p><svg class="step-arrow" viewBox="0 0 64 32" aria-hidden="true"><path d="M3 20c12-11 30-14 52-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 7.5 56 15.5l-11.5 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-      <li><h3>Build<br> a solution.</h3><p>We turn that insight into a useful, focused app.</p><svg class="step-arrow" viewBox="0 0 64 32" aria-hidden="true"><path d="M3 20c12-11 30-14 52-5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 7.5 56 15.5l-11.5 5" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
-      <li><h3>Keep<br> improving.</h3><p>We learn from use, refine the experience, and make it better over time.</p></li>
+      <li><span class="step-n" data-app="savorly" aria-hidden="true">1</span><h3>Notice<br> a need.</h3><p>We pay attention to small frictions in everyday life.</p><svg class="step-arrow" viewBox="0 0 64 32" aria-hidden="true"><path d="M3 20c12-11 30-14 52-5" pathLength="1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 7.5 56 15.5l-11.5 5" pathLength="1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li><span class="step-n" data-app="mesh" aria-hidden="true">2</span><h3>Build<br> a solution.</h3><p>We turn that insight into a useful, focused app.</p><svg class="step-arrow" viewBox="0 0 64 32" aria-hidden="true"><path d="M3 20c12-11 30-14 52-5" pathLength="1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/><path d="M46 7.5 56 15.5l-11.5 5" pathLength="1" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></li>
+      <li><span class="step-n" data-app="incant" aria-hidden="true">3</span><h3>Keep<br> improving.</h3><p>We learn from use, refine the experience, and make it better over time.</p></li>
     </ol>
   </div>
 </section>
@@ -183,9 +183,10 @@
       <p class="about-text">Based in New York, founded in 2025 and self-funded. Every project is developed in public on <a href="https://github.com/snowdamiz">GitHub</a>, and none of our sites run analytics.</p>
     </div>
     <div class="contact" id="contact">
+      <svg class="contact-seed" viewBox="0 0 100 100" aria-hidden="true"><use href="#seed"/></svg>
       <p class="contact-k">Get in touch</p>
       <a class="contact-mail" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
-      <p class="contact-note">A person reads every message.</p>
+      <p class="contact-note">One inbox, and a person reads every message.</p>
     </div>
   </div>
 </section>
