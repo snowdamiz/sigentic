@@ -186,7 +186,7 @@ a { color: inherit; }
   background: var(--c); box-shadow: 0 5px 0 color-mix(in srgb, var(--c), #2b1d05 26%);
   font-size: 22px; font-weight: 900;
 }
-.has-motion .step-arrow path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.has-motion.has-reveal .step-arrow path { stroke-dasharray: 1; stroke-dashoffset: 1; }
 .has-motion .steps.is-in .step-arrow path { animation: draw .6s var(--ease) forwards; animation-delay: .7s; }
 .has-motion .steps.is-in li:nth-child(2) .step-arrow path { animation-delay: 1.1s; }
 .has-motion .steps.is-in .step-arrow path + path { animation-delay: 1.15s; }
@@ -252,8 +252,8 @@ a { color: inherit; }
 .foot-links .nav-cta { font-size: 15px; }
 .foot-base { margin-top: 24px; font-size: 14px; color: var(--ink-2); }
 
-.has-motion [data-reveal] { opacity: 0; translate: 0 26px; transition: opacity .8s var(--ease), translate .8s var(--ease); }
-.has-motion [data-reveal].is-in { opacity: 1; translate: 0 0; }
+.has-motion.has-reveal [data-reveal] { opacity: 0; translate: 0 26px; transition: opacity .8s var(--ease), translate .8s var(--ease); }
+.has-motion.has-reveal [data-reveal].is-in { opacity: 1; translate: 0 0; }
 
 @media (max-width: 980px) {
   .hero-in { grid-template-columns: minmax(0, 1fr); }

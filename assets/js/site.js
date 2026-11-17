@@ -13,7 +13,11 @@ const reveal = new IntersectionObserver((entries) => {
     reveal.unobserve(entry.target);
   }
 }, { rootMargin: '0px 0px -8% 0px' });
-document.querySelectorAll('[data-reveal]').forEach((el) => reveal.observe(el));
+for (const el of document.querySelectorAll('[data-reveal]')) {
+  if (el.getBoundingClientRect().top < innerHeight) el.classList.add('is-in');
+  else reveal.observe(el);
+}
+root.classList.add('has-reveal');
 
 const nav = document.querySelector('[data-nav]');
 const onScroll = () => nav.classList.toggle('is-scrolled', scrollY > 4);
