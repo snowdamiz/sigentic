@@ -1,0 +1,6 @@
+Both fonts are used under the SIL Open Font License 1.1 (https://openfontlicense.org).
+
+geist-var.woff2       Geist, Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)
+geist-mono-var.woff2  Geist Mono, Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font)
+
+Latin subsets as served by Google Fonts, self-hosted so the site makes no third-party requests.
