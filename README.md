@@ -13,14 +13,14 @@ assets/css/         site.css: tokens, components and the home page · doc.css: t
 assets/js/          site.js: motion preference, scroll reveals, nav state and the hero tilt
 assets/fonts/       Figtree, self-hosted (see LICENSE.txt)
 assets/img/         the Seed logo, favicons, manifest icons, og.png, and the app icons in apps/
-tools/              shoot.mjs (screenshots), sync-brand.mjs (Seed artwork), og.html (share image), icons.html (PNG icons), brand/ (social artwork)
+tools/              shoot.mjs (screenshots), sync-chrome.mjs (nav and footer), sync-brand.mjs (Seed artwork), og.html (share image), icons.html (PNG icons), brand/ (social artwork)
 site.webmanifest, robots.txt, sitemap.xml
 .well-known/        security.txt
 wrangler.jsonc      Cloudflare Worker config · worker.js: www redirect · .assetsignore: files kept out of the site
 .github/workflows/  deploy.yml: deploys on pushes to the release branch
 ```
 
-All six pages share one nav and footer, written out in each file. The home page links to its own sections (`#apps`, `#about`). The other pages link back to them (`/#apps`). The footer also links Support, Privacy, Terms and Security. When you change one copy, change all six.
+All six pages share one nav and footer, written out in each file. The home page links to its own sections (`#apps`, `#about`). The other pages link back to them (`/#apps`). The footer also links Support, Privacy, Terms and Security. To change the nav or footer, edit `tools/sync-chrome.mjs` and run `node tools/sync-chrome.mjs`, which rewrites both in all six pages.
 
 ## Preview locally
 
@@ -34,14 +34,13 @@ Then open http://localhost:4321. The server turns caching off and serves `404.ht
 
 1. **Domain and email.** `sigenticlabs.com` and `hello@sigenticlabs.com` appear in canonical URLs, Open Graph tags, the sitemap and every contact link. Change them with one find and replace.
 2. **Work cards.** Each project is one `<article class="app" id="…" data-app="…">` in `index.html`. A card holds a status pill, the name, one sentence and one link, plus the app's own mark as a large cream shape. `data-app` selects the card's colour from the table at the top of `site.css`. The first card (`app-big`) is Mesh. It spans four of the six grid columns, and the full width below 1180 px. When something ships, update its pill (`pill-live` for usable, `pill-dev` for prototypes) and add a line to Lately.
-3. **Placeholders.** Some facts were marked as placeholders in the previous site and are still unconfirmed. Check them before launch.
-   - Lately dates: `datetime="2026-`. The months are guesses. The events are real milestones.
-   - About: "Founded in 2025 and self-funded."
+3. **Lately.** Each entry is a milestone you can point to in the product's own repository: a release, a tag or a commit. Put its exact date in `datetime` and its month in the text, and keep the list newest first.
 4. **Legal and operations pages.** These are templates, **not legal advice**. Have an attorney review them. `terms.html` section 9 names the State of New York and Kings County as the governing law and venue, so confirm both.
    - `privacy.html` covers this site, morseapp.io (including the Morse waitlist), meshlang.dev, the Incant site, and email. It points to Savorly's own policy. Publish a full Morse privacy policy before Morse's public release. Publish one for Mixer's hosted release service before it launches.
    - `terms.html` covers the same sites, plus product licenses, pre-release software and copyright (DMCA) notices.
    - `support.html` is the **Support URL** for App Store Connect and Google Play listings. It links each product's help, privacy and account-deletion pages.
    - `security.html` and `/.well-known/security.txt` set out the vulnerability disclosure policy. `security.txt` has an `Expires` date (2027-10-20), so update it before then.
+   - When you change a policy, update the effective date under its title.
    - No cookie banner is needed: the site sets no cookies, has no analytics and loads nothing from other domains. Revisit this if you add any.
 5. **Page text.** The text pages are generated once from the old pages, so their wording is the reviewed wording. Edit them directly from now on.
 
@@ -113,7 +112,7 @@ git push origin main:release
 
 ## Tools
 
-`shoot.mjs` needs Node 22 or newer. Neither tool needs a package.
+`shoot.mjs` needs Node 22 or newer. No tool needs a package.
 
 - **`tools/shoot.mjs`** takes screenshots with headless Chrome. It scrolls the page first so scroll reveals have run. It exits non-zero when the page cannot be reached, when it does not finish loading within 30 seconds, and on any page error, including a 404 response. It looks for Chrome at the macOS path, or at `$CHROME`. Options include `--width`, `--height`, `--mobile`, `--scale`, `--reduced-motion`, `--tiles` (one image per screen height), `--full`, `--selector` and `--eval`.
 
@@ -121,4 +120,5 @@ git push origin main:release
   node tools/shoot.mjs http://127.0.0.1:4321/ /tmp/home.png --tiles --width 1440 --height 900
   ```
 
+- **`tools/sync-chrome.mjs`** writes the nav and footer into all six pages from one template. Each page gets its own link prefixes (absolute on the 404 page) and marks its own footer link with `aria-current="page"`. Running it twice changes nothing.
 - **`tools/sync-brand.mjs`** copies the Seed artwork from `assets/img/logo.svg` into every page and the icon tiles (see "Design").
