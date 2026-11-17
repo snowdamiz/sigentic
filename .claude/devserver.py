@@ -23,5 +23,9 @@ class NoCache(http.server.SimpleHTTPRequestHandler):
                 pass
         super().send_error(code, message, explain)
 
+class Server(http.server.ThreadingHTTPServer):
+    # The default backlog of 5 makes macOS reset some of a browser's parallel requests.
+    request_queue_size = 128
+
 port = int(sys.argv[1]) if len(sys.argv) > 1 else 4321
-http.server.ThreadingHTTPServer(("127.0.0.1", port), NoCache).serve_forever()
+Server(("127.0.0.1", port), NoCache).serve_forever()

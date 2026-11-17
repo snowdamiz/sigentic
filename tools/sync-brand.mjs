@@ -10,12 +10,13 @@ const paths = [...read('assets/img/logo.svg').matchAll(/<path d="([^"]+)"\s*\/>/
   .map((match) => match[1]);
 if (paths.length !== 3) throw new Error('The Seed mark must contain three filled paths.');
 const artwork = paths.map((d) => `        <path d="${d}"/>`).join('\n');
-const symbol = `<symbol id="i-logo" viewBox="0 0 100 100" fill="currentColor">\n${artwork}\n      </symbol>`;
+const symbolPaths = paths.map((d) => `    <path d="${d}"/>`).join('\n');
+const symbol = `<symbol id="seed" viewBox="0 0 100 100">\n${symbolPaths}\n  </symbol>`;
 
-for (const page of ['index.html', 'privacy.html', 'terms.html', 'support.html', 'security.html', '404.html']) {
+for (const page of ['index.html', 'privacy.html', 'terms.html', 'support.html', 'security.html', '404.html', 'tools/og.html']) {
   const html = read(page);
-  const match = /<symbol id="i-logo"[^>]*>[\s\S]*?<\/symbol>/g;
-  if ([...html.matchAll(match)].length !== 1) throw new Error(`Expected one logo symbol in ${page}`);
+  const match = /<symbol id="seed"[^>]*>[\s\S]*?<\/symbol>/g;
+  if ([...html.matchAll(match)].length !== 1) throw new Error(`Expected one Seed symbol in ${page}`);
   write(page, html.replace(match, symbol));
 }
 
