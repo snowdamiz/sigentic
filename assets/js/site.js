@@ -34,16 +34,18 @@ const current = new IntersectionObserver((entries) => {
 sections.forEach((s) => current.observe(s));
 
 const blocks = document.querySelector('[data-blocks]');
-const hero = blocks.closest('section');
-hero.addEventListener('pointermove', (e) => {
-  if (reduced.matches || !finePointer.matches) return;
-  const r = blocks.getBoundingClientRect();
-  const px = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2)));
-  const py = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2)));
-  blocks.style.setProperty('--px', px.toFixed(3));
-  blocks.style.setProperty('--py', py.toFixed(3));
-});
-hero.addEventListener('pointerleave', () => {
-  blocks.style.setProperty('--px', 0);
-  blocks.style.setProperty('--py', 0);
-});
+if (blocks) {
+  const hero = blocks.closest('section');
+  hero.addEventListener('pointermove', (e) => {
+    if (reduced.matches || !finePointer.matches) return;
+    const r = blocks.getBoundingClientRect();
+    const px = Math.max(-1, Math.min(1, (e.clientX - (r.left + r.width / 2)) / (r.width / 2)));
+    const py = Math.max(-1, Math.min(1, (e.clientY - (r.top + r.height / 2)) / (r.height / 2)));
+    blocks.style.setProperty('--px', px.toFixed(3));
+    blocks.style.setProperty('--py', py.toFixed(3));
+  });
+  hero.addEventListener('pointerleave', () => {
+    blocks.style.setProperty('--px', 0);
+    blocks.style.setProperty('--py', 0);
+  });
+}

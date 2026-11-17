@@ -1,0 +1,57 @@
+.doc-head { padding: clamp(32px, 5vw, 72px) 0 clamp(40px, 5vw, 64px); }
+.doc-label { display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: var(--c, #ffd27a); box-shadow: 0 4px 0 color-mix(in srgb, var(--c, #ffd27a), #2b1d05 26%); font-size: 14px; font-weight: 800; }
+.doc-title { margin-top: 22px; font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 900; line-height: .95; letter-spacing: -.05em; }
+.doc-lede { max-width: 34em; margin-top: 20px; font-size: clamp(18px, 1.6vw, 21px); line-height: 1.45; color: var(--ink-2); }
+.doc-meta { margin-top: 18px; font-size: 15px; font-weight: 700; color: var(--ink-2); }
+
+.doc-body { display: grid; grid-template-columns: minmax(200px, 270px) minmax(0, 70ch); gap: clamp(40px, 6vw, 96px); align-items: start; padding-bottom: clamp(80px, 10vw, 140px); }
+.doc-toc {
+  position: sticky; top: 112px; padding: 22px 24px; border-radius: 24px; background: #fff8ea;
+  box-shadow: 0 0 0 1.5px var(--line), 0 6px 0 #eadfc9;
+}
+.doc-toc-k { font-size: 13px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.doc-toc ol { margin-top: 12px; counter-reset: toc; }
+.doc-toc li { counter-increment: toc; }
+.doc-toc a { display: grid; grid-template-columns: 26px minmax(0, 1fr); padding: 7px 0; font-size: 15px; font-weight: 600; line-height: 1.35; text-decoration: none; }
+.doc-toc a::before { content: counter(toc); font-weight: 800; color: #b8461d; }
+.doc-toc a:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 4px; }
+
+.doc { font-size: 17.5px; line-height: 1.7; color: var(--ink-2); }
+.doc > * + * { margin-top: 18px; }
+.doc h2 { margin-top: 56px; font-size: clamp(24px, 2.4vw, 30px); font-weight: 900; line-height: 1.15; letter-spacing: -.03em; color: var(--ink); scroll-margin-top: 110px; }
+.doc > h2:first-child, .doc-note + h2 { margin-top: 40px; }
+.doc h3 { margin-top: 32px; font-size: 20px; font-weight: 800; letter-spacing: -.02em; color: var(--ink); }
+.doc h3 + p { margin-top: 8px; }
+.doc strong { color: var(--ink); font-weight: 800; }
+.doc a { color: var(--ink); font-weight: 700; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.doc a:hover { text-decoration-color: var(--accent); }
+.doc ul, .doc ol { display: grid; gap: 8px; }
+.doc ul li { position: relative; padding-left: 22px; }
+.doc ul li::before { content: ""; position: absolute; left: 2px; top: .7em; width: 8px; height: 8px; border-radius: 3px; background: var(--accent); }
+.doc ol { counter-reset: item; }
+.doc ol li { position: relative; padding-left: 28px; counter-increment: item; }
+.doc ol li::before { content: counter(item) "."; position: absolute; left: 0; font-weight: 800; color: var(--ink); }
+.doc-note { padding: 20px 24px; border-radius: 22px; background: #fff8ea; box-shadow: 0 0 0 1.5px var(--line), 0 6px 0 #eadfc9; color: var(--ink); }
+.doc-app { display: flex; align-items: center; gap: 14px; }
+.doc-app img { width: 40px; height: 40px; border-radius: 11px; box-shadow: 0 4px 0 rgba(0, 0, 0, .12); }
+
+.lost { padding: clamp(40px, 7vw, 96px) 0 clamp(80px, 10vw, 140px); text-align: center; }
+.lost-in { display: flex; flex-direction: column; align-items: center; }
+.lost-apps { display: flex; gap: 14px; }
+.lost-apps a { display: block; border-radius: 16px; transition: transform .25s var(--ease); }
+.lost-apps a:hover { transform: translateY(-3px) rotate(-4deg); }
+.lost-apps img { width: 60px; height: 60px; border-radius: 16px; box-shadow: 0 6px 0 rgba(0, 0, 0, .14), 0 16px 24px -12px rgba(70, 50, 20, .4); }
+.lost-code { margin-top: 36px; font-size: clamp(5rem, 16vw, 11rem); font-weight: 900; line-height: .85; letter-spacing: -.06em; }
+.lost-title { margin-top: 18px; font-size: clamp(24px, 3vw, 36px); font-weight: 900; letter-spacing: -.035em; }
+.lost-text { max-width: 30em; margin-top: 14px; font-size: 18px; color: var(--ink-2); }
+.lost .btn { margin-top: 30px; }
+.lost-more { margin-top: 18px; font-size: 16px; font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+
+@media (max-width: 900px) {
+  .doc-body { grid-template-columns: minmax(0, 1fr); }
+  .doc-toc { position: static; }
+}
+@media (max-width: 720px) {
+  .lost-apps { gap: 8px; }
+  .lost-apps img { width: 48px; height: 48px; border-radius: 13px; }
+}
