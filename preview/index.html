@@ -22,6 +22,7 @@
   <link rel="preload" href="assets/fonts/geist-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
   <script type="module" src="assets/js/site.js"></script>
+  <script src="assets/js/sigil.js" defer></script>
 </head>
 <body>
 <svg class="sprite" aria-hidden="true" focusable="false">
@@ -32,8 +33,9 @@
   </symbol>
   <symbol id="i-arrow" viewBox="0 0 16 16"><path d="M3 8h10M9 4l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-out" viewBox="0 0 16 16"><path d="M5.5 4.5h6v6M11.5 4.5l-7 7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
-  <symbol id="i-check" viewBox="0 0 16 16"><path d="m3.5 8.5 3 3 6-7" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-copy" viewBox="0 0 16 16"><rect x="5.5" y="5.5" width="8" height="8" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 3.5v-.5a1.5 1.5 0 0 0-1.5-1.5H4A1.5 1.5 0 0 0 2.5 3v5A1.5 1.5 0 0 0 4 9.5h.5" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 10 10"><path d="M2.5 1.5h1.6v7H2.5zM5.9 1.5h1.6v7H5.9z" fill="currentColor"/></symbol>
+  <symbol id="i-play" viewBox="0 0 10 10"><path d="M3 1.5l5.5 3.5L3 8.5z" fill="currentColor"/></symbol>
   <symbol id="i-github" viewBox="0 0 16 16"><path fill="currentColor" d="M8 .2a8 8 0 0 0-2.5 15.6c.4 0 .5-.2.5-.4v-1.5c-2.2.5-2.7-1-2.7-1-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.3 1.9.9 2.3.7.1-.5.3-.9.5-1.1-1.8-.2-3.6-.9-3.6-4 0-.9.3-1.6.8-2.1-.1-.2-.4-1 .1-2.1 0 0 .7-.2 2.2.8a7.6 7.6 0 0 1 4 0c1.5-1 2.2-.8 2.2-.8.4 1.1.2 1.9.1 2.1.5.6.8 1.3.8 2.1 0 3.1-1.9 3.7-3.6 3.9.3.3.5.8.5 1.5v2.2c0 .2.1.5.6.4A8 8 0 0 0 8 .2"/></symbol>
 </svg>
 
@@ -56,33 +58,36 @@
 
 <main id="main">
 
-<section class="hero" id="top" aria-labelledby="hero-title">
+<section class="hero" id="top" data-hero data-product="seed" aria-labelledby="hero-title">
   <div class="hero-sky" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="wrap hero-in">
-    <div class="hero-seed" aria-hidden="true">
-      <svg viewBox="0 0 100 100">
-        <path class="petal" d="M66.91 6.22 C58.24 6 51.52 9.25 48.7 14.24 C46.1 19 47.62 22.47 51.52 26.59 C60.19 34.18 64.96 39.81 64.96 49.35 C64.74 54.99 65.82 57.15 69.72 56.5 C78.18 54.33 87.5 44.15 90.75 35.69 C94.22 26.59 88.8 17.27 81.86 12.07 C77.53 8.38 72.33 6.43 66.91 6.22 Z"/>
-        <path class="petal" d="M32.44 28.11 C21.82 28.11 13.37 32.23 9.03 38.73 C4.48 45.01 5.57 52.17 9.47 58.89 C12.94 64.74 17.49 68.86 21.61 70.37 C25.07 71.67 27.24 68.64 28.76 64.31 C32.23 53.68 35.69 48.7 43.28 45.23 C49.35 42.41 54.77 41.11 55.2 37.21 C55.64 32.88 50 30.06 44.36 29.19 C40.46 28.33 36.34 28.11 32.44 28.11 Z"/>
-        <path class="petal" d="M43.28 53.03 C39.16 56.29 35.69 61.49 35.48 67.77 C35.04 76.23 42.2 83.81 49.78 87.93 C57.59 92.48 67.77 94.22 77.09 92.05 C85.55 90.32 91.18 86.41 93.13 82.08 C95.3 77.31 91.4 69.07 87.28 64.96 C82.51 59.97 75.58 60.84 69.07 61.27 C59.75 62.35 55.42 58.02 50.87 53.9 C48.27 51.52 45.45 51.08 43.28 53.03 Z"/>
-      </svg>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <h1 class="hero-title" id="hero-title" aria-label="We invent apps for what’s next.">
+        <span aria-hidden="true">We invent apps</span>
+        <span aria-hidden="true">for <span class="rotor" data-product="seed" data-rotator>what’s next.</span></span>
+      </h1>
+      <p class="hero-lede">An independent software lab in New York. We build focused, carefully made software for one corner of everyday life at a time.</p>
+      <div class="hero-actions">
+        <a class="btn btn-lime" href="#products">Explore the products<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
+        <a class="btn btn-ghost" href="#contact">Write to the lab</a>
+      </div>
+      <div class="picker" data-picker>
+        <nav class="picker-list" aria-label="Products">
+          <a class="pick" href="#savorly" data-scene="savorly" data-product="savorly"><img src="assets/img/products/savorly-icon.svg" alt="" width="48" height="48"><span>Savorly</span></a>
+          <a class="pick" href="#morse" data-scene="morse" data-product="morse"><img src="assets/img/products/morse-icon.svg" alt="" width="48" height="48"><span>Morse</span></a>
+          <a class="pick" href="#mesh" data-scene="mesh" data-product="mesh"><img src="assets/img/products/mesh-icon.svg" alt="" width="48" height="48"><span>Mesh</span></a>
+          <a class="pick" href="#incant" data-scene="incant" data-product="incant"><img src="assets/img/products/incant-icon.svg" alt="" width="48" height="48"><span>Incant</span></a>
+          <a class="pick" href="#mixer" data-scene="mixer" data-product="mixer"><img src="assets/img/products/mixer-icon.png" alt="" width="48" height="48"><span>Mixer</span></a>
+        </nav>
+        <button class="picker-pause" type="button" aria-label="Pause animation" aria-pressed="false" data-pause hidden>
+          <svg class="i-pause" aria-hidden="true"><use href="#i-pause"/></svg><svg class="i-play" aria-hidden="true"><use href="#i-play"/></svg>
+        </button>
+      </div>
     </div>
-    <a class="pill" href="https://github.com/snowdamiz">
-      <span class="pill-dot" aria-hidden="true"></span>Five products, all developed in public<svg aria-hidden="true"><use href="#i-arrow"/></svg>
-    </a>
-    <h1 class="hero-title" id="hero-title">We invent apps<br> for everyday life.</h1>
-    <p class="hero-lede">An independent software lab in New York. We build focused, carefully made software for one corner of everyday life at a time.</p>
-    <div class="hero-actions">
-      <a class="btn btn-lime" href="#products">Explore the products<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      <a class="btn btn-ghost" href="#contact">Write to the lab</a>
+    <div class="hero-fig" aria-hidden="true" data-figure>
+      <canvas></canvas>
+      <svg class="hero-still" viewBox="0 0 100 100"><use href="#seed"/></svg>
     </div>
-
-    <nav class="dock" aria-label="Products" data-dock>
-      <a class="dock-app" href="#savorly"><img src="assets/img/products/savorly-icon.svg" alt="" width="64" height="64"><span>Savorly</span></a>
-      <a class="dock-app" href="#morse"><img src="assets/img/products/morse-icon.svg" alt="" width="64" height="64"><span>Morse</span></a>
-      <a class="dock-app" href="#mesh"><img src="assets/img/products/mesh-icon.svg" alt="" width="64" height="64"><span>Mesh</span></a>
-      <a class="dock-app" href="#incant"><img src="assets/img/products/incant-icon.svg" alt="" width="64" height="64"><span>Incant</span></a>
-      <a class="dock-app" href="#mixer"><img src="assets/img/products/mixer-icon.png" alt="" width="64" height="64"><span>Mixer</span></a>
-    </nav>
   </div>
 </section>
 
@@ -91,97 +96,68 @@
     <header class="section-head" data-reveal>
       <p class="eyebrow">Products</p>
       <h2 class="section-title" id="products-title">Five apps, one lab.</h2>
-      <p class="section-lede">Each one takes a single corner of everyday life and does it with uncommon care. Here is where each stands today.</p>
     </header>
-
-    <article class="product" id="savorly" style="--accent: #ffb547" aria-labelledby="savorly-name" data-reveal data-spot>
-      <div class="product-copy">
+    <article class="product" id="savorly" data-product="savorly" aria-labelledby="savorly-name">
+      <div class="product-copy" data-reveal>
         <div class="product-id">
-          <img class="app-icon" src="assets/img/products/savorly-icon.svg" alt="" width="60" height="60">
-          <div><h3 id="savorly-name">Savorly</h3><p>Cooking</p></div>
+          <img class="app-icon" src="assets/img/products/savorly-icon.svg" alt="" width="52" height="52">
+          <h3 id="savorly-name">Savorly</h3>
         </div>
-        <p class="badges"><span class="badge badge-live">Live on the web</span><span class="badge">Beta</span></p>
         <p class="product-tag">Good recipes, and a sous-chef to cook them with.</p>
-        <p class="product-desc">A cooking community for finding recipes, sharing your own and actually cooking them. The sous-chef is built into every screen. Ask it by text, voice or photo, or talk to it hands-free with flour on your hands.</p>
-        <ul class="points">
-          <li>Cook mode with step timers and spoken steps.</li>
-          <li>Cook-tested times from people who made it.</li>
-          <li>One timeline for a whole meal of dishes.</li>
-          <li>Shared planner, pantry and grocery list.</li>
-        </ul>
-        <p class="product-note">The iPhone and Android apps are in testing ahead of their App Store and Google Play release.</p>
+        <p class="product-desc">A cooking community for finding recipes, sharing your own and actually cooking them, with a sous-chef in every screen that you can ask by text, voice or photo.</p>
+        <p class="product-meta"><span class="status status-live" aria-hidden="true"></span>Cooking · Live on the web · iPhone and Android in beta</p>
         <p class="product-links">
           <a class="btn btn-accent" href="https://savorly.cooking">Visit savorly.cooking<svg aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="btn btn-ghost" href="https://github.com/snowdamiz/savorly-v2"><svg aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          <a class="text-link" href="https://github.com/snowdamiz/savorly-v2">Source<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </p>
       </div>
-      <figure class="product-media media-savorly">
+      <figure class="product-media media-savorly" data-reveal>
         <div class="phone phone-back">
           <div class="phone-screen"><img src="assets/img/products/savorly-souschef.jpg" alt="Savorly’s sous-chef turning a note about lemon toast into a private recipe, with an AI cover photo and recipe video on the way." width="390" height="844" loading="lazy"></div>
         </div>
         <div class="phone phone-front">
           <div class="phone-screen"><img src="assets/img/products/savorly-discover.jpg" alt="Savorly’s Discover screen: a recipe search, cuisines and the daily dish, the everyday avocado toast." width="786" height="1702" loading="lazy"></div>
         </div>
-        <figcaption>Discover and the sous-chef, from the Savorly app.</figcaption>
       </figure>
     </article>
-
-    <article class="product product-flip" id="morse" style="--accent: #4c84ff" aria-labelledby="morse-name" data-reveal data-spot>
-      <div class="product-copy">
+    <article class="product product-flip" id="morse" data-product="morse" aria-labelledby="morse-name">
+      <div class="product-copy" data-reveal>
         <div class="product-id">
-          <img class="app-icon" src="assets/img/products/morse-icon.svg" alt="" width="60" height="60">
-          <div><h3 id="morse-name">Morse</h3><p>Private messaging</p></div>
+          <img class="app-icon" src="assets/img/products/morse-icon.svg" alt="" width="52" height="52">
+          <h3 id="morse-name">Morse</h3>
         </div>
-        <p class="badges"><span class="badge badge-dev">In development</span><span class="badge">Prototype</span></p>
         <p class="product-tag">Private messaging, kept honest.</p>
-        <p class="product-desc">Pick a username and start talking. No phone number, no email, no address book. Only the people in a chat can read it, not even us, and independent witnesses check every key the server hands out.</p>
-        <ul class="points">
-          <li>End-to-end encrypted, file names included.</li>
-          <li>No phone number or address book.</li>
-          <li>Disappearing messages on any chat.</li>
-          <li>Protocol written in <a href="#mesh">Mesh</a>, our language.</li>
-        </ul>
-        <p class="product-note">Early desktop builds for Mac and Windows. iPhone and Android share the same encrypted core and are in development, with no production-security claim yet.</p>
+        <p class="product-desc">Pick a username and start talking. No phone number or address book, only the people in a chat can read it, and independent witnesses check every key the server hands out.</p>
+        <p class="product-meta"><span class="status status-dev" aria-hidden="true"></span>Private messaging · Early desktop builds · Prototype</p>
         <p class="product-links">
           <a class="btn btn-accent" href="https://morseapp.io">Join the waitlist<svg aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="btn btn-ghost" href="https://github.com/snowdamiz/whatsdown"><svg aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          <a class="text-link" href="https://github.com/snowdamiz/whatsdown">Source<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </p>
       </div>
-      <figure class="product-media media-morse">
+      <figure class="product-media media-morse" data-reveal>
         <div class="window">
           <div class="window-bar" aria-hidden="true"><i></i><i></i><i></i><span>Morse</span></div>
           <img src="assets/img/products/morse-desktop.jpg" alt="The Morse desktop app with its sample chats: a message request from Dan, and an open conversation with Alex Walker showing a verified-contact shield, emoji reactions and read receipts." width="1397" height="1540" loading="lazy">
         </div>
-        <figcaption>An early Morse desktop build, showing the app’s sample chats.</figcaption>
       </figure>
     </article>
-
-    <article class="product" id="mesh" style="--accent: #47d9a0" aria-labelledby="mesh-name" data-reveal data-spot>
-      <div class="product-copy">
+    <article class="product" id="mesh" data-product="mesh" aria-labelledby="mesh-name">
+      <div class="product-copy" data-reveal>
         <div class="product-id">
-          <img class="app-icon" src="assets/img/products/mesh-icon.svg" alt="" width="60" height="60">
-          <div><h3 id="mesh-name">Mesh</h3><p>Programming language</p></div>
+          <img class="app-icon" src="assets/img/products/mesh-icon.svg" alt="" width="52" height="52">
+          <h3 id="mesh-name">Mesh</h3>
         </div>
-        <p class="badges"><span class="badge badge-live">v0.1.8</span><span class="badge">Beta</span></p>
         <p class="product-tag">Write a server. Ship a fleet.</p>
-        <p class="product-desc">A statically typed, actor-based language with Elixir-style syntax. It infers your types, compiles to a single native binary through LLVM, and builds clustering into the runtime. Mark the work that can run anywhere, and Mesh handles placement, routing and failover.</p>
-        <ul class="points">
-          <li>Typed actors, supervisors and channels.</li>
-          <li>Hindley-Milner type inference.</li>
-          <li>HTTP, WebSockets and Postgres built in.</li>
-          <li>Formatter, tests, REPL and language server.</li>
-        </ul>
-        <p class="product-note">Installable today on macOS, Linux and Windows. The language and package format can still change before 1.0.</p>
+        <p class="product-desc">A statically typed, actor-based language with Elixir-style syntax. It compiles to one native binary and builds clustering into the runtime, so Mesh handles placement, routing and failover.</p>
+        <p class="product-meta"><span class="status status-live" aria-hidden="true"></span>Programming language · v0.1.8 · Beta</p>
         <p class="product-links">
           <a class="btn btn-accent" href="https://meshlang.dev">Visit meshlang.dev<svg aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="btn btn-ghost" href="https://github.com/snowdamiz/mesh-lang"><svg aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          <a class="text-link" href="https://github.com/snowdamiz/mesh-lang">Source<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </p>
       </div>
-      <figure class="product-media media-mesh">
-        <div class="mesh-stage">
-          <img class="mesh-film" src="assets/img/products/mesh-reroute.jpg" alt="A frame from the Mesh film: a cluster of glowing nodes rerouting after node 3 is lost." width="1600" height="900" loading="lazy">
-        </div>
-        <div class="code-card">
+      <figure class="product-media media-mesh" data-reveal>
+        <img class="mesh-film" src="assets/img/products/mesh-reroute.jpg" alt="A frame from the Mesh film: a cluster of glowing nodes rerouting after node 3 is lost." width="1600" height="900" loading="lazy">
+        <div class="code-window">
           <div class="code-bar"><span class="code-dots" aria-hidden="true"><i></i><i></i><i></i></span><span>counter.mpl</span></div>
 <pre><code><span class="k">actor</span> <span class="f">counter</span>(total :: <span class="t">Int</span>) <span class="k">do</span>
   <span class="k">receive do</span>
@@ -197,78 +173,59 @@
   <span class="k">let</span> pid :: <span class="t">Pid</span>&lt;<span class="t">Message</span>&gt; = spawn(counter, <span class="n">0</span>)
   send(pid, <span class="t">Add</span>(<span class="n">40</span>))
 <span class="k">end</span></code></pre>
+          <div class="install">
+            <code><span aria-hidden="true">$ </span>curl -sSf https://meshlang.dev/install.sh | sh</code>
+            <button class="copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh" aria-label="Copy the install command"><svg aria-hidden="true"><use href="#i-copy"/></svg><span aria-live="polite">Copy</span></button>
+          </div>
         </div>
-        <div class="install">
-          <code><span aria-hidden="true">$ </span>curl -sSf https://meshlang.dev/install.sh | sh</code>
-          <button class="copy" type="button" data-copy="curl -sSf https://meshlang.dev/install.sh | sh" aria-label="Copy the install command"><svg aria-hidden="true"><use href="#i-copy"/></svg><span aria-live="polite">Copy</span></button>
-        </div>
-        <figcaption>A frame from the Mesh film, and the counter example from the Mesh README.</figcaption>
       </figure>
     </article>
-
-    <article class="product product-flip" id="incant" style="--accent: #8b73ff" aria-labelledby="incant-name" data-reveal data-spot>
-      <div class="product-copy">
+    <article class="product product-flip" id="incant" data-product="incant" aria-labelledby="incant-name">
+      <div class="product-copy" data-reveal>
         <div class="product-id">
-          <img class="app-icon" src="assets/img/products/incant-icon.svg" alt="" width="60" height="60">
-          <div><h3 id="incant-name">Incant</h3><p>Game engine</p></div>
+          <img class="app-icon" src="assets/img/products/incant-icon.svg" alt="" width="52" height="52">
+          <h3 id="incant-name">Incant</h3>
         </div>
-        <p class="badges"><span class="badge badge-dev">In development</span><span class="badge">Prototype</span></p>
         <p class="product-tag">The game engine you can talk to.</p>
-        <p class="product-desc">Model, script and ship 2D and 3D games in one application. Work by hand, in TypeScript, or by asking the agent. Every change lands as a command you can read, test and undo.</p>
-        <ul class="points">
-          <li>One undoable history for every edit.</li>
-          <li>Plain-text, diffable project files.</li>
-          <li>The agent play-tests and shows proof.</li>
-          <li>Bring your own OpenAI account.</li>
-        </ul>
-        <p class="product-note">Rendering, physics, scripting, input and game saves are coming together in the first engine phase. No public release yet.</p>
+        <p class="product-desc">Model, script and ship 2D and 3D games by hand, in TypeScript, or by asking the agent. Every change lands as a command you can read, test and undo.</p>
+        <p class="product-meta"><span class="status status-dev" aria-hidden="true"></span>Game engine · In development · Prototype</p>
         <p class="product-links">
           <a class="btn btn-accent" href="https://snowdamiz.github.io/incant/">See the project<svg aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="btn btn-ghost" href="https://github.com/snowdamiz/incant"><svg aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          <a class="text-link" href="https://github.com/snowdamiz/incant">Source<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </p>
       </div>
-      <figure class="product-media media-incant">
-        <img class="incant-game" src="assets/img/products/incant-native-game.jpg" alt="Incant’s native game window running its sample game: a small robot in a desert canyon, with the objective “Collect the core samples” and “Samples 0/4”." width="1280" height="1024" loading="lazy">
+      <figure class="product-media media-incant" data-reveal>
+        <img class="incant-game" src="assets/img/products/incant-native-game.jpg" alt="Incant’s native game window running its sample game: a small robot in a desert canyon, with the objective “Collect the core samples” and “Samples 0/4”." width="1272" height="1016" loading="lazy">
         <img class="incant-agent" src="assets/img/products/incant-agent.jpg" alt="Incant’s agent panel proposing four changes to the project, with Deny and Allow buttons." width="756" height="948" loading="lazy">
-        <figcaption>Incant’s native game window and its agent panel.</figcaption>
       </figure>
     </article>
-
-    <article class="product" id="mixer" style="--accent: #ff7a3d" aria-labelledby="mixer-name" data-reveal data-spot>
-      <div class="product-copy">
+    <article class="product" id="mixer" data-product="mixer" aria-labelledby="mixer-name">
+      <div class="product-copy" data-reveal>
         <div class="product-id">
-          <img class="app-icon" src="assets/img/products/mixer-icon.png" alt="" width="60" height="60">
-          <div><h3 id="mixer-name">Mixer</h3><p>Mobile platform</p></div>
+          <img class="app-icon" src="assets/img/products/mixer-icon.png" alt="" width="52" height="52">
+          <h3 id="mixer-name">Mixer</h3>
         </div>
-        <p class="badges"><span class="badge badge-dev">In development</span><span class="badge">Prototype</span></p>
         <p class="product-tag">Write Swift. Ship both.</p>
-        <p class="product-desc">Build iPhone and Android apps from one Swift codebase. You write the screens and state once, and Mixer draws them with each platform’s own native controls. It’s designed to send compatible fixes as signed updates, without waiting on a new store build.</p>
-        <ul class="points">
-          <li>Native controls on iPhone and Android.</li>
-          <li>One CLI to create, test and build both.</li>
-          <li>Signed updates that fall back safely.</li>
-          <li>Compatibility report for existing Swift apps.</li>
-        </ul>
-        <p class="product-note">A Swift app already runs with native controls on a physical Pixel, and the CLI builds iOS Simulator apps and unsigned Android APKs. Signed updates, app-store builds and the hosted release service are in progress. No public release yet.</p>
+        <p class="product-desc">Build iPhone and Android apps from one Swift codebase. You write the screens and state once, and Mixer draws them with each platform’s own native controls.</p>
+        <p class="product-meta"><span class="status status-dev" aria-hidden="true"></span>Mobile platform · Running on a physical Pixel · Prototype</p>
         <p class="product-links">
           <a class="btn btn-accent" href="https://github.com/snowdamiz/mixer/blob/main/mixer-product-plan.md">Read the plan<svg aria-hidden="true"><use href="#i-out"/></svg></a>
-          <a class="btn btn-ghost" href="https://github.com/snowdamiz/mixer"><svg aria-hidden="true"><use href="#i-github"/></svg>Source</a>
+          <a class="text-link" href="https://github.com/snowdamiz/mixer">Source<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
         </p>
       </div>
-      <figure class="product-media media-mixer">
+      <figure class="product-media media-mixer" data-reveal>
         <img class="flick" src="assets/img/products/mixer-flick.webp" alt="" width="240" height="240" loading="lazy">
         <div class="phone phone-pixel">
           <div class="phone-screen"><img src="assets/img/products/mixer-pixel.jpg" alt="A checklist app written in Swift, running with native Android controls on a physical Pixel: a Release checklist with a new-task field and task switches." width="720" height="1603" loading="lazy"></div>
         </div>
-        <figcaption>A Swift app running on a physical Pixel, with Flick, Mixer’s fox.</figcaption>
       </figure>
     </article>
   </div>
 </section>
 
 <section class="log" id="log" aria-labelledby="log-title">
-  <div class="wrap">
-    <header class="section-head" data-reveal>
+  <div class="wrap log-grid">
+    <header class="section-head section-head-left" data-reveal>
       <p class="eyebrow">Lab log</p>
       <h2 class="section-title" id="log-title">What shipped lately.</h2>
     </header>
@@ -276,21 +233,21 @@
       <li>
         <h3><time datetime="2026-10">October 2026</time></h3>
         <ul>
-          <li><a href="#mesh"><img src="assets/img/products/mesh-icon.svg" alt="" width="36" height="36"><span><b>Mesh</b> v0.1.8 released.</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#mixer"><img src="assets/img/products/mixer-icon.png" alt="" width="36" height="36"><span><b>Mixer</b> runs a Swift app with native controls on a physical Pixel.</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#mesh"><img src="assets/img/products/mesh-icon.svg" alt="" width="32" height="32"><span><b>Mesh</b> v0.1.8 released.</span></a></li>
+          <li><a href="#mixer"><img src="assets/img/products/mixer-icon.png" alt="" width="32" height="32"><span><b>Mixer</b> runs a Swift app with native controls on a physical Pixel.</span></a></li>
         </ul>
       </li>
       <li>
         <h3><time datetime="2026-09">September 2026</time></h3>
         <ul>
-          <li><a href="#savorly"><img src="assets/img/products/savorly-icon.svg" alt="" width="36" height="36"><span><b>Savorly</b> for iPhone and Android enters beta testing.</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-          <li><a href="#morse"><img src="assets/img/products/morse-icon.svg" alt="" width="36" height="36"><span><b>Morse</b> ships early desktop builds for Mac and Windows.</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#savorly"><img src="assets/img/products/savorly-icon.svg" alt="" width="32" height="32"><span><b>Savorly</b> for iPhone and Android enters beta testing.</span></a></li>
+          <li><a href="#morse"><img src="assets/img/products/morse-icon.svg" alt="" width="32" height="32"><span><b>Morse</b> ships early desktop builds for Mac and Windows.</span></a></li>
         </ul>
       </li>
       <li>
         <h3><time datetime="2026-08">August 2026</time></h3>
         <ul>
-          <li><a href="#incant"><img src="assets/img/products/incant-icon.svg" alt="" width="36" height="36"><span><b>Incant</b> starts its core engine phase: rendering, physics, scripting, input and saves.</span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+          <li><a href="#incant"><img src="assets/img/products/incant-icon.svg" alt="" width="32" height="32"><span><b>Incant</b> starts its core engine phase: rendering, physics, scripting, input and saves.</span></a></li>
         </ul>
       </li>
     </ol>
@@ -299,36 +256,36 @@
 
 <section class="about" id="about" aria-labelledby="about-title">
   <div class="wrap">
-    <header class="section-head section-head-wide" data-reveal>
+    <header class="section-head section-head-left about-head" data-reveal>
       <p class="eyebrow">About</p>
       <h2 class="statement" id="about-title">Most software tries to be everything for everyone. <span>We think the best tools do one thing with uncommon care.</span></h2>
       <p class="section-lede">So we pick a corner of everyday life (the stovetop, the group chat, the server, the game editor) and build the software it deserves. Then we do it again.</p>
     </header>
 
     <h3 class="sr-only">Principles</h3>
-    <ul class="bento" data-reveal>
-      <li data-spot>
-        <svg class="bento-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
+    <ul class="principles" data-reveal>
+      <li>
+        <svg class="principle-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.5"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/></svg>
         <h4>Private by default.</h4><p>We collect the minimum, encrypt what we can, and never sell your data.</p>
       </li>
-      <li data-spot>
-        <svg class="bento-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9" class="fill"/></svg>
+      <li>
+        <svg class="principle-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r=".9" class="fill"/></svg>
         <h4>One job, done well.</h4><p>If a feature doesn’t earn its place, it doesn’t ship.</p>
       </li>
-      <li data-spot>
-        <svg class="bento-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 21h4M4 4l16 16"/></svg>
+      <li>
+        <svg class="principle-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15z"/><path d="M10 21h4M4 4l16 16"/></svg>
         <h4>Respect for attention.</h4><p>No dark patterns, no infinite feeds, no guilt-trip notifications.</p>
       </li>
-      <li data-spot>
-        <svg class="bento-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5h14M12 8.5v5.5M12 14l-3.5 6.5M12 14l3.5 6.5"/></svg>
+      <li>
+        <svg class="principle-ic" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="4.5" r="1.8"/><path d="M5 8.5h14M12 8.5v5.5M12 14l-3.5 6.5M12 14l3.5 6.5"/></svg>
         <h4>Made for everyone.</h4><p>Screen readers, dynamic type, contrast and reduced motion are designed in from day one.</p>
       </li>
-      <li data-spot>
-        <svg class="bento-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.2 7.5 9.5 4.3-1.3 7.5-5 7.5-9.5V6z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg>
+      <li>
+        <svg class="principle-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4.5 6v5.5c0 4.5 3.2 8.2 7.5 9.5 4.3-1.3 7.5-5 7.5-9.5V6z"/><path d="m8.8 12 2.2 2.2 4.2-4.4"/></svg>
         <h4>Built to last.</h4><p>Honest business models, so the software you rely on is still here years from now.</p>
       </li>
-      <li data-spot>
-        <svg class="bento-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></svg>
+      <li>
+        <svg class="principle-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m8.5 8-4 4 4 4M15.5 8l4 4-4 4M13.5 5.5l-3 13"/></svg>
         <h4>Developed in public.</h4><p>Every project’s code is on <a href="https://github.com/snowdamiz">GitHub</a>.</p>
       </li>
     </ul>
@@ -343,22 +300,20 @@
 </section>
 
 <section class="contact" id="contact" aria-labelledby="contact-title">
-  <div class="wrap">
-    <div class="contact-card" data-reveal data-spot>
-      <svg class="contact-seed" viewBox="0 0 100 100" aria-hidden="true"><use href="#seed"/></svg>
-      <h2 class="section-title" id="contact-title">Write to the lab.</h2>
-      <p class="section-lede">One inbox, and a person reads every message. Tell us which product it’s about and what you need.</p>
-      <div class="mail">
-        <a class="mail-addr" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
-        <button class="copy" type="button" data-copy="hello@sigenticlabs.com" aria-label="Copy the email address"><svg aria-hidden="true"><use href="#i-copy"/></svg><span aria-live="polite">Copy</span></button>
-      </div>
-      <ul class="contact-links">
-        <li><a href="mailto:hello@sigenticlabs.com?subject=Partnership">Partnerships</a></li>
-        <li><a href="mailto:hello@sigenticlabs.com?subject=Press%20inquiry">Press</a></li>
-        <li><a href="support.html">App support</a></li>
-        <li><a href="security.html">Report a vulnerability</a></li>
-      </ul>
+  <div class="wrap contact-in" data-reveal>
+    <svg class="contact-seed" viewBox="0 0 100 100" aria-hidden="true"><use href="#seed"/></svg>
+    <h2 class="section-title" id="contact-title">Write to the lab.</h2>
+    <p class="section-lede">One inbox, and a person reads every message.</p>
+    <div class="mail">
+      <a class="mail-addr" href="mailto:hello@sigenticlabs.com">hello@sigenticlabs.com</a>
+      <button class="copy" type="button" data-copy="hello@sigenticlabs.com" aria-label="Copy the email address"><svg aria-hidden="true"><use href="#i-copy"/></svg><span aria-live="polite">Copy</span></button>
     </div>
+    <ul class="contact-links">
+      <li><a href="mailto:hello@sigenticlabs.com?subject=Partnership">Partnerships</a></li>
+      <li><a href="mailto:hello@sigenticlabs.com?subject=Press%20inquiry">Press</a></li>
+      <li><a href="support.html">App support</a></li>
+      <li><a href="security.html">Report a vulnerability</a></li>
+    </ul>
   </div>
 </section>
 
