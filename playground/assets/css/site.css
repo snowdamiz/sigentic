@@ -140,7 +140,6 @@ main [id] { scroll-margin-top: 96px; }
   box-shadow: 0 8px 0 var(--edge);
   transition: transform .25s var(--ease), box-shadow .25s var(--ease);
 }
-.app:hover { transform: translateY(-4px); box-shadow: 0 12px 0 var(--edge), 0 28px 44px -20px rgba(70, 50, 20, .4); }
 .app:active { transform: translateY(5px); box-shadow: 0 3px 0 var(--edge); }
 .app:has(.app-link:focus-visible) { outline: 3px solid var(--ink); outline-offset: 5px; }
 .app-big { grid-column: span 4; min-height: 330px; }
@@ -199,11 +198,12 @@ main [id] { scroll-margin-top: 96px; }
 
 /* What we care about */
 .care { padding-top: clamp(80px, 10vw, 140px); }
-.cares { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 40px clamp(32px, 5vw, 72px); margin-top: 40px; }
+.cares { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 40px clamp(24px, 2.6vw, 40px); margin-top: 40px; }
 .care-ic { display: grid; place-items: center; width: 52px; height: 52px; border-radius: 16px; background: var(--c); box-shadow: 0 5px 0 color-mix(in srgb, var(--c) 70%, #000); }
 .care-ic svg { width: 26px; height: 26px; fill: none; stroke: var(--ink); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-.cares h3 { margin-top: 22px; font-size: 22px; font-weight: 800; letter-spacing: -.025em; }
-.cares p { margin-top: 6px; font-size: 17px; color: var(--ink-2); }
+.cares h3 { margin-top: 22px; font-size: 20px; font-weight: 800; line-height: 1.2; letter-spacing: -.025em; }
+.cares p { margin-top: 8px; font-size: 16px; color: var(--ink-2); }
+@media (max-width: 1180px) { .cares { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .cares a { font-weight: 700; color: var(--ink); text-underline-offset: 3px; }
 
 /* Lately */
