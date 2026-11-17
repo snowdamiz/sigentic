@@ -441,3 +441,7 @@ main [id], main { scroll-margin-top: 84px; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition-duration: .001ms !important; }
 }
+
+@media (forced-colors: active) {
+  .hero-title { background: none; color: CanvasText; }
+}
