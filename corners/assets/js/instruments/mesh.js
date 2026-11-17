@@ -139,7 +139,7 @@ export function mountMesh(root, { reduced }) {
       n.btn.disabled = n.up && alone;
       n.btn.title = n.btn.disabled ? 'Keep one node running' : '';
       n.btn.querySelector('[data-act]').textContent = n.up ? 'Unplug ' : 'Plug in ';
-      n.btn.querySelector('[data-state]').textContent = n.up ? `Running · ${load(n)} actors` : 'Unplugged';
+      n.btn.querySelector('[data-state]').textContent = n.up ? `Running · ${load(n)} actor${load(n) === 1 ? '' : 's'}` : 'Unplugged';
     }
   }
 
