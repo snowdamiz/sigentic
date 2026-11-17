@@ -21,36 +21,36 @@ wrangler.jsonc      Cloudflare Worker config · worker.js: www redirect · .asse
 
 All six pages share one nav, menu and footer, written out in each file. The homepage links to its own sections (`#savorly`, `#about`). The other five pages link back to them (`/#savorly`, `/#about`). When you change one copy, change all six.
 
-## Corners, a candidate redesign
+## Preview, a candidate redesign
 
-`corners/` holds a second, complete design of the site, built from scratch so the two can be compared. Serve the repo as below and open http://localhost:4321/corners/ beside the current home page. It shares nothing with the root pages. It has its own fonts (Archivo and Martian Mono, self-hosted, see `corners/assets/fonts/LICENSE.txt`), its own stylesheets and its own copies of every page.
+`preview/` holds a second, complete design of the site, so the two can be compared. Serve the repo as below and open http://localhost:4321/preview/ beside the current home page. It is a dark design with Geist type (self-hosted, see `preview/assets/fonts/LICENSE.txt`). It keeps the Seed logo in its brand lime and shows each product's real app icon and captures.
 
 ```
-corners/index.html                 Hero with a floor plan of the five products, one full-color room per product, lab log, about, contact
-corners/{support,security,privacy,terms,404}.html   The root pages' text in the new design
-corners/assets/css/                site.css: tokens, home page and the demos · doc.css: the text pages
-corners/assets/js/                 site.js: header color, hero headline, copy buttons, demo mounting
-corners/assets/js/instruments/     One module per product demo, started only while it is on screen
-tools/corners-og.html              Source of corners/assets/img/og.png and touch-icon.png
+preview/index.html                 Hero with the Seed and a dock of the five app icons, one showcase per product, lab log, about, contact
+preview/{support,security,privacy,terms,404}.html   The root pages' text in the new design
+preview/assets/css/                site.css: tokens and the home page · doc.css: the text pages
+preview/assets/js/site.js          Nav glass, scroll reveals, dock magnification, card spotlight, copy buttons
+preview/assets/img/products/       App icons and real captures (see below)
+tools/preview-og.html              Source of preview/assets/img/og.png and touch-icon.png
 ```
+
+The product images are real. Most come from `assets/img/work/` (see "Product images"). Three come from the product repos. `mixer-pixel.jpg` is `native/android/verification/device-toggled.png` in the Mixer repo, a Swift app running on a physical Pixel. `savorly-souschef.jpg` is `docs/recipe-studio-mobile.png` in the Savorly repo. `mesh-reroute.jpg` is a still from the Mesh film, `brag-output/work/stills/s1.0.png` in the Mesh repo.
 
 To redraw the share image and the touch icon after a design change, serve the repo and run:
 
 ```bash
-node tools/shoot.mjs http://localhost:4321/tools/corners-og.html corners/assets/img/og.png --width 1200 --height 630
-node tools/shoot.mjs "http://localhost:4321/tools/corners-og.html#icon" corners/assets/img/touch-icon.png --width 180 --height 180
+node tools/shoot.mjs http://localhost:4321/tools/preview-og.html preview/assets/img/og.png --width 1200 --height 630
+node tools/shoot.mjs "http://localhost:4321/tools/preview-og.html#icon" preview/assets/img/touch-icon.png --width 180 --height 180
 ```
 
-The demos run in the browser, and each caption says what is real and what is only illustrated. Morse's demo does real ECDH and AES-GCM with Web Crypto, which needs `localhost` or https. The others simulate the product.
-
-The pages carry `noindex` while they are a candidate. Share the link with its trailing slash, `/corners/`. The Worker only maps paths that end in `/` to `index.html`, so `/corners` gets the root 404 page, and so does any missing `/corners/...` URL.
+The pages carry `noindex` while they are a candidate. Share the link with its trailing slash, `/preview/`. The Worker only maps paths that end in `/` to `index.html`, so `/preview` gets the root 404 page, and so does any missing `/preview/...` URL.
 
 To adopt the design:
 
-1. Move `corners/` to the root in place of the old pages and `assets/`.
+1. Move `preview/` to the root in place of the old pages and `assets/`.
 2. Remove the `noindex` lines and point `og:image` at the root path.
 3. Give `404.html` absolute `/assets` paths, because the Worker serves it for every missing URL.
-4. Update the privacy policy. It says the site loads fonts from Google Fonts, and Corners serves its own.
+4. Update the privacy policy. It says the site loads fonts from Google Fonts, and the preview serves its own.
 
 ## Preview locally
 
