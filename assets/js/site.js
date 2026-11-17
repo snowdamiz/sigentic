@@ -21,17 +21,19 @@ addEventListener('scroll', onScroll, { passive: true });
 onScroll();
 
 const links = new Map([...nav.querySelectorAll('.nav-links a')].map((a) => [a.hash.slice(1), a]));
-const sections = ['top', ...links.keys()].map((id) => document.getElementById(id)).filter(Boolean);
-const current = new IntersectionObserver((entries) => {
-  for (const entry of entries) {
-    if (!entry.isIntersecting) continue;
-    links.forEach((a, id) => {
-      if (id === entry.target.id) a.setAttribute('aria-current', 'location');
-      else a.removeAttribute('aria-current');
-    });
-  }
-}, { rootMargin: '-45% 0px -50% 0px' });
-sections.forEach((s) => current.observe(s));
+const sections = [...document.querySelectorAll('main > section[id]')];
+if (sections.some((s) => links.has(s.id))) {
+  const current = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      links.forEach((a, id) => {
+        if (id === entry.target.id) a.setAttribute('aria-current', 'location');
+        else a.removeAttribute('aria-current');
+      });
+    }
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach((s) => current.observe(s));
+}
 
 const blocks = document.querySelector('[data-blocks]');
 if (blocks) {

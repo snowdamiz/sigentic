@@ -22,8 +22,22 @@
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
   <link rel="canonical" href="https://sigenticlabs.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sigentic Labs LLC",
+    "alternateName": "Sigentic Labs",
+    "url": "https://sigenticlabs.com/",
+    "logo": "https://sigenticlabs.com/assets/img/icon-512.png",
+    "email": "hello@sigenticlabs.com",
+    "description": "An independent software lab building focused, carefully made software for everyday life.",
+    "sameAs": ["https://github.com/snowdamiz"]
+  }
+  </script>
   <link rel="preload" href="assets/fonts/figtree-var.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/site.css">
+  <script>matchMedia('(prefers-reduced-motion: reduce)').matches || document.documentElement.classList.add('has-motion')</script>
   <script type="module" src="assets/js/site.js"></script>
 </head>
 <body>
@@ -89,11 +103,11 @@
       <a class="btn" href="#apps">See what we’ve built<svg aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
     <div class="blocks" aria-label="Our work" role="group" data-blocks>
-      <a class="block" href="#incant" style="--x: 20%; --y: 0%; --r: -7deg; --side: #b9acf2; --d: -1.2s; --i: 3"><img src="assets/img/apps/incant-icon.svg" alt="" width="180" height="180"><span class="sr-only">Incant</span></a>
-      <a class="block" href="#savorly" style="--x: 53%; --y: 5%; --r: 8deg; --side: #d6d1c3; --d: -2.6s; --i: 4"><img src="assets/img/apps/savorly-icon.svg" alt="" width="180" height="180"><span class="sr-only">Savorly</span></a>
-      <a class="block" href="#morse" style="--x: 1%; --y: 41%; --r: -4deg; --side: #1c4ab0; --d: -.4s; --i: 1"><img src="assets/img/apps/morse-icon.svg" alt="" width="180" height="180"><span class="sr-only">Morse</span></a>
-      <a class="block" href="#mesh" style="--x: 34%; --y: 44%; --r: 1deg; --side: #20a06e; --d: -3.1s; --i: 0"><img src="assets/img/apps/mesh-icon.svg" alt="" width="180" height="180"><span class="sr-only">Mesh</span></a>
-      <a class="block" href="#mixer" style="--x: 67%; --y: 40%; --r: 5deg; --side: #3b4350; --d: -1.9s; --i: 2"><span class="block-mixer"><img src="assets/img/apps/mixer-flick.webp" alt="" width="512" height="512"></span><span class="sr-only">Mixer</span></a>
+      <a class="block" href="#incant" style="--x: 20%; --y: 0%; --r: -7deg; --side: #b9acf2; --i: 3"><img src="assets/img/apps/incant-icon.svg" alt="" width="180" height="180"><span class="sr-only">Incant</span></a>
+      <a class="block" href="#savorly" style="--x: 53%; --y: 5%; --r: 8deg; --side: #d6d1c3; --i: 4"><img src="assets/img/apps/savorly-icon.svg" alt="" width="180" height="180"><span class="sr-only">Savorly</span></a>
+      <a class="block" href="#morse" style="--x: 1%; --y: 41%; --r: -4deg; --side: #1c4ab0; --i: 1"><img src="assets/img/apps/morse-icon.svg" alt="" width="180" height="180"><span class="sr-only">Morse</span></a>
+      <a class="block" href="#mesh" style="--x: 34%; --y: 44%; --r: 1deg; --side: #20a06e; --i: 0"><img src="assets/img/apps/mesh-icon.svg" alt="" width="180" height="180"><span class="sr-only">Mesh</span></a>
+      <a class="block" href="#mixer" style="--x: 67%; --y: 40%; --r: 5deg; --side: #3b4350; --i: 2"><span class="block-mixer"><img src="assets/img/apps/mixer-flick.webp" alt="" width="512" height="512"></span><span class="sr-only">Mixer</span></a>
       <span class="blocks-floor" aria-hidden="true"></span>
     </div>
   </div>
@@ -111,7 +125,7 @@
       </div>
       <svg class="app-mark" aria-hidden="true"><use href="#mark-mesh"/></svg>
     </article>
-    <article class="app " id="savorly" data-app="savorly" aria-labelledby="savorly-name" data-reveal>
+    <article class="app" id="savorly" data-app="savorly" aria-labelledby="savorly-name" data-reveal>
       <div class="app-copy">
         <p class="app-pill pill-live">Live on the web · Beta</p>
         <h3 id="savorly-name">Savorly</h3>
@@ -120,7 +134,7 @@
       </div>
       <svg class="app-mark" aria-hidden="true"><use href="#mark-savorly"/></svg>
     </article>
-    <article class="app " id="morse" data-app="morse" aria-labelledby="morse-name" data-reveal>
+    <article class="app" id="morse" data-app="morse" aria-labelledby="morse-name" data-reveal>
       <div class="app-copy">
         <p class="app-pill pill-dev">Prototype</p>
         <h3 id="morse-name">Morse</h3>
@@ -129,7 +143,7 @@
       </div>
       <svg class="app-mark" aria-hidden="true"><use href="#mark-morse"/></svg>
     </article>
-    <article class="app " id="mixer" data-app="mixer" aria-labelledby="mixer-name" data-reveal>
+    <article class="app" id="mixer" data-app="mixer" aria-labelledby="mixer-name" data-reveal>
       <div class="app-copy">
         <p class="app-pill pill-dev">Prototype</p>
         <h3 id="mixer-name">Mixer</h3>
@@ -138,7 +152,7 @@
       </div>
       <span class="app-mark app-mark-flick" aria-hidden="true"></span>
     </article>
-    <article class="app " id="incant" data-app="incant" aria-labelledby="incant-name" data-reveal>
+    <article class="app" id="incant" data-app="incant" aria-labelledby="incant-name" data-reveal>
       <div class="app-copy">
         <p class="app-pill pill-dev">Prototype</p>
         <h3 id="incant-name">Incant</h3>
@@ -216,6 +230,8 @@
       <a href="#about">About</a>
       <a href="support.html">Support</a>
       <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="security.html">Security</a>
       <a class="nav-cta" href="#contact">Get in touch</a>
     </nav>
   </div>

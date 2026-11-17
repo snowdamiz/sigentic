@@ -20,22 +20,20 @@ wrangler.jsonc      Cloudflare Worker config · worker.js: www redirect · .asse
 .github/workflows/  deploy.yml: deploys on pushes to the release branch
 ```
 
-All six pages share one nav and footer, written out in each file. The home page links to its own sections (`#apps`, `#about`). The other pages link back to them (`index.html#apps`, or `/#apps` on the 404 page). When you change one copy, change all six.
+All six pages share one nav and footer, written out in each file. The home page links to its own sections (`#apps`, `#about`). The other pages link back to them (`/#apps`). The footer also links Support, Privacy, Terms and Security. When you change one copy, change all six.
 
 ## Preview locally
 
 ```bash
-python3 -m http.server 4321
+python3 .claude/devserver.py 4321
 ```
 
-Then open http://localhost:4321.
-
-To see `404.html` locally, serve with `python3 .claude/devserver.py 4321` instead. It turns caching off and serves the 404 page for any missing path.
+Then open http://localhost:4321. The server turns caching off and serves `404.html` for any missing path. Use it rather than `python3 -m http.server`, whose 5-connection backlog makes macOS reset some of a browser's parallel requests, so images fail at random.
 
 ## Before you launch
 
 1. **Domain and email.** `sigenticlabs.com` and `hello@sigenticlabs.com` appear in canonical URLs, Open Graph tags, the sitemap and every contact link. Change them with one find and replace.
-2. **Work cards.** Each project is one `<article class="app" id="…" data-app="…">` in `index.html`. A card holds a status pill, the name, one sentence and one link, plus the app's own mark as a large cream shape. `data-app` selects the card's colour from the table at the top of `site.css`. The first card (`app-big`) spans two columns; it is Mesh. When something ships, update its pill (`pill-live` for usable, `pill-dev` for prototypes) and add a line to Lately.
+2. **Work cards.** Each project is one `<article class="app" id="…" data-app="…">` in `index.html`. A card holds a status pill, the name, one sentence and one link, plus the app's own mark as a large cream shape. `data-app` selects the card's colour from the table at the top of `site.css`. The first card (`app-big`) is Mesh. It spans four of the six grid columns, and the full width below 1180 px. When something ships, update its pill (`pill-live` for usable, `pill-dev` for prototypes) and add a line to Lately.
 3. **Placeholders.** Some facts were marked as placeholders in the previous site and are still unconfirmed. Check them before launch.
    - Lately dates: `datetime="2026-`. The months are guesses. The events are real milestones.
    - About: "Founded in 2025 and self-funded."
@@ -86,11 +84,11 @@ git push origin main:release
 
 **Blocks.** The design's one idea is the toy block: a rounded shape with a solid, darker edge underneath (`box-shadow: 0 Npx 0 <darker colour>`). The hero's app icons, the work cards, the button, the step numbers, the care icons and the contact card all use it. A block's darker edge is `--side` on the hero blocks and `color-mix(…, #2b1d05 26%)` elsewhere.
 
-**Hero blocks.** Each block is a link to its card, positioned with `--x`, `--y` and `--r` (rotation), with `--side` for its edge, `--d` for its bob delay and `--i` for its place in the drop-in order. Mixer's block is Flick on the icon's dark background, because the repo's Mixer icon is only 160 px.
+**Hero blocks.** Each block is a link to its card, positioned with `--x`, `--y` and `--r` (rotation), with `--side` for its edge and `--i` for its place in the drop-in order. Mixer's block is Flick on the icon's dark background, because the repo's Mixer icon is only 160 px.
 
 **Card marks.** Each card's large cream shape is the app's own mark, drawn from SVG symbols in the page sprite (`#mark-mesh`, `#mark-savorly`, `#mark-morse`, `#mark-incant`). Mixer's is Flick as a CSS mask.
 
-**Motion.** Blocks drop in and bob, the group tilts toward the pointer, the squiggle and step arrows draw in, and sections fade up as they scroll in. `site.js` sets `.has-motion` on `<html>` only when motion is welcome, and every motion rule hangs off it.
+**Motion.** Blocks drop in and float once, the group tilts toward the pointer, the squiggle and step arrows draw in, and sections fade up as they scroll in. All automatic motion ends within 5 seconds (WCAG 2.2.2), so the hero needs no pause control. Keep it that way. An inline script in each page's `<head>` sets `.has-motion` on `<html>` before the first paint, only when motion is welcome, and every motion rule hangs off it. `site.js` keeps the class in step if the preference changes.
 
 **The Seed logo** is three soft, asymmetric forms around an open center. The approved artwork lives in `assets/img/logo.svg`. On the site it takes the text colour (ink), and lime on the contact card. `favicon.svg` / `logo-tile.svg` is the icon version, lime on a charcoal tile. After editing the source SVG, run `node tools/sync-brand.mjs` to update the `#seed` symbol in all six pages and `tools/og.html`, and the SVG tiles.
 
@@ -107,8 +105,8 @@ git push origin main:release
 
 ## Accessibility & performance
 
-- Respects `prefers-reduced-motion`: no drop-in, bob, tilt, drawing or reveals. Everything is in place from the start.
-- Semantic landmarks, a skip link, one `h1` per page and a visible focus ring. The nav marks the section in view with `aria-current="location"`, and each text page marks itself in the footer with `aria-current="page"`.
+- Respects `prefers-reduced-motion`: no drop-in, float, tilt, drawing or reveals. Everything is in place from the start.
+- Semantic landmarks, a skip link, one `h1` per page and a visible focus ring (cream on the dark contact card). The nav marks the section in view with `aria-current="location"`, and clears it in sections it has no link for. Each text page marks itself in the footer with `aria-current="page"`.
 - A whole work card is clickable through its link, so keyboard and screen-reader users get one link per card.
 - Text contrast meets WCAG AA on cream and on every card colour.
 - No frameworks, trackers or third-party requests. The JavaScript is under 3 KB.

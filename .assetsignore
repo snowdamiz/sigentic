@@ -2,6 +2,7 @@
 .git
 .github
 .claude
+.audit
 .wrangler
 node_modules
 tools
